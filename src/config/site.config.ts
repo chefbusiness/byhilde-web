@@ -1,0 +1,27 @@
+export const siteConfig = {
+  name: 'ByHilde',
+  legalName: 'Hildemara Carrero de Rivero',
+  tagline: 'Interiorismo y Decoración en Madrid',
+  description: 'Estudio de interiorismo, decoración y reformas integrales en Madrid. Espacios que inspiran, funcionan y perduran.',
+  url: 'https://byhilde.es',
+  domain: 'byhilde.es',
+  locale: 'es_ES',
+  phone: '+34 628 05 99 14',
+  phoneDisplay: '+34 628 05 99 14',
+  whatsapp: '34628059914',
+  whatsappUrl: 'https://wa.me/34628059914',
+  email: 'hildecarrero@gmail.com',
+  address: {
+    street: 'C/ Roncesvalles S/N',
+    postalCode: '28691',
+    city: 'Villanueva de la Cañada',
+    region: 'Madrid',
+    country: 'España',
+  },
+  schedule: 'Lun – Vie · 9:00 – 19:00h',
+  copyright: `© ${new Date().getFullYear()} Hildemara Carrero de Rivero`,
+  social: {
+    instagram: 'https://www.instagram.com/byhilde.es/',
+    pinterest: 'https://www.pinterest.es/byhilde/',
+  },
+} as const;

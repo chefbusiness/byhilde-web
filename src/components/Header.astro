@@ -1,0 +1,158 @@
+---
+import Ticker from './Ticker.astro';
+
+interface Props {
+  currentPath?: string;
+}
+
+const { currentPath = '' } = Astro.props;
+
+const navLinks = [
+  { href: '/sobre-mi', label: 'Sobre mí' },
+  { href: '/servicios', label: 'Servicios' },
+  { href: '/proyectos', label: 'Proyectos' },
+  { href: '/contacto', label: 'Hablemos', isCta: true },
+];
+---
+
+<Ticker />
+
+<nav>
+  <a href="/" class="nav-logo" aria-label="ByHilde — Inicio">BYHILDE®</a>
+
+  <button class="nav-hamburger" aria-label="Abrir menú" aria-expanded="false">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <ul class="nav-links" id="nav-menu">
+    {navLinks.map(({ href, label, isCta }) => (
+      <li>
+        <a
+          href={href}
+          class:list={[{ 'nav-cta': isCta, 'active': currentPath.startsWith(href) }]}
+        >
+          {label}
+        </a>
+      </li>
+    ))}
+  </ul>
+</nav>
+
+<style>
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(245,243,239,.92);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 32px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+
+  .nav-logo {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 8px 20px;
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: .06em;
+    flex-shrink: 0;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+  .nav-links a {
+    font-family: var(--body);
+    font-size: 13.5px;
+    font-weight: 400;
+    color: var(--muted);
+    transition: color .2s;
+  }
+  .nav-links a:hover,
+  .nav-links a.active { color: var(--ink); }
+
+  .nav-cta {
+    background: var(--ink);
+    color: var(--bg) !important;
+    border-radius: 999px;
+    padding: 9px 22px;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    transition: opacity .2s !important;
+    white-space: nowrap;
+  }
+  .nav-cta:hover { opacity: .8 !important; }
+
+  /* Hamburger */
+  .nav-hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+  }
+  .nav-hamburger span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--ink);
+    border-radius: 2px;
+    transition: transform .3s, opacity .3s;
+  }
+
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    .nav-hamburger { display: flex; }
+    .nav-links {
+      display: none;
+      position: absolute;
+      top: 64px;
+      left: 0;
+      right: 0;
+      background: rgba(245,243,239,.98);
+      backdrop-filter: blur(16px);
+      flex-direction: column;
+      gap: 0;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-links.open { display: flex; }
+    .nav-links li { padding: 0; }
+    .nav-links a {
+      display: block;
+      padding: 14px 24px;
+      font-size: 15px;
+    }
+    .nav-cta {
+      margin: 8px 24px;
+      text-align: center;
+      display: block !important;
+    }
+  }
+</style>
+
+<script>
+  const hamburger = document.querySelector('.nav-hamburger');
+  const menu = document.getElementById('nav-menu');
+  if (hamburger && menu) {
+    hamburger.addEventListener('click', () => {
+      const isOpen = menu.classList.toggle('open');
+      hamburger.setAttribute('aria-expanded', String(isOpen));
+    });
+  }
+</script>
