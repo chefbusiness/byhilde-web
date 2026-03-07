@@ -1,0 +1,72 @@
+---
+import ArrowIcon from './ArrowIcon.astro';
+import { siteConfig } from '../config/site.config';
+import ctaBg from '../assets/images/home/home-cta-bg.webp';
+---
+
+<div class="cta-section">
+  <div class="cta-bg">
+    <img src={ctaBg.src} alt="" width="1600" height="900" loading="lazy">
+  </div>
+  <div class="cta-content">
+    <h2 class="editorial-headline cta-headline">¿Listo para <em>transformar</em><br>tu espacio?</h2>
+    <p>Cuéntanos tu proyecto y te preparamos una primera consulta sin compromiso. Madrid y alrededores.</p>
+    <div class="cta-buttons">
+      <a href="/contacto" class="btn-light">
+        Empezar proyecto
+        <ArrowIcon />
+      </a>
+      <a href={siteConfig.whatsappUrl} class="btn-ghost" target="_blank" rel="noopener">WhatsApp directo</a>
+    </div>
+  </div>
+</div>
+
+<style>
+  .cta-section {
+    position: relative;
+    margin: 0 20px 20px;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    min-height: 420px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  .cta-bg {
+    position: absolute;
+    inset: 0;
+    background: var(--ink);
+  }
+  .cta-bg img {
+    height: 100%;
+    object-fit: cover;
+    opacity: .35;
+  }
+  .cta-content {
+    position: relative;
+    z-index: 1;
+    padding: 80px 48px;
+    max-width: 640px;
+  }
+  .cta-headline {
+    color: var(--bg);
+    margin-bottom: 20px;
+  }
+  .cta-headline :global(em) { color: var(--accent); }
+  .cta-content p {
+    color: rgba(245,243,239,.65);
+    font-size: 16px;
+    margin-bottom: 36px;
+    line-height: 1.7;
+  }
+  .cta-buttons {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  @media (max-width: 768px) {
+    .cta-section { margin: 0 12px 12px; }
+  }
+</style>

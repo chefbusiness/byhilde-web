@@ -1,0 +1,110 @@
+---
+import ArrowIcon from '../ArrowIcon.astro';
+import hildeImg from '../../assets/images/sobre-mi/sobre-mi-hero-hildemara-01.webp';
+---
+
+<div class="about-strip">
+  <div class="about-img">
+    <img
+      src={hildeImg.src}
+      alt="Hildemara Carrero de Rivero — Diseñadora de interiores Madrid"
+      width="768"
+      height="1024"
+      loading="lazy"
+    >
+    <div class="about-card">
+      <div class="about-card-logo">ByHilde®</div>
+      <h3>Hildemara Carrero</h3>
+      <div class="role">Diseñadora de Interiores · Madrid</div>
+      <p>"Cada espacio que diseñamos es una historia de vida. Mi misión es que esa historia sea exactamente la que quieres contar."</p>
+    </div>
+  </div>
+  <div class="about-content">
+    <div class="section-label">Sobre el estudio</div>
+    <p class="editorial-headline about-headline">
+      En el corazón de cada <em>decisión</em> está tu historia.
+    </p>
+    <p class="about-text">
+      ByHilde nació de la convicción de que el interiorismo de calidad debe ser accesible, honesto y profundamente personal. Trabajamos en la Comunidad de Madrid y proyectos internacionales con el mismo rigor y dedicación.
+    </p>
+    <p class="about-text">
+      Desde una reforma integral hasta la selección del último cojín — cada detalle importa porque tú importas.
+    </p>
+    <a href="/sobre-mi" class="btn-primary about-btn">
+      Conoce a Hilde
+      <ArrowIcon />
+    </a>
+  </div>
+</div>
+
+<style>
+  .about-strip {
+    display: grid;
+    grid-template-columns: 360px 1fr;
+    gap: 0;
+    min-height: 500px;
+  }
+  .about-img {
+    position: relative;
+    overflow: hidden;
+  }
+  .about-img img { height: 100%; min-height: 500px; object-fit: cover; }
+  .about-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 40px;
+    position: absolute;
+    right: -20px;
+    bottom: 40px;
+    max-width: 280px;
+    z-index: 2;
+  }
+  .about-card-logo {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    color: var(--muted);
+  }
+  .about-card h3 {
+    font-family: var(--sans);
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .about-card .role {
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 18px;
+  }
+  .about-card p {
+    font-family: var(--serif);
+    font-size: 15px;
+    font-style: italic;
+    line-height: 1.65;
+    color: var(--ink);
+  }
+  .about-content {
+    background: var(--bg);
+    padding: 64px 56px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .about-headline { margin-bottom: 24px; }
+  .about-text {
+    font-size: 15px;
+    color: var(--muted);
+    line-height: 1.75;
+    margin-bottom: 24px;
+  }
+  .about-text:last-of-type { margin-bottom: 36px; }
+  .about-btn { align-self: flex-start; }
+
+  @media (max-width: 1024px) {
+    .about-strip { grid-template-columns: 1fr; }
+  }
+</style>

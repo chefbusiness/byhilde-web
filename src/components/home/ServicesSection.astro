@@ -1,0 +1,141 @@
+---
+import ArrowIcon from '../ArrowIcon.astro';
+import decoracionImg from '../../assets/images/servicios/decoracion/servicios-decoracion-card.webp';
+import comercialImg from '../../assets/images/servicios/comercial/servicios-comercial-card.webp';
+import reformasImg from '../../assets/images/servicios/reformas/servicios-reformas-card.webp';
+
+const services = [
+  {
+    tag: 'Residencial · Comercial',
+    title: 'Decoración de Interiores',
+    description: 'Transformamos tu espacio con una selección cuidada de mobiliario, textiles y materiales que expresan tu personalidad y maximizan el bienestar.',
+    href: '/servicios/decoracion-interiores',
+    image: decoracionImg,
+    alt: 'Decoración de interiores residencial',
+  },
+  {
+    tag: 'Restaurantes · Oficinas · Retail',
+    title: 'Interiorismo Comercial',
+    description: 'Diseñamos espacios de negocio que comunican tu identidad de marca, fidelizan clientes y optimizan la experiencia de usuario en cada metro cuadrado.',
+    href: '/servicios/interiorismo-comercial',
+    image: comercialImg,
+    alt: 'Interiorismo comercial restaurante Madrid',
+  },
+  {
+    tag: 'Integral · Cocinas · Baños',
+    title: 'Reformas Integrales',
+    description: 'Gestionamos tu reforma de principio a fin: arquitectura, permisos, construcción y decoración bajo un mismo paraguas creativo y un solo interlocutor.',
+    href: '/servicios/reformas-integrales',
+    image: reformasImg,
+    alt: 'Reformas integrales cocina Madrid',
+  },
+];
+---
+
+<section class="section" style="background: var(--bg);">
+  <div class="container">
+    <div class="services-header">
+      <div>
+        <div class="section-label">Lo que hacemos</div>
+        <h2 class="editorial-headline">Nuestros <em>servicios</em></h2>
+      </div>
+      <a href="/servicios" class="see-all">
+        Ver todos
+        <ArrowIcon size={14} />
+      </a>
+    </div>
+
+    <div class="services-grid">
+      {services.map((s) => (
+        <a href={s.href} class="service-card">
+          <div class="service-card-img">
+            <img src={s.image.src} alt={s.alt} width="800" height="600" loading="lazy">
+          </div>
+          <div class="service-card-body">
+            <div class="service-tag">{s.tag}</div>
+            <h3>{s.title}</h3>
+            <p>{s.description}</p>
+            <span class="service-link">
+              Descubrir
+              <ArrowIcon size={14} />
+            </span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .services-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-top: 52px;
+  }
+  .service-card {
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: transform .3s, box-shadow .3s;
+    cursor: pointer;
+    display: block;
+  }
+  .service-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 60px rgba(26,25,22,.10);
+  }
+  .service-card-img {
+    height: 240px;
+    overflow: hidden;
+  }
+  .service-card-img img {
+    height: 100%;
+    transition: transform .5s ease;
+  }
+  .service-card:hover .service-card-img img { transform: scale(1.06); }
+  .service-card-body { padding: 24px 26px 28px; }
+  .service-tag {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: .10em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 10px;
+  }
+  .service-card h3 {
+    font-family: var(--sans);
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .service-card p {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.6;
+    margin-bottom: 18px;
+  }
+  .service-link {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: gap .2s;
+  }
+  .service-card:hover .service-link { gap: 10px; }
+
+  @media (max-width: 1024px) {
+    .services-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 768px) {
+    .services-grid { grid-template-columns: 1fr; }
+  }
+</style>

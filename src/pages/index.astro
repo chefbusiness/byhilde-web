@@ -1,15 +1,28 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroHome from '../components/home/HeroHome.astro';
+import Statement from '../components/home/Statement.astro';
+import ServicesSection from '../components/home/ServicesSection.astro';
+import ProjectsSection from '../components/home/ProjectsSection.astro';
+import AboutStrip from '../components/home/AboutStrip.astro';
+import StatsSection from '../components/home/StatsSection.astro';
+import ProcessSection from '../components/home/ProcessSection.astro';
+import TestimonialsSection from '../components/home/TestimonialsSection.astro';
+import BlogSection from '../components/home/BlogSection.astro';
+import CTAFinal from '../components/CTAFinal.astro';
 import { siteConfig } from '../config/site.config';
 
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
+  '@id': `${siteConfig.url}/#business`,
   name: siteConfig.name,
+  alternateName: 'Hildemara Carrero de Rivero',
   description: siteConfig.description,
   url: siteConfig.url,
   telephone: siteConfig.phone,
   email: siteConfig.email,
+  image: `${siteConfig.url}/og-default.jpg`,
   address: {
     '@type': 'PostalAddress',
     streetAddress: siteConfig.address.street,
@@ -18,83 +31,39 @@ const jsonLd = {
     postalCode: siteConfig.address.postalCode,
     addressCountry: 'ES',
   },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 40.4465,
+    longitude: -3.9943,
+  },
   areaServed: {
     '@type': 'AdministrativeArea',
     name: 'Comunidad de Madrid',
   },
+  openingHoursSpecification: {
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+    opens: '09:00',
+    closes: '19:00',
+  },
   priceRange: '€€€',
+  sameAs: [siteConfig.social.instagram, siteConfig.social.pinterest],
 };
 ---
 
 <BaseLayout
   title="Home"
-  description={siteConfig.description}
+  description="Estudio de interiorismo, decoración y reformas integrales en Madrid. Diseñamos espacios que inspiran, funcionan y perduran. Consulta gratuita."
   jsonLd={jsonLd}
 >
-  <section class="hero">
-    <img
-      src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=1600&q=80&auto=format&fit=crop"
-      alt="Proyecto de interiorismo residencial en Madrid"
-      loading="eager"
-    >
-    <div class="hero-card">
-      <div class="hero-card-label">Proyecto destacado · 2024</div>
-      <h2>Stillroom — Gastro Cocktail Bar</h2>
-      <p>Diseño de interiores para espacio gastronómico en Madrid. Materiales nobles, atmósfera sofisticada.</p>
-    </div>
-  </section>
+  <HeroHome />
+  <Statement />
+  <ServicesSection />
+  <ProjectsSection />
+  <AboutStrip />
+  <StatsSection />
+  <ProcessSection />
+  <TestimonialsSection />
+  <BlogSection />
+  <CTAFinal />
 </BaseLayout>
-
-<style>
-  .hero {
-    position: relative;
-    margin: 20px 20px 0;
-    border-radius: var(--radius-xl);
-    overflow: hidden;
-    height: 82vh;
-    min-height: 560px;
-  }
-  .hero img {
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-    transition: transform 8s ease;
-  }
-  .hero:hover img { transform: scale(1.03); }
-  .hero-card {
-    position: absolute;
-    left: 28px;
-    bottom: 28px;
-    background: rgba(255,255,255,.88);
-    backdrop-filter: blur(20px);
-    border-radius: var(--radius-md);
-    padding: 24px 28px;
-    max-width: 320px;
-    border: 1px solid rgba(255,255,255,.6);
-  }
-  .hero-card-label {
-    font-family: var(--body);
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: .10em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 8px;
-  }
-  .hero-card h2 {
-    font-family: var(--sans);
-    font-size: 22px;
-    font-weight: 700;
-    line-height: 1.25;
-    margin-bottom: 10px;
-  }
-  .hero-card p {
-    font-size: 13.5px;
-    color: var(--muted);
-    line-height: 1.5;
-  }
-
-  @media (max-width: 768px) {
-    .hero { margin: 12px 12px 0; height: 70vh; }
-  }
-</style>

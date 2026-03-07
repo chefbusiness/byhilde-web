@@ -1,0 +1,195 @@
+---
+import ArrowIcon from '../ArrowIcon.astro';
+import stillroomImg from '../../assets/images/proyectos/stillroom/stillroom-cover.webp';
+import aticoImg from '../../assets/images/proyectos/atico-retiro/atico-retiro-cover.webp';
+import brickellImg from '../../assets/images/proyectos/penthouse-brickell/penthouse-brickell-cover.webp';
+import tenerifeImg from '../../assets/images/proyectos/casa-rural-tenerife/casa-rural-tenerife-cover.webp';
+
+const projects = [
+  {
+    title: 'Stillroom',
+    meta: '2024 · Gastro Cocktail Bar · Madrid',
+    href: '/proyectos/stillroom',
+    image: stillroomImg,
+    alt: 'Stillroom gastro cocktail bar Madrid',
+  },
+  {
+    title: 'Ático Retiro',
+    meta: '2024 · Residencial Lujo · Barrio del Retiro',
+    href: '/proyectos/atico-retiro',
+    image: aticoImg,
+    alt: 'Ático Retiro residencial lujo Madrid',
+  },
+  {
+    title: 'Penthouse Brickell',
+    meta: '2023 · Lujo · Miami, Florida',
+    href: '/proyectos/penthouse-brickell',
+    image: brickellImg,
+    alt: 'Penthouse Brickell Miami interiorismo',
+  },
+  {
+    title: 'Casa Rural Tenerife',
+    meta: '2023 · Reforma Patrimonial · Valle de La Orotava',
+    href: '/proyectos/casa-rural-tenerife',
+    image: tenerifeImg,
+    alt: 'Casa rural Tenerife reforma patrimonial',
+  },
+];
+
+const projectIndex = [
+  { href: '/proyectos/stillroom', label: 'Stillroom · Madrid' },
+  { href: '/proyectos/atico-retiro', label: 'Ático Retiro · Madrid' },
+  { href: '/proyectos/penthouse-brickell', label: 'Penthouse Brickell · Miami' },
+  { href: '/proyectos/casa-rural-tenerife', label: 'Casa Rural · Tenerife' },
+];
+---
+
+<section class="section" style="background: var(--surface);">
+  <div class="container">
+    <div class="projects-header">
+      <div>
+        <div class="section-label">Últimas obras</div>
+        <h2 class="editorial-headline">Proyectos que <em>transforman</em><br>espacios en experiencias.</h2>
+      </div>
+      <div class="projects-header-right">
+        <a href="/proyectos" class="see-all">
+          Ver todos los proyectos
+          <ArrowIcon size={14} />
+        </a>
+        <div class="projects-index">
+          <div class="projects-index-label">Índice</div>
+          {projectIndex.map((p) => (
+            <a href={p.href}>{p.label}</a>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <div class="projects-grid">
+      {projects.map((p) => (
+        <a href={p.href} class="project-card">
+          <div class="project-card-img">
+            <img src={p.image.src} alt={p.alt} width="900" height="675" loading="lazy">
+          </div>
+          <div class="project-card-footer">
+            <div>
+              <h3>{p.title}</h3>
+              <div class="project-meta">{p.meta}</div>
+            </div>
+            <div class="project-arrow">
+              <ArrowIcon />
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .projects-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 48px;
+    gap: 24px;
+  }
+  .projects-header-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 16px;
+  }
+  .projects-index {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border-left: 1px solid var(--border);
+    padding-left: 20px;
+  }
+  .projects-index-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: .10em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .projects-index a {
+    font-family: var(--body);
+    font-size: 14px;
+    color: var(--muted);
+    transition: color .2s;
+    padding: 3px 0;
+    border-bottom: 1px solid transparent;
+  }
+  .projects-index a:hover { color: var(--ink); }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .project-card {
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: transform .3s, box-shadow .3s;
+    cursor: pointer;
+    display: block;
+  }
+  .project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 24px 64px rgba(26,25,22,.12);
+  }
+  .project-card-img {
+    height: 300px;
+    overflow: hidden;
+  }
+  .project-card-img img {
+    height: 100%;
+    transition: transform .6s ease;
+  }
+  .project-card:hover .project-card-img img { transform: scale(1.06); }
+  .project-card-footer {
+    padding: 18px 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid var(--border);
+  }
+  .project-card h3 {
+    font-family: var(--sans);
+    font-size: 16px;
+    font-weight: 600;
+  }
+  .project-meta {
+    font-size: 12.5px;
+    color: var(--muted);
+    margin-top: 3px;
+  }
+  .project-arrow {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background .2s, border-color .2s;
+    flex-shrink: 0;
+  }
+  .project-card:hover .project-arrow {
+    background: var(--ink);
+    border-color: var(--ink);
+  }
+  .project-card:hover .project-arrow :global(svg) { stroke: white; }
+
+  @media (max-width: 1024px) {
+    .projects-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 768px) {
+    .projects-grid { grid-template-columns: 1fr; }
+    .projects-header { flex-direction: column; align-items: flex-start; }
+  }
+</style>

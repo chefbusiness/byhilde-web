@@ -1,0 +1,116 @@
+---
+const steps = [
+  {
+    num: '01.',
+    title: 'Descubrimiento',
+    description: 'Exploramos tu visión, analizamos el espacio y entendemos tu estilo de vida para crear interiores que reflejen tu personalidad.',
+  },
+  {
+    num: '02.',
+    title: 'Diseño y Concepto',
+    description: 'Desarrollamos mood boards, muestras de material y visualizaciones 3D para afinar el concepto con claridad e intención.',
+  },
+  {
+    num: '03.',
+    title: 'Selección y Abastecimiento',
+    description: 'Elegimos los mejores materiales, muebles y elementos decorativos de nuestros proveedores de confianza en España y Europa.',
+  },
+  {
+    num: '04.',
+    title: 'Ejecución y Entrega',
+    description: 'Supervisamos cada detalle de la ejecución para garantizar que el resultado final supere tus expectativas.',
+  },
+];
+---
+
+<section class="section process-section">
+  <div class="container">
+    <div class="section-label">Cómo trabajamos</div>
+    <div class="process-layout">
+      <div>
+        <h2 class="editorial-headline process-title">El <em>proceso</em></h2>
+        <div class="process-intro">
+          <div class="process-intro-label">Metodología probada</div>
+          <p>Una metodología que convierte visiones en interiores extraordinarios a través de colaboración, creatividad y atención meticulosa al detalle.</p>
+        </div>
+      </div>
+      <div class="process-steps">
+        {steps.map((s) => (
+          <div class="process-step">
+            <div class="step-num">{s.num}</div>
+            <div class="step-content">
+              <h4>{s.title}</h4>
+              <p>{s.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .process-section { background: var(--surface); }
+  .process-title { margin-bottom: 32px; }
+  .process-intro {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 36px;
+    max-width: 280px;
+  }
+  .process-intro-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: .10em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 14px;
+  }
+  .process-intro p {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+  .process-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+  .process-steps { display: flex; flex-direction: column; }
+  .process-step {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    align-items: center;
+    gap: 32px;
+    padding: 28px 0;
+    border-bottom: 1px solid var(--border);
+    transition: padding-left .2s;
+  }
+  .process-step:first-child { border-top: 1px solid var(--border); }
+  .process-step:hover { padding-left: 12px; }
+  .step-num {
+    font-family: var(--sans);
+    font-size: 42px;
+    font-weight: 800;
+    color: var(--ink);
+    line-height: 1;
+  }
+  .step-content h4 {
+    font-family: var(--sans);
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .step-content p {
+    font-size: 13.5px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  @media (max-width: 768px) {
+    .process-layout { grid-template-columns: 1fr; }
+    .process-step { grid-template-columns: 60px 1fr; }
+  }
+</style>

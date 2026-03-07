@@ -1,0 +1,53 @@
+---
+const stats = [
+  { num: '+50', label: 'Proyectos completados en\nla Comunidad de Madrid' },
+  { num: '10+', label: 'Años de experiencia en\ninteriorismo y arquitectura' },
+  { num: '3', label: 'Países donde hemos\nejecutado proyectos' },
+  { num: '100%', label: 'Clientes que recomiendan\nByHilde a sus cercanos' },
+];
+---
+
+<div class="stats-section">
+  <div class="stats-grid">
+    {stats.map((s) => (
+      <div class="stat-item">
+        <div class="stat-num">{s.num}</div>
+        <div class="stat-label" set:html={s.label.replace('\n', '<br>')} />
+      </div>
+    ))}
+  </div>
+</div>
+
+<style>
+  .stats-section {
+    background: var(--ink);
+    padding: 80px 48px;
+  }
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 48px;
+    max-width: 1160px;
+    margin: 0 auto;
+  }
+  .stat-item { text-align: center; }
+  .stat-num {
+    font-family: var(--sans);
+    font-size: clamp(44px, 5vw, 72px);
+    font-weight: 800;
+    color: var(--bg);
+    line-height: 1;
+    margin-bottom: 10px;
+  }
+  .stat-label {
+    font-size: 13px;
+    color: rgba(245,243,239,.5);
+    line-height: 1.5;
+  }
+  @media (max-width: 1024px) {
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 768px) {
+    .stats-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+  }
+</style>
