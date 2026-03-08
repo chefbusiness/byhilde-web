@@ -1,0 +1,165 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CTAFinal from '../../components/CTAFinal.astro';
+import { siteConfig } from '../../config/site.config';
+
+import stillroomImg from '../../assets/images/proyectos/stillroom/stillroom-cover.webp';
+import aticoImg from '../../assets/images/proyectos/atico-retiro/atico-retiro-cover.webp';
+import penthouseImg from '../../assets/images/proyectos/penthouse-brickell/penthouse-brickell-cover.webp';
+import casaRuralImg from '../../assets/images/proyectos/casa-rural-tenerife/casa-rural-tenerife-cover.webp';
+
+const projects = [
+  {
+    title: 'Stillroom Gastro Bar',
+    category: 'Interiorismo Comercial',
+    location: 'Madrid',
+    image: stillroomImg,
+    alt: 'Proyecto de interiorismo comercial Stillroom Gastro Bar — ByHilde',
+  },
+  {
+    title: 'Ático en Retiro',
+    category: 'Decoración de Interiores',
+    location: 'Madrid',
+    image: aticoImg,
+    alt: 'Proyecto de decoración de interiores ático en Retiro — ByHilde',
+  },
+  {
+    title: 'Penthouse Brickell',
+    category: 'Decoración de Interiores',
+    location: 'Miami, USA',
+    image: penthouseImg,
+    alt: 'Proyecto de interiorismo penthouse en Brickell Miami — ByHilde',
+  },
+  {
+    title: 'Casa Rural',
+    category: 'Reforma Integral',
+    location: 'Tenerife',
+    image: casaRuralImg,
+    alt: 'Proyecto de reforma integral casa rural en Tenerife — ByHilde',
+  },
+];
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'Proyectos de Interiorismo — ByHilde',
+  description: 'Portfolio de proyectos de interiorismo, decoración y reformas integrales de ByHilde en Madrid y a nivel internacional.',
+  url: `${siteConfig.url}/proyectos`,
+  mainEntity: {
+    '@type': 'ItemList',
+    itemListElement: projects.map((p, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: p.title,
+      description: `${p.category} · ${p.location}`,
+    })),
+  },
+};
+---
+
+<BaseLayout
+  title="Proyectos de Interiorismo y Decoración"
+  description="Portfolio de proyectos de interiorismo, decoración y reformas integrales de ByHilde en Madrid y a nivel internacional."
+  jsonLd={jsonLd}
+>
+  <section class="projects-hero section">
+    <div class="container">
+      <span class="section-label">Portfolio</span>
+      <h1 class="editorial-headline">Proyectos que cuentan <em>historias</em></h1>
+      <p class="projects-hero__sub">Cada espacio es un reflejo de quien lo habita. Descubre cómo transformamos viviendas, locales y negocios en lugares con alma.</p>
+    </div>
+  </section>
+
+  <section class="projects-grid section-sm">
+    <div class="container">
+      <div class="projects__grid">
+        {projects.map((p) => (
+          <article class="project-card">
+            <div class="project-card__img">
+              <img src={p.image.src} alt={p.alt} width="600" height="450" loading="lazy" />
+            </div>
+            <div class="project-card__info">
+              <span class="project-card__cat">{p.category}</span>
+              <h2>{p.title}</h2>
+              <span class="project-card__loc">{p.location}</span>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTAFinal />
+</BaseLayout>
+
+<style>
+  .projects-hero { text-align: center; padding-bottom: 16px; }
+  .projects-hero h1 { margin-bottom: 16px; }
+  .projects-hero__sub {
+    color: var(--muted);
+    font-size: 17px;
+    line-height: 1.7;
+    max-width: 540px;
+    margin: 0 auto;
+  }
+
+  .projects__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+  }
+
+  .project-card {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    transition: transform .3s, box-shadow .3s;
+  }
+  .project-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0,0,0,.08);
+  }
+
+  .project-card__img {
+    aspect-ratio: 4/3;
+    overflow: hidden;
+  }
+  .project-card__img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .4s;
+  }
+  .project-card:hover .project-card__img img {
+    transform: scale(1.04);
+  }
+
+  .project-card__info {
+    padding: 24px 28px;
+  }
+  .project-card__cat {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    color: var(--accent-dark);
+    display: block;
+    margin-bottom: 8px;
+  }
+  .project-card__info h2 {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 500;
+    margin-bottom: 6px;
+  }
+  .project-card__loc {
+    font-size: 13.5px;
+    color: var(--muted);
+  }
+
+  @media (max-width: 768px) {
+    .projects__grid { grid-template-columns: 1fr; }
+  }
+</style>
