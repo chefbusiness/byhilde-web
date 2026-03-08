@@ -1,0 +1,133 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { siteConfig } from '../config/site.config';
+---
+
+<BaseLayout
+  title="Aviso Legal y Política de Privacidad"
+  description="Aviso legal, política de privacidad y protección de datos de ByHilde, estudio de interiorismo en Madrid."
+>
+  <section class="legal section">
+    <div class="container">
+      <div class="legal__inner">
+        <h1 class="editorial-headline">Aviso Legal y <em>Política de Privacidad</em></h1>
+
+        <h2>1. Datos identificativos</h2>
+        <p>En cumplimiento del deber de información recogido en el artículo 10 de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y del Comercio Electrónico (LSSICE), se facilitan los siguientes datos:</p>
+        <ul>
+          <li><strong>Titular:</strong> {siteConfig.legalName}</li>
+          <li><strong>Nombre comercial:</strong> {siteConfig.name}</li>
+          <li><strong>Domicilio:</strong> {siteConfig.address.street}, {siteConfig.address.postalCode} {siteConfig.address.city} ({siteConfig.address.region})</li>
+          <li><strong>Email:</strong> {siteConfig.email}</li>
+          <li><strong>Teléfono:</strong> {siteConfig.phoneDisplay}</li>
+          <li><strong>Sitio web:</strong> {siteConfig.domain}</li>
+        </ul>
+
+        <h2>2. Objeto</h2>
+        <p>El presente aviso legal regula el uso y la navegación del sitio web <strong>{siteConfig.domain}</strong> (en adelante, el «Sitio Web»). La navegación por el Sitio Web atribuye la condición de usuario e implica la aceptación plena y sin reservas de todas y cada una de las disposiciones incluidas en este Aviso Legal.</p>
+
+        <h2>3. Propiedad intelectual e industrial</h2>
+        <p>Todos los contenidos del Sitio Web, incluyendo, sin carácter limitativo, textos, fotografías, gráficos, imágenes, iconos, tecnología, software, enlaces y demás contenidos audiovisuales, así como su diseño gráfico y códigos fuente, son propiedad intelectual de {siteConfig.legalName} o de terceros, sin que puedan entenderse cedidos al usuario ninguno de los derechos de explotación reconocidos por la normativa vigente en materia de propiedad intelectual.</p>
+        <p>Queda prohibida la reproducción, transformación, distribución, comunicación pública, puesta a disposición del público y, en general, cualquier otra forma de explotación, parcial o total de los elementos referidos en el apartado anterior. La infracción de estos derechos puede constituir un delito contra la propiedad intelectual (artículos 270 y siguientes del Código Penal).</p>
+
+        <h2>4. Exclusión de garantías y responsabilidad</h2>
+        <p>{siteConfig.legalName} no se hace responsable, en ningún caso, de los daños y perjuicios de cualquier naturaleza que pudieran ocasionar, a título enunciativo: errores u omisiones en los contenidos, falta de disponibilidad del Sitio Web o la transmisión de virus o programas maliciosos o lesivos en los contenidos, a pesar de haber adoptado todas las medidas tecnológicas necesarias para evitarlo.</p>
+
+        <h2>5. Enlaces externos</h2>
+        <p>El Sitio Web puede contener enlaces a sitios web de terceros. Las páginas de estos sitios ajenos no han sido revisadas ni son objeto de controles por parte de {siteConfig.legalName}, por lo que no podrá ser considerada responsable de los contenidos de estos sitios web ni de las medidas que se adopten relativas a su privacidad o al tratamiento de sus datos de carácter personal.</p>
+
+        <h2>6. Política de privacidad</h2>
+        <h3>6.1. Responsable del tratamiento</h3>
+        <ul>
+          <li><strong>Identidad:</strong> {siteConfig.legalName}</li>
+          <li><strong>Dirección postal:</strong> {siteConfig.address.street}, {siteConfig.address.postalCode} {siteConfig.address.city} ({siteConfig.address.region})</li>
+          <li><strong>Email de contacto:</strong> {siteConfig.email}</li>
+        </ul>
+
+        <h3>6.2. Finalidad del tratamiento</h3>
+        <p>Los datos personales facilitados a través del formulario de contacto del Sitio Web serán tratados con las siguientes finalidades:</p>
+        <ul>
+          <li>Gestionar las solicitudes de información, presupuestos o consultas realizadas por el usuario.</li>
+          <li>Mantener el contacto comercial con los interesados en nuestros servicios de interiorismo, decoración y reformas.</li>
+          <li>Enviar comunicaciones comerciales cuando el usuario haya dado su consentimiento expreso.</li>
+        </ul>
+
+        <h3>6.3. Legitimación</h3>
+        <p>La base legal para el tratamiento de los datos es el consentimiento del usuario, que puede ser retirado en cualquier momento dirigiéndose al email {siteConfig.email}.</p>
+
+        <h3>6.4. Conservación de los datos</h3>
+        <p>Los datos personales se conservarán mientras se mantenga la relación comercial o durante el tiempo necesario para cumplir con las obligaciones legales. Los datos se suprimirán cuando dejen de ser necesarios para la finalidad para la que fueron recabados.</p>
+
+        <h3>6.5. Destinatarios</h3>
+        <p>No se cederán datos a terceros salvo obligación legal. No se realizan transferencias internacionales de datos.</p>
+
+        <h3>6.6. Derechos del usuario</h3>
+        <p>El usuario puede ejercer los siguientes derechos:</p>
+        <ul>
+          <li><strong>Acceso:</strong> solicitar qué datos personales están siendo tratados.</li>
+          <li><strong>Rectificación:</strong> solicitar la corrección de datos inexactos.</li>
+          <li><strong>Supresión:</strong> solicitar la eliminación de sus datos.</li>
+          <li><strong>Limitación:</strong> solicitar la limitación del tratamiento en determinados supuestos.</li>
+          <li><strong>Portabilidad:</strong> obtener los datos en formato estructurado.</li>
+          <li><strong>Oposición:</strong> oponerse al tratamiento de sus datos.</li>
+        </ul>
+        <p>Para ejercer cualquiera de estos derechos, el usuario puede dirigirse a: <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>. Asimismo, tiene derecho a presentar una reclamación ante la <strong>Agencia Española de Protección de Datos</strong> (<a href="https://www.aepd.es" target="_blank" rel="noopener">www.aepd.es</a>).</p>
+
+        <h2>7. Legislación aplicable</h2>
+        <p>Para la resolución de todas las controversias o cuestiones relacionadas con el presente Sitio Web se aplicará la legislación española, a la que se someten expresamente las partes.</p>
+
+        <p class="legal__update">Última actualización: marzo de 2026</p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .legal__inner {
+    max-width: 780px;
+    margin: 0 auto;
+  }
+  .legal__inner h1 {
+    margin-bottom: 36px;
+    font-size: clamp(28px, 4vw, 44px);
+  }
+  .legal__inner h2 {
+    font-family: var(--sans);
+    font-size: 20px;
+    font-weight: 700;
+    margin: 32px 0 12px;
+  }
+  .legal__inner h3 {
+    font-family: var(--sans);
+    font-size: 16px;
+    font-weight: 600;
+    margin: 24px 0 8px;
+  }
+  .legal__inner p,
+  .legal__inner li {
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.75;
+    margin-bottom: 12px;
+  }
+  .legal__inner ul {
+    padding-left: 20px;
+    margin-bottom: 16px;
+  }
+  .legal__inner li {
+    margin-bottom: 6px;
+  }
+  .legal__inner strong {
+    color: var(--ink);
+  }
+  .legal__inner a {
+    color: var(--accent-dark);
+    text-decoration: underline;
+  }
+  .legal__update {
+    margin-top: 40px;
+    font-size: 13px;
+    color: var(--muted);
+    font-style: italic;
+  }
+</style>

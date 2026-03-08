@@ -1,0 +1,120 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { siteConfig } from '../../config/site.config';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Blog',
+  name: 'Blog de Interiorismo — ByHilde',
+  description: 'Ideas, tendencias y consejos de interiorismo, decoración y reformas en Madrid. El blog de ByHilde.',
+  url: `${siteConfig.url}/blog`,
+  publisher: {
+    '@type': 'Organization',
+    name: siteConfig.name,
+    url: siteConfig.url,
+  },
+};
+---
+
+<BaseLayout
+  title="Blog de Interiorismo y Decoración en Madrid"
+  description="Ideas, tendencias y consejos de interiorismo, decoración y reformas en Madrid. El blog de ByHilde."
+  jsonLd={jsonLd}
+>
+  <section class="blog-hero section">
+    <div class="container">
+      <span class="section-label">Blog</span>
+      <h1 class="editorial-headline">Ideas y tendencias de <em>interiorismo</em></h1>
+      <p class="blog-hero__sub">Consejos prácticos, inspiración y tendencias de decoración, interiorismo y reformas para transformar tu espacio.</p>
+    </div>
+  </section>
+
+  <section class="blog-soon section">
+    <div class="container">
+      <div class="blog-soon__inner">
+        <div class="blog-soon__icon">
+          <svg width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="10"/></svg>
+        </div>
+        <h2>Próximamente</h2>
+        <p>Estamos preparando contenidos exclusivos sobre interiorismo, decoración y reformas en Madrid. Artículos con ideas prácticas, tendencias actuales y consejos profesionales para que tu hogar o negocio refleje lo mejor de ti.</p>
+        <p class="blog-soon__topics"><strong>Temas que encontrarás aquí:</strong></p>
+        <ul class="blog-soon__list">
+          <li>Tendencias de decoración de interiores 2026</li>
+          <li>Guías para reformar tu piso en Madrid</li>
+          <li>Cómo elegir materiales y acabados premium</li>
+          <li>Interiorismo comercial: claves para tu negocio</li>
+          <li>Antes y después de proyectos reales</li>
+          <li>Home staging para vender tu vivienda más rápido</li>
+        </ul>
+        <a href="/contacto" class="btn-primary">
+          Contactar mientras tanto
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .blog-hero { text-align: center; padding-bottom: 16px; }
+  .blog-hero h1 { margin-bottom: 16px; }
+  .blog-hero__sub {
+    color: var(--muted);
+    font-size: 17px;
+    line-height: 1.7;
+    max-width: 540px;
+    margin: 0 auto;
+  }
+
+  .blog-soon__inner {
+    max-width: 620px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 48px 32px;
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border);
+  }
+  .blog-soon__icon {
+    color: var(--accent);
+    margin-bottom: 20px;
+  }
+  .blog-soon__inner h2 {
+    font-family: var(--serif);
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+  .blog-soon__inner > p {
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.7;
+    margin-bottom: 16px;
+  }
+  .blog-soon__topics {
+    margin-top: 24px;
+  }
+  .blog-soon__list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 16px 0 28px;
+    text-align: left;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .blog-soon__list li {
+    font-size: 14.5px;
+    color: var(--muted);
+    padding-left: 20px;
+    position: relative;
+  }
+  .blog-soon__list li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+  }
+</style>

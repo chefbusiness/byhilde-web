@@ -1,0 +1,108 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { siteConfig } from '../config/site.config';
+---
+
+<BaseLayout
+  title="Declaración de Accesibilidad"
+  description="Declaración de accesibilidad web de ByHilde. Nuestro compromiso con la accesibilidad digital."
+>
+  <section class="legal section">
+    <div class="container">
+      <div class="legal__inner">
+        <h1 class="editorial-headline">Declaración de <em>Accesibilidad</em></h1>
+
+        <h2>Compromiso con la accesibilidad</h2>
+        <p><strong>{siteConfig.legalName}</strong> ({siteConfig.name}) se compromete a garantizar la accesibilidad digital de su sitio web para todas las personas, incluyendo aquellas con discapacidad. Trabajamos continuamente para mejorar la experiencia de usuario y aplicar los estándares de accesibilidad pertinentes.</p>
+
+        <h2>Medidas de accesibilidad aplicadas</h2>
+        <p>Hemos implementado las siguientes medidas para garantizar la accesibilidad de <strong>{siteConfig.domain}</strong>:</p>
+        <ul>
+          <li>Estructura semántica del HTML con encabezados jerárquicos correctos.</li>
+          <li>Textos alternativos descriptivos en todas las imágenes.</li>
+          <li>Contraste de color suficiente entre texto y fondo según las directrices WCAG 2.1.</li>
+          <li>Navegación completa mediante teclado.</li>
+          <li>Formularios con etiquetas asociadas y mensajes de error accesibles.</li>
+          <li>Diseño responsivo que se adapta a diferentes dispositivos y tamaños de pantalla.</li>
+          <li>Tipografías legibles con tamaños adecuados y alturas de línea confortables.</li>
+        </ul>
+
+        <h2>Conformidad</h2>
+        <p>Este sitio web se ha diseñado siguiendo las recomendaciones de las <strong>Pautas de Accesibilidad para el Contenido Web (WCAG) 2.1</strong> nivel AA, publicadas por el W3C. Estas pautas establecen criterios para hacer el contenido web más accesible para personas con diversas discapacidades.</p>
+
+        <h2>Limitaciones conocidas</h2>
+        <p>A pesar de nuestros esfuerzos, es posible que algunas áreas del sitio web no sean plenamente accesibles. Estamos trabajando activamente para identificar y resolver cualquier barrera de accesibilidad. Las limitaciones conocidas incluyen:</p>
+        <ul>
+          <li>Algunos contenidos multimedia de terceros pueden no disponer de alternativas textuales completas.</li>
+          <li>Mapas interactivos integrados de terceros pueden tener limitaciones de accesibilidad.</li>
+        </ul>
+
+        <h2>Compatibilidad</h2>
+        <p>Este sitio web está diseñado para ser compatible con las siguientes tecnologías de asistencia:</p>
+        <ul>
+          <li>Lectores de pantalla (NVDA, JAWS, VoiceOver)</li>
+          <li>Navegación por teclado</li>
+          <li>Software de magnificación de pantalla</li>
+          <li>Navegadores actuales (Chrome, Firefox, Safari, Edge)</li>
+        </ul>
+
+        <h2>Contacto</h2>
+        <p>Si encuentras alguna barrera de accesibilidad en este sitio web o necesitas información en un formato alternativo, ponte en contacto con nosotros:</p>
+        <ul>
+          <li><strong>Email:</strong> <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a></li>
+          <li><strong>Teléfono:</strong> <a href={`tel:${siteConfig.phone.replace(/\s/g, '')}`}>{siteConfig.phoneDisplay}</a></li>
+        </ul>
+        <p>Intentaremos responder a tu solicitud en un plazo máximo de 5 días laborables.</p>
+
+        <h2>Procedimiento de aplicación</h2>
+        <p>Si tras contactar con nosotros la respuesta no es satisfactoria, puedes presentar una reclamación ante el <strong>Ministerio de Asuntos Económicos y Transformación Digital</strong> a través de su portal de accesibilidad web.</p>
+
+        <p class="legal__update">Última actualización: marzo de 2026</p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .legal__inner {
+    max-width: 780px;
+    margin: 0 auto;
+  }
+  .legal__inner h1 {
+    margin-bottom: 36px;
+    font-size: clamp(28px, 4vw, 44px);
+  }
+  .legal__inner h2 {
+    font-family: var(--sans);
+    font-size: 20px;
+    font-weight: 700;
+    margin: 32px 0 12px;
+  }
+  .legal__inner p,
+  .legal__inner li {
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.75;
+    margin-bottom: 12px;
+  }
+  .legal__inner ul {
+    padding-left: 20px;
+    margin-bottom: 16px;
+  }
+  .legal__inner li {
+    margin-bottom: 6px;
+  }
+  .legal__inner strong {
+    color: var(--ink);
+  }
+  .legal__inner a {
+    color: var(--accent-dark);
+    text-decoration: underline;
+  }
+  .legal__update {
+    margin-top: 40px;
+    font-size: 13px;
+    color: var(--muted);
+    font-style: italic;
+  }
+</style>
