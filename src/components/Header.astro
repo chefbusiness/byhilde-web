@@ -1,5 +1,6 @@
 ---
 import Ticker from './Ticker.astro';
+import logoSrc from '../assets/images/logo-byhilde.png';
 
 interface Props {
   currentPath?: string;
@@ -18,7 +19,9 @@ const navLinks = [
 <Ticker />
 
 <nav>
-  <a href="/" class="nav-logo" aria-label="ByHilde — Inicio">BYHILDE®</a>
+  <a href="/" class="nav-logo" aria-label="ByHilde — Inicio">
+    <img src={logoSrc.src} alt="ByHilde" width="120" height="30" />
+  </a>
 
   <button class="nav-hamburger" aria-label="Abrir menú" aria-expanded="false">
     <span></span>
@@ -58,15 +61,14 @@ const navLinks = [
   }
 
   .nav-logo {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 999px;
-    padding: 8px 20px;
-    font-family: var(--sans);
-    font-weight: 700;
-    font-size: 13px;
-    letter-spacing: .06em;
     flex-shrink: 0;
+    display: flex;
+    align-items: center;
+  }
+  .nav-logo img {
+    height: 30px;
+    width: auto;
+    display: block;
   }
 
   .nav-links {

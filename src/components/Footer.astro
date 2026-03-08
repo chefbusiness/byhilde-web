@@ -1,12 +1,15 @@
 ---
 import { siteConfig } from '../config/site.config';
 import euLogo from '../assets/images/logoeukd.png';
+import logoSrc from '../assets/images/logo-byhilde.png';
 ---
 
 <footer>
   <div class="footer-top">
     <div class="footer-brand">
-      <a href="/" class="nav-logo">BYHILDE®</a>
+      <a href="/" class="footer-logo">
+        <img src={logoSrc.src} alt="ByHilde" width="120" height="30" loading="lazy" />
+      </a>
       <p>Estudio de interiorismo y decoración en Madrid. Espacios que inspiran, funcionan y perduran.</p>
     </div>
 
@@ -70,17 +73,14 @@ import euLogo from '../assets/images/logoeukd.png';
     border-bottom: 1px solid var(--border);
     margin-bottom: 32px;
   }
-  .footer-brand .nav-logo {
+  .footer-logo {
     display: inline-block;
     margin-bottom: 18px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 999px;
-    padding: 8px 20px;
-    font-family: var(--sans);
-    font-weight: 700;
-    font-size: 13px;
-    letter-spacing: .06em;
+  }
+  .footer-logo img {
+    height: 28px;
+    width: auto;
+    display: block;
   }
   .footer-brand p {
     font-size: 13.5px;
