@@ -1,0 +1,332 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArrowIcon from '../../components/ArrowIcon.astro';
+import CTAFinal from '../../components/CTAFinal.astro';
+import { siteConfig } from '../../config/site.config';
+
+import heroImg from '../../assets/images/blog/interiorismo-centrado-personas.webp';
+import inlineImg1 from '../../assets/images/blog/interiorismo-personas-salon.webp';
+import inlineImg2 from '../../assets/images/blog/interiorismo-personas-cocina.webp';
+
+const publishDate = '2026-01-15';
+const publishDateDisplay = '15 enero 2026';
+const title = 'Interiorismo centrado en las personas: cómo diseñar espacios que mejoran tu vida';
+const description = 'Descubre cómo el interiorismo centrado en las personas transforma viviendas y negocios en Madrid. Claves de diseño humano, funcional y emocional por ByHilde.';
+const slug = 'interiorismo-centrado-personas';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: title,
+  description,
+  image: `${siteConfig.url}/blog/${slug}/hero.webp`,
+  datePublished: publishDate,
+  dateModified: publishDate,
+  author: {
+    '@type': 'Person',
+    name: 'Hildemara Carrero',
+    url: `${siteConfig.url}/sobre-mi`,
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: siteConfig.name,
+    url: siteConfig.url,
+  },
+  mainEntityOfPage: `${siteConfig.url}/blog/${slug}`,
+};
+
+const breadcrumbLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Inicio', item: siteConfig.url },
+    { '@type': 'ListItem', position: 2, name: 'Blog', item: `${siteConfig.url}/blog` },
+    { '@type': 'ListItem', position: 3, name: 'Interiorismo centrado en las personas', item: `${siteConfig.url}/blog/${slug}` },
+  ],
+};
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  jsonLd={[jsonLd, breadcrumbLd]}
+>
+  <article class="blog-post">
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Migas de pan">
+      <div class="container">
+        <a href="/">Inicio</a> <span>/</span>
+        <a href="/blog">Blog</a> <span>/</span>
+        <span>Interiorismo centrado en las personas</span>
+      </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="blog-post__header section">
+      <div class="container">
+        <div class="blog-post__meta">
+          <span class="blog-post__cat">Interiorismo</span>
+          <time datetime={publishDate}>{publishDateDisplay}</time>
+          <span>· 8 min de lectura</span>
+        </div>
+        <h1 class="editorial-headline">Interiorismo centrado en las personas: cómo diseñar espacios que <em>mejoran tu vida</em></h1>
+        <p class="blog-post__intro">{description}</p>
+      </div>
+    </header>
+
+    <div class="blog-post__hero">
+      <img src={heroImg.src} alt="Salón diseñado con interiorismo centrado en las personas — ByHilde Madrid" width="1200" height="675" loading="eager" />
+    </div>
+
+    <!-- Content -->
+    <div class="blog-post__body section-sm">
+      <div class="container">
+        <div class="blog-post__content">
+
+          <p>Cuando hablamos de interiorismo, muchas personas piensan en muebles bonitos, colores de moda o acabados de revista. Pero el verdadero interiorismo —el que transforma espacios y vidas— empieza por algo mucho más profundo: <strong>las personas que habitan esos espacios</strong>.</p>
+
+          <p>En <a href="/sobre-mi">ByHilde</a> llevamos años practicando un enfoque que sitúa al ser humano en el centro de cada decisión de diseño. No diseñamos para impresionar a las visitas; diseñamos para que <strong>tú vivas mejor cada día</strong>.</p>
+
+          <h2>¿Qué es el interiorismo centrado en las personas?</h2>
+
+          <p>El interiorismo centrado en las personas (o <em>human-centered design</em>) es una filosofía de diseño que parte de una premisa simple pero poderosa: <strong>el espacio debe adaptarse a quien lo usa, y no al revés</strong>.</p>
+
+          <p>Esto significa que antes de elegir un solo material, color o mueble, necesitamos entender:</p>
+
+          <ul>
+            <li><strong>Cómo vives:</strong> tus rutinas diarias, tus horarios, si trabajas desde casa, si tienes hijos o mascotas.</li>
+            <li><strong>Qué necesitas:</strong> almacenaje, luz natural, privacidad, zonas de trabajo o descanso.</li>
+            <li><strong>Cómo te sientes:</strong> qué emociones quieres experimentar en tu hogar o negocio.</li>
+            <li><strong>Qué te identifica:</strong> tu estilo personal, tus viajes, tu cultura, tu historia.</li>
+          </ul>
+
+          <p>Solo después de esta escucha profunda comienza el proceso creativo. Y eso marca una diferencia enorme en el resultado final.</p>
+
+          <figure class="blog-post__figure">
+            <img src={inlineImg1.src} alt="Salón diseñado con enfoque centrado en las personas — materiales naturales y luz cálida" width="960" height="640" loading="lazy" />
+            <figcaption>Un salón donde cada elemento responde a las necesidades reales de quien lo habita.</figcaption>
+          </figure>
+
+          <h2>Por qué los espacios genéricos no funcionan</h2>
+
+          <p>Vivimos en la era de Pinterest, Instagram y las tendencias virales. Es tentador replicar un salón que has visto en una foto, pero hay un problema: <strong>ese salón fue diseñado para otra persona, con otra vida y otras necesidades</strong>.</p>
+
+          <p>Los espacios genéricos, por bonitos que sean, suelen generar frustración a medio plazo. Un sofá espectacular que no cabe bien en tu salón. Una cocina de revista donde no puedes cocinar cómodamente. Un dormitorio precioso donde no descansas como deberías.</p>
+
+          <p>El interiorismo centrado en las personas evita exactamente eso. Cada decisión tiene un porqué que conecta con tu realidad.</p>
+
+          <h2>Los 5 pilares del diseño centrado en el ser humano</h2>
+
+          <p>En nuestro <a href="/servicios">estudio de interiorismo en Madrid</a>, aplicamos estos cinco pilares en cada proyecto:</p>
+
+          <h3>1. Escucha activa</h3>
+          <p>Todo comienza con una conversación. No un briefing frío, sino una charla real donde entendemos quién eres, cómo vives y qué esperas de tu espacio. En ByHilde, la primera reunión siempre es más larga de lo que los clientes esperan, y es intencional.</p>
+
+          <h3>2. Funcionalidad primero</h3>
+          <p>Un espacio puede ser precioso, pero si no funciona, fracasa. Antes de pensar en estética, resolvemos la funcionalidad: circulación, almacenaje, ergonomía, iluminación natural y artificial. La belleza viene después, y cuando la funcionalidad es correcta, la belleza surge casi sola.</p>
+
+          <h3>3. Confort sensorial</h3>
+          <p>El diseño centrado en personas trabaja con todos los sentidos. No solo lo visual, sino las texturas que tocas, la acústica del espacio, la temperatura, incluso los aromas. Un hogar que huele bien, suena bien y se siente bien es un hogar donde quieres estar.</p>
+
+          <h3>4. Identidad personal</h3>
+          <p>Tu casa no debería parecer un showroom. Debería parecer <strong>tu casa</strong>. Integramos tus objetos personales, tus recuerdos de viaje, los colores que te hacen feliz. El resultado es un espacio auténtico que no encontrarás en ningún catálogo.</p>
+
+          <h3>5. Flexibilidad y evolución</h3>
+          <p>Las personas cambian, y sus espacios deben poder cambiar con ellas. Diseñamos pensando en la adaptabilidad: muebles que se reconfiguran, zonas que pueden transformarse según la etapa vital, soluciones que crecen contigo.</p>
+
+          <h2>Interiorismo centrado en personas para viviendas en Madrid</h2>
+
+          <p>Madrid tiene particularidades que influyen directamente en el diseño de interiores: la luz intensa del centro peninsular, los pisos con distribuciones clásicas que necesitan actualizarse, los chalets de la zona noroeste con jardines que piden integración interior-exterior.</p>
+
+          <p>En nuestros proyectos de <a href="/servicios/decoracion-interiores">decoración de interiores en Madrid</a>, adaptamos el diseño centrado en personas a estas realidades locales:</p>
+
+          <ul>
+            <li><strong>Pisos en el centro:</strong> maximizamos metros cuadrados con soluciones inteligentes de almacenaje y distribución.</li>
+            <li><strong>Chalets en <a href="/zonas/las-rozas">Las Rozas</a>, <a href="/zonas/pozuelo-de-alarcon">Pozuelo</a> o <a href="/zonas/majadahonda">Majadahonda</a>:</strong> integramos jardín y terraza en el concepto global del hogar.</li>
+            <li><strong>Áticos y dúplex:</strong> aprovechamos las dobles alturas y las vistas como elemento de diseño.</li>
+          </ul>
+
+          <figure class="blog-post__figure">
+            <img src={inlineImg2.src} alt="Cocina funcional diseñada para el día a día — interiorismo centrado en personas Madrid" width="960" height="640" loading="lazy" />
+            <figcaption>Funcionalidad primero: una cocina diseñada para cómo realmente cocinas, no para una foto.</figcaption>
+          </figure>
+
+          <h2>Interiorismo centrado en personas para negocios</h2>
+
+          <p>Este enfoque no solo aplica a viviendas. En el <a href="/servicios/interiorismo-comercial">interiorismo comercial</a>, diseñar para las personas significa diseñar tanto para tu equipo como para tus clientes.</p>
+
+          <p>Un restaurante donde el camarero puede moverse con fluidez y el comensal se siente acogido. Una oficina donde el equipo colabora mejor porque el espacio lo facilita. Una clínica donde el paciente se relaja desde que entra por la puerta.</p>
+
+          <p>Los negocios que invierten en interiorismo centrado en personas ven resultados tangibles: más productividad, más satisfacción del cliente y más fidelización.</p>
+
+          <h2>Cómo empezar a transformar tu espacio</h2>
+
+          <p>Si sientes que tu hogar o negocio no te representa, o que los espacios donde pasas más tiempo no contribuyen a tu bienestar, es momento de replantearlo. No hace falta una <a href="/servicios/reformas-integrales">reforma integral</a> para empezar; a veces, pequeños cambios bien pensados hacen una diferencia enorme.</p>
+
+          <p>El primer paso es siempre el mismo: <strong>pararte a escuchar lo que tu espacio te pide</strong>. Y si necesitas ayuda para traducir esa intuición en un proyecto real, <a href="/contacto">estamos aquí</a>.</p>
+
+          <div class="blog-post__cta-box">
+            <p><strong>¿Quieres un espacio diseñado para ti?</strong></p>
+            <p>En ByHilde ofrecemos una consulta inicial gratuita donde escuchamos tu proyecto y te proponemos un enfoque personalizado.</p>
+            <a href="/contacto" class="btn-primary">
+              Solicitar consulta gratuita
+              <ArrowIcon />
+            </a>
+          </div>
+
+          <!-- Related posts -->
+          <div class="blog-post__related">
+            <h2>Artículos relacionados</h2>
+            <ul>
+              <li><a href="/blog/tendencias-decoracion-2026">Tendencias de decoración 2026 que transformarán tu hogar</a></li>
+              <li><a href="/blog/diseno-bienestar">Diseño de interiores y bienestar: cómo tu hogar afecta tu salud</a></li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <CTAFinal />
+</BaseLayout>
+
+<style>
+  .breadcrumb {
+    padding: 16px 0;
+    font-size: 13px;
+    color: var(--muted);
+  }
+  .breadcrumb a { color: var(--muted); transition: color .2s; }
+  .breadcrumb a:hover { color: var(--ink); }
+  .breadcrumb span { margin: 0 6px; }
+
+  .blog-post__header { text-align: center; padding-bottom: 32px; }
+  .blog-post__meta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 20px;
+  }
+  .blog-post__cat {
+    background: var(--accent);
+    color: var(--ink);
+    padding: 4px 14px;
+    border-radius: 999px;
+    font-size: 11.5px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+  }
+  .blog-post__header h1 {
+    max-width: 780px;
+    margin: 0 auto 20px;
+    font-size: clamp(28px, 4vw, 46px);
+  }
+  .blog-post__intro {
+    max-width: 620px;
+    margin: 0 auto;
+    color: var(--muted);
+    font-size: 17px;
+    line-height: 1.7;
+  }
+
+  .blog-post__hero {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  .blog-post__hero img {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-lg);
+    aspect-ratio: 16/9;
+    object-fit: cover;
+  }
+
+  .blog-post__content {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .blog-post__content p,
+  .blog-post__content li {
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 1.8;
+    margin-bottom: 18px;
+  }
+  .blog-post__content strong { color: var(--ink); }
+  .blog-post__content a { color: var(--accent-dark); text-decoration: underline; text-underline-offset: 2px; }
+  .blog-post__content a:hover { color: var(--ink); }
+  .blog-post__content h2 {
+    font-family: var(--sans);
+    font-size: 24px;
+    font-weight: 700;
+    margin: 40px 0 16px;
+    color: var(--ink);
+  }
+  .blog-post__content h3 {
+    font-family: var(--sans);
+    font-size: 18px;
+    font-weight: 600;
+    margin: 28px 0 10px;
+    color: var(--ink);
+  }
+  .blog-post__content ul {
+    padding-left: 20px;
+    margin-bottom: 20px;
+  }
+  .blog-post__content li { margin-bottom: 8px; }
+  .blog-post__content em { font-style: italic; }
+
+  .blog-post__figure {
+    margin: 36px -40px;
+  }
+  .blog-post__figure img {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-lg);
+    aspect-ratio: 3/2;
+    object-fit: cover;
+  }
+  .blog-post__figure figcaption {
+    font-size: 13px;
+    color: var(--muted);
+    text-align: center;
+    margin-top: 10px;
+    font-style: italic;
+  }
+
+  .blog-post__cta-box {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 32px;
+    margin: 40px 0;
+    text-align: center;
+  }
+  .blog-post__cta-box p { margin-bottom: 12px; }
+  .blog-post__cta-box .btn-primary { margin-top: 8px; }
+
+  .blog-post__related {
+    margin-top: 48px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+  }
+  .blog-post__related h2 {
+    font-size: 20px;
+    margin-bottom: 16px;
+  }
+  .blog-post__related ul { list-style: none; padding: 0; }
+  .blog-post__related li {
+    margin-bottom: 12px;
+    font-size: 15px;
+  }
+  .blog-post__related a {
+    color: var(--accent-dark);
+    text-decoration: underline;
+  }
+</style>

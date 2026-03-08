@@ -1,6 +1,41 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArrowIcon from '../../components/ArrowIcon.astro';
 import { siteConfig } from '../../config/site.config';
+
+import img1 from '../../assets/images/blog/interiorismo-centrado-personas.webp';
+import img2 from '../../assets/images/blog/tendencias-decoracion-2026.webp';
+import img3 from '../../assets/images/blog/diseno-bienestar.webp';
+
+const posts = [
+  {
+    date: '3 marzo 2026',
+    title: 'Diseño de interiores y bienestar: cómo tu hogar afecta tu salud',
+    excerpt: 'Neurointeriorismo, diseño biofílico y estrategias con base científica para crear hogares que cuidan tu salud física y emocional.',
+    href: '/blog/diseno-bienestar',
+    image: img3,
+    alt: 'Diseño de interiores y bienestar — hogar saludable',
+    category: 'Bienestar',
+  },
+  {
+    date: '10 febrero 2026',
+    title: 'Tendencias de decoración 2026 que transformarán tu hogar',
+    excerpt: 'Minimalismo cálido, texturas orgánicas, formas curvas y sostenibilidad integrada. Las 8 tendencias que están definiendo los hogares en Madrid.',
+    href: '/blog/tendencias-decoracion-2026',
+    image: img2,
+    alt: 'Tendencias de decoración de interiores 2026',
+    category: 'Tendencias',
+  },
+  {
+    date: '15 enero 2026',
+    title: 'Interiorismo centrado en las personas: cómo diseñar espacios que mejoran tu vida',
+    excerpt: 'Cómo el diseño centrado en el ser humano transforma viviendas y negocios en Madrid. Los 5 pilares del interiorismo que mejora tu vida.',
+    href: '/blog/interiorismo-centrado-personas',
+    image: img1,
+    alt: 'Interiorismo centrado en las personas — ByHilde Madrid',
+    category: 'Interiorismo',
+  },
+];
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -13,6 +48,12 @@ const jsonLd = {
     name: siteConfig.name,
     url: siteConfig.url,
   },
+  blogPost: posts.map((p) => ({
+    '@type': 'BlogPosting',
+    headline: p.title,
+    description: p.excerpt,
+    url: `${siteConfig.url}${p.href}`,
+  })),
 };
 ---
 
@@ -25,31 +66,32 @@ const jsonLd = {
     <div class="container">
       <span class="section-label">Blog</span>
       <h1 class="editorial-headline">Ideas y tendencias de <em>interiorismo</em></h1>
-      <p class="blog-hero__sub">Consejos prácticos, inspiración y tendencias de decoración, interiorismo y reformas para transformar tu espacio.</p>
+      <p class="blog-hero__sub">Consejos prácticos, inspiración y tendencias de decoración, interiorismo y reformas para transformar tu espacio en Madrid.</p>
     </div>
   </section>
 
-  <section class="blog-soon section">
+  <section class="blog-grid section-sm">
     <div class="container">
-      <div class="blog-soon__inner">
-        <div class="blog-soon__icon">
-          <svg width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="10"/></svg>
-        </div>
-        <h2>Próximamente</h2>
-        <p>Estamos preparando contenidos exclusivos sobre interiorismo, decoración y reformas en Madrid. Artículos con ideas prácticas, tendencias actuales y consejos profesionales para que tu hogar o negocio refleje lo mejor de ti.</p>
-        <p class="blog-soon__topics"><strong>Temas que encontrarás aquí:</strong></p>
-        <ul class="blog-soon__list">
-          <li>Tendencias de decoración de interiores 2026</li>
-          <li>Guías para reformar tu piso en Madrid</li>
-          <li>Cómo elegir materiales y acabados premium</li>
-          <li>Interiorismo comercial: claves para tu negocio</li>
-          <li>Antes y después de proyectos reales</li>
-          <li>Home staging para vender tu vivienda más rápido</li>
-        </ul>
-        <a href="/contacto" class="btn-primary">
-          Contactar mientras tanto
-          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
+      <div class="blog-grid__list">
+        {posts.map((post) => (
+          <a href={post.href} class="blog-card">
+            <div class="blog-card__img">
+              <img src={post.image.src} alt={post.alt} width="700" height="467" loading="lazy" />
+            </div>
+            <div class="blog-card__body">
+              <div class="blog-card__top">
+                <span class="blog-card__cat">{post.category}</span>
+                <time>{post.date}</time>
+              </div>
+              <h2>{post.title}</h2>
+              <p>{post.excerpt}</p>
+              <span class="blog-card__read">
+                Leer artículo
+                <ArrowIcon size={14} />
+              </span>
+            </div>
+          </a>
+        ))}
       </div>
     </div>
   </section>
@@ -66,55 +108,92 @@ const jsonLd = {
     margin: 0 auto;
   }
 
-  .blog-soon__inner {
-    max-width: 620px;
-    margin: 0 auto;
-    text-align: center;
-    padding: 48px 32px;
+  .blog-grid__list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .blog-card {
     background: var(--surface);
     border-radius: var(--radius-lg);
-    border: 1px solid var(--border);
-  }
-  .blog-soon__icon {
-    color: var(--accent);
-    margin-bottom: 20px;
-  }
-  .blog-soon__inner h2 {
-    font-family: var(--serif);
-    font-size: 28px;
-    font-weight: 600;
-    margin-bottom: 16px;
-  }
-  .blog-soon__inner > p {
-    color: var(--muted);
-    font-size: 15px;
-    line-height: 1.7;
-    margin-bottom: 16px;
-  }
-  .blog-soon__topics {
-    margin-top: 24px;
-  }
-  .blog-soon__list {
-    list-style: none;
+    overflow: hidden;
+    transition: transform .3s, box-shadow .3s;
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    margin: 16px 0 28px;
-    text-align: left;
-    max-width: 400px;
-    margin-left: auto;
-    margin-right: auto;
   }
-  .blog-soon__list li {
-    font-size: 14.5px;
+  .blog-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 16px 40px rgba(26,25,22,.10);
+  }
+
+  .blog-card__img {
+    height: 220px;
+    overflow: hidden;
+  }
+  .blog-card__img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .5s;
+  }
+  .blog-card:hover .blog-card__img img { transform: scale(1.06); }
+
+  .blog-card__body {
+    padding: 24px 26px 28px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  .blog-card__top {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  .blog-card__cat {
+    background: var(--accent);
+    color: var(--ink);
+    padding: 3px 12px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+  }
+  .blog-card__top time {
+    font-size: 12px;
     color: var(--muted);
-    padding-left: 20px;
-    position: relative;
   }
-  .blog-soon__list li::before {
-    content: '—';
-    position: absolute;
-    left: 0;
-    color: var(--accent);
+  .blog-card h2 {
+    font-family: var(--sans);
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 1.35;
+    margin-bottom: 10px;
+  }
+  .blog-card p {
+    font-size: 13.5px;
+    color: var(--muted);
+    line-height: 1.6;
+    margin-bottom: 16px;
+    flex: 1;
+  }
+  .blog-card__read {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: gap .2s;
+  }
+  .blog-card:hover .blog-card__read { gap: 10px; }
+
+  @media (max-width: 1024px) {
+    .blog-grid__list { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 768px) {
+    .blog-grid__list { grid-template-columns: 1fr; }
   }
 </style>

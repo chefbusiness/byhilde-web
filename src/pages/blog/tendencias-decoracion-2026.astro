@@ -1,0 +1,255 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArrowIcon from '../../components/ArrowIcon.astro';
+import CTAFinal from '../../components/CTAFinal.astro';
+import { siteConfig } from '../../config/site.config';
+
+import heroImg from '../../assets/images/blog/tendencias-decoracion-2026.webp';
+import inlineImg1 from '../../assets/images/blog/tendencias-2026-materiales.webp';
+import inlineImg2 from '../../assets/images/blog/tendencias-2026-curvas.webp';
+
+const publishDate = '2026-02-10';
+const publishDateDisplay = '10 febrero 2026';
+const title = 'Tendencias de decoración 2026 que transformarán tu hogar';
+const description = 'Las tendencias de decoración de interiores 2026 que están definiendo los hogares en Madrid: minimalismo cálido, texturas orgánicas, colores terrosos y diseño sostenible.';
+const slug = 'tendencias-decoracion-2026';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: title,
+  description,
+  image: `${siteConfig.url}/blog/${slug}/hero.webp`,
+  datePublished: publishDate,
+  dateModified: publishDate,
+  author: {
+    '@type': 'Person',
+    name: 'Hildemara Carrero',
+    url: `${siteConfig.url}/sobre-mi`,
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: siteConfig.name,
+    url: siteConfig.url,
+  },
+  mainEntityOfPage: `${siteConfig.url}/blog/${slug}`,
+};
+
+const breadcrumbLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Inicio', item: siteConfig.url },
+    { '@type': 'ListItem', position: 2, name: 'Blog', item: `${siteConfig.url}/blog` },
+    { '@type': 'ListItem', position: 3, name: 'Tendencias de decoración 2026', item: `${siteConfig.url}/blog/${slug}` },
+  ],
+};
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  jsonLd={[jsonLd, breadcrumbLd]}
+>
+  <article class="blog-post">
+    <nav class="breadcrumb" aria-label="Migas de pan">
+      <div class="container">
+        <a href="/">Inicio</a> <span>/</span>
+        <a href="/blog">Blog</a> <span>/</span>
+        <span>Tendencias de decoración 2026</span>
+      </div>
+    </nav>
+
+    <header class="blog-post__header section">
+      <div class="container">
+        <div class="blog-post__meta">
+          <span class="blog-post__cat">Tendencias</span>
+          <time datetime={publishDate}>{publishDateDisplay}</time>
+          <span>· 10 min de lectura</span>
+        </div>
+        <h1 class="editorial-headline">Tendencias de decoración 2026 que transformarán <em>tu hogar</em></h1>
+        <p class="blog-post__intro">{description}</p>
+      </div>
+    </header>
+
+    <div class="blog-post__hero">
+      <img src={heroImg.src} alt="Tendencias de decoración de interiores 2026 — salón con minimalismo cálido" width="1200" height="675" loading="eager" />
+    </div>
+
+    <div class="blog-post__body section-sm">
+      <div class="container">
+        <div class="blog-post__content">
+
+          <p>El 2026 ha llegado con ideas frescas pero con raíces profundas. Las tendencias de decoración que están marcando este año no son modas pasajeras: son una evolución natural hacia espacios más humanos, más conscientes y más personales. En <a href="/sobre-mi">ByHilde</a> las llevamos aplicando en nuestros proyectos de <a href="/servicios/decoracion-interiores">decoración de interiores en Madrid</a> desde principios de año, y los resultados nos confirman que van para quedarse.</p>
+
+          <h2>1. Minimalismo cálido: menos es más, pero con alma</h2>
+
+          <p>El minimalismo frío y clínico de años anteriores ha dado paso definitivamente al <strong>minimalismo cálido</strong> (o <em>warm minimalism</em>). ¿Qué significa? Espacios despejados y ordenados, pero con materiales que transmiten calidez: maderas naturales, linos, piedra, terracota.</p>
+
+          <p>La clave está en reducir el número de elementos, pero que cada uno tenga presencia y calidad. Un sofá impecable en bouclé crema, una mesa de roble macizo, una lámpara artesanal de cerámica. Pocos muebles, pero los correctos.</p>
+
+          <p>En Madrid, esta tendencia funciona especialmente bien en <strong>pisos del centro</strong> donde los metros cuadrados son limitados. Menos piezas, mejor seleccionadas, hacen que el espacio respire y parezca más grande.</p>
+
+          <h2>2. Paletas terrosas y colores naturales</h2>
+
+          <p>Los tonos tierra dominan 2026: <strong>beige cálido, terracota suave, verde salvia, marrón tostado y arena</strong>. Son colores que conectan con la naturaleza y generan sensación de calma.</p>
+
+          <p>No hablamos de espacios monocromáticos y aburridos. La riqueza viene de combinar distintas texturas dentro de la misma paleta: una pared en estuco beige, un sofá en lino arena, cojines en terracota, una manta de lana en marrón chocolate. El resultado es un espacio envolvente y sofisticado.</p>
+
+          <p>El blanco puro sigue presente, pero como acento, no como protagonista. Las paredes blancas están siendo reemplazadas por <strong>blancos cálidos con base amarilla o rosada</strong> que transforman completamente la atmósfera de una habitación.</p>
+
+          <h2>3. Texturas orgánicas y materiales naturales</h2>
+
+          <p>2026 es el año de tocar. Los interiores buscan despertar los sentidos más allá de lo visual:</p>
+
+          <ul>
+            <li><strong>Bouclé y teddy:</strong> tejidos con volumen y textura para sofás y sillones.</li>
+            <li><strong>Piedra natural:</strong> travertino, mármol con vetas, piedra caliza para encimeras y mesas auxiliares.</li>
+            <li><strong>Madera sin tratar:</strong> roble, nogal y fresno con acabados mate que muestran la veta natural.</li>
+            <li><strong>Cerámica artesanal:</strong> lámparas, jarrones y accesorios hechos a mano con imperfecciones deliberadas.</li>
+            <li><strong>Ratán y fibras naturales:</strong> no como protagonistas, sino como acentos que aportan calidez mediterránea.</li>
+          </ul>
+
+          <p>En los chalets de <a href="/zonas/las-rozas">Las Rozas</a> y <a href="/zonas/boadilla-del-monte">Boadilla del Monte</a> donde trabajamos habitualmente, estos materiales naturales crean una conexión fluida entre el interior y el jardín.</p>
+
+          <figure class="blog-post__figure">
+            <img src={inlineImg1.src} alt="Materiales naturales tendencia 2026 — bouclé, madera, piedra y cerámica artesanal" width="960" height="640" loading="lazy" />
+            <figcaption>Bouclé, madera sin tratar y cerámica artesanal: los materiales protagonistas de 2026.</figcaption>
+          </figure>
+
+          <h2>4. Formas curvas y orgánicas</h2>
+
+          <p>Las líneas rectas y los ángulos marcados están cediendo espacio a las <strong>formas curvas</strong>. Sofás redondeados, mesas ovaladas, espejos con formas orgánicas, arcos en pasillos y puertas.</p>
+
+          <p>Las curvas suavizan los espacios y generan sensación de movimiento fluido. Psicológicamente, nuestro cerebro asocia las formas curvas con seguridad y confort, mientras que los ángulos agudos generan tensión inconsciente.</p>
+
+          <p>Un recurso que estamos usando mucho en nuestros proyectos de 2026: <strong>muebles con bordes redondeados en espacios de planta rectangular</strong>. El contraste entre la arquitectura angular y el mobiliario orgánico crea una tensión visual elegante y contemporánea.</p>
+
+          <h2>5. Iluminación como elemento de diseño</h2>
+
+          <p>La iluminación ha pasado de ser un complemento funcional a convertirse en <strong>protagonista del diseño</strong>. En 2026, las tendencias de iluminación incluyen:</p>
+
+          <ul>
+            <li><strong>Lámparas escultóricas:</strong> piezas de gran formato que funcionan como obras de arte.</li>
+            <li><strong>Iluminación indirecta cálida:</strong> tiras LED ocultas que crean ambientes envolventes.</li>
+            <li><strong>Regulación inteligente:</strong> sistemas que adaptan la intensidad y temperatura de color según la hora del día.</li>
+            <li><strong>Luz natural maximizada:</strong> cortinas ligeras, espejos estratégicos y superficies reflectantes.</li>
+          </ul>
+
+          <p>En Madrid, con más de 2.800 horas de sol al año, la gestión de la luz natural es fundamental. Diseñamos cada proyecto aprovechando la orientación del espacio para que la luz trabaje a nuestro favor.</p>
+
+          <figure class="blog-post__figure">
+            <img src={inlineImg2.src} alt="Tendencia formas curvas 2026 — sofá redondeado en salón contemporáneo" width="960" height="640" loading="lazy" />
+            <figcaption>Las formas curvas suavizan los espacios y generan sensación de confort y movimiento.</figcaption>
+          </figure>
+
+          <h2>6. Sostenibilidad integrada (no como etiqueta)</h2>
+
+          <p>La decoración sostenible en 2026 ha dejado de ser un nicho para convertirse en el estándar. Pero con una diferencia importante: <strong>ya no se trata de sacrificar estética por sostenibilidad</strong>. Los materiales reciclados, las pinturas ecológicas y el mobiliario de producción responsable son, además, los más bonitos y duraderos.</p>
+
+          <p>Tendencias sostenibles que aplicamos en nuestros proyectos:</p>
+
+          <ul>
+            <li>Muebles de segunda mano restaurados como piezas statement.</li>
+            <li>Pinturas con base mineral y sin VOCs.</li>
+            <li>Tejidos de fibras naturales orgánicas (lino, algodón, lana).</li>
+            <li>Madera de origen certificado FSC.</li>
+            <li>Iluminación LED de bajo consumo con diseño premium.</li>
+          </ul>
+
+          <h2>7. Espacios multifuncionales y adaptativos</h2>
+
+          <p>El teletrabajo ha transformado definitivamente cómo usamos nuestras casas. En 2026, el reto ya no es crear un rincón de oficina improvisado, sino <strong>diseñar espacios que se transformen de forma fluida</strong>: zona de trabajo por la mañana, salón por la tarde, espacio de yoga al amanecer.</p>
+
+          <p>Soluciones que funcionan en pisos de Madrid:</p>
+
+          <ul>
+            <li>Escritorios integrados en armarios que se cierran al terminar la jornada.</li>
+            <li>Divisiones ligeras (cortinas, paneles móviles) que no reducen la luz.</li>
+            <li>Muebles con doble función: bancos con almacenaje, mesas extensibles, camas abatibles de diseño.</li>
+          </ul>
+
+          <h2>8. Detalles de latón y metales cálidos</h2>
+
+          <p>El latón, el bronce y el oro mate siguen siendo los metales protagonistas. Se usan en detalles puntuales — tiradores, marcos de espejos, patas de mesas auxiliares, grifería — aportando un toque de calidez metalizada que eleva cualquier espacio sin recargarlo.</p>
+
+          <p>La regla en 2026: <strong>un solo tono metálico por estancia</strong>. Mezclar latón con cromo o acero inoxidable genera ruido visual. Elegir uno y mantenerlo coherente es la clave.</p>
+
+          <h2>Cómo aplicar estas tendencias en tu hogar</h2>
+
+          <p>No hace falta renovar toda la casa para estar al día. Estos son cambios asequibles que puedes implementar ya:</p>
+
+          <ul>
+            <li>Cambia los cojines y mantas por texturas bouclé o lino en tonos tierra.</li>
+            <li>Sustituye las cortinas por versiones más ligeras que dejen pasar más luz.</li>
+            <li>Añade un espejo de forma orgánica en el recibidor o el salón.</li>
+            <li>Integra una o dos piezas de cerámica artesanal.</li>
+            <li>Pinta una pared en blanco cálido o beige suave.</li>
+          </ul>
+
+          <p>Si buscas una transformación más profunda, en ByHilde podemos ayudarte. Desde una <a href="/servicios/decoracion-interiores">asesoría de decoración</a> puntual hasta una <a href="/servicios/reformas-integrales">reforma integral</a>, adaptamos cada proyecto a tu presupuesto, tu estilo y las tendencias que realmente tienen sentido para tu vida.</p>
+
+          <div class="blog-post__cta-box">
+            <p><strong>¿Quieres aplicar las tendencias 2026 en tu hogar?</strong></p>
+            <p>Consulta inicial gratuita y sin compromiso. Te asesoramos sobre qué cambios harían la mayor diferencia en tu espacio.</p>
+            <a href="/contacto" class="btn-primary">
+              Pedir cita gratuita
+              <ArrowIcon />
+            </a>
+          </div>
+
+          <div class="blog-post__related">
+            <h2>Artículos relacionados</h2>
+            <ul>
+              <li><a href="/blog/interiorismo-centrado-personas">Interiorismo centrado en las personas: cómo diseñar espacios que mejoran tu vida</a></li>
+              <li><a href="/blog/diseno-bienestar">Diseño de interiores y bienestar: cómo tu hogar afecta tu salud</a></li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <CTAFinal />
+</BaseLayout>
+
+<style>
+  .breadcrumb { padding: 16px 0; font-size: 13px; color: var(--muted); }
+  .breadcrumb a { color: var(--muted); transition: color .2s; }
+  .breadcrumb a:hover { color: var(--ink); }
+  .breadcrumb span { margin: 0 6px; }
+
+  .blog-post__header { text-align: center; padding-bottom: 32px; }
+  .blog-post__meta { display: flex; align-items: center; justify-content: center; gap: 12px; font-size: 13px; color: var(--muted); margin-bottom: 20px; }
+  .blog-post__cat { background: var(--accent); color: var(--ink); padding: 4px 14px; border-radius: 999px; font-size: 11.5px; font-weight: 600; text-transform: uppercase; letter-spacing: .04em; }
+  .blog-post__header h1 { max-width: 780px; margin: 0 auto 20px; font-size: clamp(28px, 4vw, 46px); }
+  .blog-post__intro { max-width: 620px; margin: 0 auto; color: var(--muted); font-size: 17px; line-height: 1.7; }
+
+  .blog-post__hero { max-width: 960px; margin: 0 auto; padding: 0 20px; }
+  .blog-post__hero img { width: 100%; height: auto; border-radius: var(--radius-lg); aspect-ratio: 16/9; object-fit: cover; }
+
+  .blog-post__content { max-width: 720px; margin: 0 auto; }
+  .blog-post__content p, .blog-post__content li { color: var(--muted); font-size: 16px; line-height: 1.8; margin-bottom: 18px; }
+  .blog-post__content strong { color: var(--ink); }
+  .blog-post__content a { color: var(--accent-dark); text-decoration: underline; text-underline-offset: 2px; }
+  .blog-post__content a:hover { color: var(--ink); }
+  .blog-post__content h2 { font-family: var(--sans); font-size: 24px; font-weight: 700; margin: 40px 0 16px; color: var(--ink); }
+  .blog-post__content h3 { font-family: var(--sans); font-size: 18px; font-weight: 600; margin: 28px 0 10px; color: var(--ink); }
+  .blog-post__content ul { padding-left: 20px; margin-bottom: 20px; }
+  .blog-post__content li { margin-bottom: 8px; }
+
+  .blog-post__figure { margin: 36px -40px; }
+  .blog-post__figure img { width: 100%; height: auto; border-radius: var(--radius-lg); aspect-ratio: 3/2; object-fit: cover; }
+  .blog-post__figure figcaption { font-size: 13px; color: var(--muted); text-align: center; margin-top: 10px; font-style: italic; }
+
+  .blog-post__cta-box { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 32px; margin: 40px 0; text-align: center; }
+  .blog-post__cta-box p { margin-bottom: 12px; }
+  .blog-post__cta-box .btn-primary { margin-top: 8px; }
+
+  .blog-post__related { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border); }
+  .blog-post__related h2 { font-size: 20px; margin-bottom: 16px; }
+  .blog-post__related ul { list-style: none; padding: 0; }
+  .blog-post__related li { margin-bottom: 12px; font-size: 15px; }
+  .blog-post__related a { color: var(--accent-dark); text-decoration: underline; }
+</style>

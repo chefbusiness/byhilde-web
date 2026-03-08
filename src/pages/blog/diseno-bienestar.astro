@@ -1,0 +1,326 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArrowIcon from '../../components/ArrowIcon.astro';
+import CTAFinal from '../../components/CTAFinal.astro';
+import { siteConfig } from '../../config/site.config';
+
+import heroImg from '../../assets/images/blog/diseno-bienestar.webp';
+import inlineImg1 from '../../assets/images/blog/bienestar-luz-natural.webp';
+import inlineImg2 from '../../assets/images/blog/bienestar-plantas-biofilico.webp';
+
+const publishDate = '2026-03-03';
+const publishDateDisplay = '3 marzo 2026';
+const title = 'Diseño de interiores y bienestar: cómo tu hogar afecta tu salud';
+const description = 'Descubre cómo el diseño de interiores influye en tu bienestar físico y emocional. Neurointeriorismo, diseño biofílico y estrategias para crear hogares saludables en Madrid.';
+const slug = 'diseno-bienestar';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: title,
+  description,
+  image: `${siteConfig.url}/blog/${slug}/hero.webp`,
+  datePublished: publishDate,
+  dateModified: publishDate,
+  author: {
+    '@type': 'Person',
+    name: 'Hildemara Carrero',
+    url: `${siteConfig.url}/sobre-mi`,
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: siteConfig.name,
+    url: siteConfig.url,
+  },
+  mainEntityOfPage: `${siteConfig.url}/blog/${slug}`,
+};
+
+const breadcrumbLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Inicio', item: siteConfig.url },
+    { '@type': 'ListItem', position: 2, name: 'Blog', item: `${siteConfig.url}/blog` },
+    { '@type': 'ListItem', position: 3, name: 'Diseño y bienestar', item: `${siteConfig.url}/blog/${slug}` },
+  ],
+};
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  jsonLd={[jsonLd, breadcrumbLd]}
+>
+  <article class="blog-post">
+    <nav class="breadcrumb" aria-label="Migas de pan">
+      <div class="container">
+        <a href="/">Inicio</a> <span>/</span>
+        <a href="/blog">Blog</a> <span>/</span>
+        <span>Diseño y bienestar</span>
+      </div>
+    </nav>
+
+    <header class="blog-post__header section">
+      <div class="container">
+        <div class="blog-post__meta">
+          <span class="blog-post__cat">Bienestar</span>
+          <time datetime={publishDate}>{publishDateDisplay}</time>
+          <span>· 12 min de lectura</span>
+        </div>
+        <h1 class="editorial-headline">Diseño de interiores y bienestar: cómo tu hogar afecta <em>tu salud</em></h1>
+        <p class="blog-post__intro">{description}</p>
+      </div>
+    </header>
+
+    <div class="blog-post__hero">
+      <img src={heroImg.src} alt="Dormitorio diseñado para el bienestar con diseño biofílico — ByHilde Madrid" width="1200" height="675" loading="eager" />
+    </div>
+
+    <div class="blog-post__body section-sm">
+      <div class="container">
+        <div class="blog-post__content">
+
+          <p>Pasamos aproximadamente el <strong>90% de nuestro tiempo en espacios interiores</strong>. Tu casa, tu oficina, el restaurante donde comes, la clínica donde te atienden. Sin embargo, rara vez nos detenemos a pensar cómo esos espacios influyen en nuestro estado de ánimo, nuestra productividad, nuestro descanso y, en última instancia, nuestra salud.</p>
+
+          <p>La ciencia lleva décadas investigando la relación entre entorno y bienestar, y las conclusiones son contundentes: <strong>el diseño de interiores no es solo estética; es salud</strong>. En <a href="/sobre-mi">ByHilde</a>, integramos estos principios en cada proyecto de <a href="/servicios/decoracion-interiores">decoración de interiores en Madrid</a>.</p>
+
+          <h2>La ciencia detrás del diseño y el bienestar</h2>
+
+          <p>El campo que estudia cómo los espacios afectan al cerebro humano se llama <strong>neuroarquitectura</strong> o <strong>neurointeriorismo</strong>. Investigadores de universidades como Harvard, la Universidad de Aalborg y el Salk Institute han demostrado que factores como la luz, el color, la altura del techo, los materiales y la organización del espacio modifican directamente nuestros niveles de cortisol (estrés), serotonina (bienestar) y melatonina (sueño).</p>
+
+          <p>No es misticismo ni moda: es neurociencia aplicada al diseño. Y las conclusiones tienen implicaciones prácticas enormes para cómo diseñamos viviendas y espacios de trabajo.</p>
+
+          <h2>La luz natural: el factor más importante</h2>
+
+          <p>Si tuviéramos que elegir un solo factor de diseño que más impacta en el bienestar, sería la <strong>luz natural</strong>. La exposición a luz natural durante el día:</p>
+
+          <ul>
+            <li>Regula el ritmo circadiano (ciclo sueño-vigilia).</li>
+            <li>Aumenta la producción de serotonina, mejorando el estado de ánimo.</li>
+            <li>Mejora la concentración y la productividad hasta un 18% según estudios del World Green Building Council.</li>
+            <li>Reduce la fatiga visual comparada con la iluminación artificial.</li>
+          </ul>
+
+          <p>Madrid, con más de 2.800 horas de sol anuales, tiene una ventaja enorme. Pero muchos pisos madrileños desperdician esa luz con distribuciones cerradas, cortinas pesadas o muebles que bloquean las ventanas.</p>
+
+          <p>En nuestros proyectos, la gestión de la luz natural es siempre el primer paso del diseño:</p>
+
+          <ul>
+            <li><strong>Abrir paso a la luz:</strong> eliminar tabiques innecesarios, ampliar huecos de paso, usar puertas de cristal.</li>
+            <li><strong>Multiplicar la luz:</strong> espejos estratégicos, superficies claras y reflectantes, muebles que no bloquean ventanas.</li>
+            <li><strong>Filtrar sin bloquear:</strong> cortinas de lino ligero que tamizan la luz directa sin oscurecer.</li>
+            <li><strong>Complementar con artificial:</strong> iluminación cálida (2700-3000K) para las horas sin sol, con regulación de intensidad.</li>
+          </ul>
+
+          <figure class="blog-post__figure">
+            <img src={inlineImg1.src} alt="Salón con luz natural optimizada — diseño de interiores para el bienestar Madrid" width="960" height="640" loading="lazy" />
+            <figcaption>La luz natural es el factor de diseño que más impacta en el bienestar: Madrid ofrece más de 2.800 horas de sol al año.</figcaption>
+          </figure>
+
+          <h2>El color y las emociones: más allá del gusto personal</h2>
+
+          <p>Los colores no son solo una cuestión estética. La psicología del color ha demostrado que los tonos que nos rodean influyen directamente en nuestro estado emocional:</p>
+
+          <ul>
+            <li><strong>Azules y verdes suaves:</strong> reducen la frecuencia cardíaca y promueven la calma. Ideales para dormitorios y zonas de descanso.</li>
+            <li><strong>Tonos tierra y beige:</strong> generan sensación de seguridad y conexión con la naturaleza. Perfectos para salones y espacios de convivencia.</li>
+            <li><strong>Blancos cálidos:</strong> amplían visualmente el espacio y aportan luminosidad sin la frialdad del blanco puro.</li>
+            <li><strong>Amarillos suaves:</strong> estimulan la creatividad y el optimismo. Funcionan bien en cocinas y estudios.</li>
+            <li><strong>Rojos y naranjas:</strong> activan y estimulan el apetito. Útiles como acentos en comedores, pero contraproducentes en dormitorios.</li>
+          </ul>
+
+          <p>La tendencia de <a href="/blog/tendencias-decoracion-2026">decoración 2026</a> hacia paletas terrosas y naturales no es casualidad: responde a una necesidad colectiva de calma y reconexión tras años de sobreestimulación digital.</p>
+
+          <h2>Diseño biofílico: la naturaleza dentro de casa</h2>
+
+          <p>El <strong>diseño biofílico</strong> es una de las corrientes más poderosas del interiorismo actual, y por buenas razones. La biofilia — nuestra conexión innata con la naturaleza — es un impulso evolutivo que, cuando se satisface, reduce el estrés, mejora la concentración y eleva el bienestar general.</p>
+
+          <p>Integrar la naturaleza en el diseño de interiores no significa llenar la casa de plantas (aunque ayuda). El diseño biofílico es más sutil y abarca:</p>
+
+          <h3>Elementos naturales directos</h3>
+          <ul>
+            <li>Plantas de interior adaptadas a cada espacio y nivel de luz.</li>
+            <li>Agua: fuentes pequeñas, acuarios o incluso el sonido del agua.</li>
+            <li>Materiales naturales a la vista: madera, piedra, bambú, corcho.</li>
+          </ul>
+
+          <h3>Elementos naturales indirectos</h3>
+          <ul>
+            <li>Patrones orgánicos en textiles, papel pintado o baldosas.</li>
+            <li>Fotografía o arte con motivos naturales.</li>
+            <li>Colores que evocan paisajes naturales.</li>
+          </ul>
+
+          <h3>Experiencia del espacio</h3>
+          <ul>
+            <li>Vistas al exterior maximizadas.</li>
+            <li>Transiciones fluidas entre interior y exterior (terrazas, jardines).</li>
+            <li>Variación sensorial: zonas más íntimas y zonas más abiertas, cambios de luz, texturas diversas.</li>
+          </ul>
+
+          <p>En los chalets de la zona noroeste de Madrid — <a href="/zonas/villanueva-de-la-canada">Villanueva de la Cañada</a>, <a href="/zonas/las-rozas">Las Rozas</a>, <a href="/zonas/pozuelo-de-alarcon">Pozuelo</a> — el diseño biofílico tiene un potencial enorme gracias a los jardines y las vistas a la sierra. En pisos del centro, lo trabajamos con plantas, materiales naturales y la optimización de la luz.</p>
+
+          <figure class="blog-post__figure">
+            <img src={inlineImg2.src} alt="Diseño biofílico con plantas de interior — interiorismo y bienestar" width="960" height="640" loading="lazy" />
+            <figcaption>El diseño biofílico integra la naturaleza en los espacios interiores para reducir el estrés y mejorar la concentración.</figcaption>
+          </figure>
+
+          <h2>Acústica: el factor olvidado del bienestar</h2>
+
+          <p>El ruido es uno de los mayores generadores de estrés en entornos urbanos, y Madrid no es una excepción. Sin embargo, la acústica suele ser el gran olvidado en los proyectos de interiorismo.</p>
+
+          <p>Un diseño de interiores orientado al bienestar debe considerar:</p>
+
+          <ul>
+            <li><strong>Aislamiento acústico:</strong> ventanas de doble o triple acristalamiento, especialmente en zonas con tráfico.</li>
+            <li><strong>Absorción de ruido interior:</strong> alfombras, cortinas gruesas, paneles textiles y muebles tapizados reducen la reverberación.</li>
+            <li><strong>Sonido blanco natural:</strong> fuentes de agua, sonidos de naturaleza, o simplemente el silencio logrado con buen aislamiento.</li>
+            <li><strong>Zonificación acústica:</strong> separar zonas ruidosas (cocina, zona de juegos) de zonas de descanso (dormitorio, estudio).</li>
+          </ul>
+
+          <p>En nuestras <a href="/servicios/reformas-integrales">reformas integrales</a>, la mejora acústica es una intervención que los clientes suelen valorar más de lo que esperaban. Es invisible, pero se siente profundamente.</p>
+
+          <h2>La calidad del aire interior</h2>
+
+          <p>La OMS estima que la contaminación del aire interior puede ser 2 a 5 veces peor que la exterior. Pinturas con compuestos orgánicos volátiles (VOCs), muebles de aglomerado que emiten formaldehído, productos de limpieza agresivos... todo suma.</p>
+
+          <p>Decisiones de diseño que mejoran la calidad del aire:</p>
+
+          <ul>
+            <li><strong>Pinturas ecológicas</strong> sin VOCs ni disolventes tóxicos.</li>
+            <li><strong>Muebles de madera maciza</strong> en lugar de aglomerados con adhesivos sintéticos.</li>
+            <li><strong>Plantas purificadoras:</strong> pothos, sansevieria, espatifilo, ficus.</li>
+            <li><strong>Ventilación cruzada:</strong> diseñar la distribución para facilitar la circulación natural del aire.</li>
+            <li><strong>Sistemas de ventilación mecánica con filtros</strong> en reformas integrales.</li>
+          </ul>
+
+          <h2>Orden y organización: menos desorden, menos estrés</h2>
+
+          <p>Investigaciones de la Universidad de Princeton demostraron que el desorden visual reduce la capacidad de concentración y aumenta los niveles de cortisol. Tu cerebro literalmente se estresa cuando hay demasiados estímulos visuales compitiendo por su atención.</p>
+
+          <p>El interiorismo orientado al bienestar resuelve esto con:</p>
+
+          <ul>
+            <li><strong>Almacenaje integrado y oculto:</strong> armarios empotrados, muebles con almacenaje interno, nichos con puertas.</li>
+            <li><strong>Superficies despejadas:</strong> encimeras, mesas y estanterías con espacio vacío intencional.</li>
+            <li><strong>Cada cosa en su lugar:</strong> diseñar el almacenaje pensando en las rutinas reales del cliente.</li>
+            <li><strong>Minimalismo funcional:</strong> no se trata de vaciar la casa, sino de que cada objeto tenga un sitio lógico.</li>
+          </ul>
+
+          <p>Este principio es especialmente relevante en pisos pequeños del <a href="/zonas/centro">centro de Madrid</a> o <a href="/zonas/chamberi">Chamberí</a>, donde maximizar el almacenaje es clave para mantener el orden visual.</p>
+
+          <h2>Ergonomía: tu cuerpo también cuenta</h2>
+
+          <p>Un espacio bello que genera dolor de espalda o fatiga no es un buen diseño. La ergonomía — la adaptación del espacio al cuerpo humano — es fundamental:</p>
+
+          <ul>
+            <li><strong>Altura de encimeras:</strong> adaptada a la estatura real de los usuarios, no a medidas estándar.</li>
+            <li><strong>Asientos que apoyan la postura:</strong> sofás con profundidad adecuada, sillas de comedor con respaldo correcto.</li>
+            <li><strong>Zona de trabajo ergonómica:</strong> mesa a la altura correcta, iluminación sin reflejos, pantalla a nivel de ojos.</li>
+            <li><strong>Circulación cómoda:</strong> pasillos mínimos de 90cm, espacio suficiente entre muebles para moverse sin rozar.</li>
+          </ul>
+
+          <h2>El dormitorio: diseñar para dormir bien</h2>
+
+          <p>El sueño es el pilar fundamental de la salud, y el diseño del dormitorio influye directamente en su calidad:</p>
+
+          <ul>
+            <li><strong>Oscuridad total:</strong> cortinas opacas o blackout para bloquear la luz urbana.</li>
+            <li><strong>Temperatura controlada:</strong> materiales que regulan la temperatura (lino, algodón) en lugar de sintéticos.</li>
+            <li><strong>Colores relajantes:</strong> azules suaves, verdes apagados, grises cálidos, blancos cálidos.</li>
+            <li><strong>Sin pantallas:</strong> diseñar el dormitorio sin televisión y con cargadores fuera de la mesilla.</li>
+            <li><strong>Simetría y orden:</strong> el cerebro percibe la simetría como seguridad, ideal para inducir el descanso.</li>
+          </ul>
+
+          <h2>Bienestar en espacios comerciales</h2>
+
+          <p>Todo lo anterior aplica también — y con mayor impacto económico — a los espacios de trabajo y comerciales. Un estudio de la consultora JLL encontró que los empleados en oficinas diseñadas con principios de bienestar son un <strong>13% más productivos</strong> y reportan un <strong>24% más de satisfacción</strong>.</p>
+
+          <p>En nuestros proyectos de <a href="/servicios/interiorismo-comercial">interiorismo comercial en Madrid</a>, integramos:</p>
+
+          <ul>
+            <li>Luz natural maximizada en puestos de trabajo.</li>
+            <li>Zonas de descanso con diseño biofílico.</li>
+            <li>Acústica controlada para reducir distracciones.</li>
+            <li>Materiales naturales que reducen la fatiga visual.</li>
+            <li>Espacios de transición entre zonas de concentración y zonas sociales.</li>
+          </ul>
+
+          <h2>Cómo empezar a mejorar el bienestar de tu hogar</h2>
+
+          <p>No necesitas una reforma completa para empezar a beneficiarte del <a href="/blog/interiorismo-centrado-personas">interiorismo centrado en personas</a>. Estos cambios inmediatos ya marcan diferencia:</p>
+
+          <ol>
+            <li><strong>Maximiza la luz natural:</strong> retira cortinas pesadas, limpia ventanas, reposiciona muebles que bloquean la luz.</li>
+            <li><strong>Añade plantas:</strong> empieza con 3-5 plantas resistentes (pothos, sansevieria) distribuidas por la casa.</li>
+            <li><strong>Despeja superficies:</strong> recoge las encimeras, ordena estanterías, guarda lo que no uses a diario.</li>
+            <li><strong>Mejora tu dormitorio:</strong> invierte en cortinas opacas y ropa de cama de fibras naturales.</li>
+            <li><strong>Introduce texturas naturales:</strong> una alfombra de yute, cojines de lino, una manta de lana.</li>
+          </ol>
+
+          <p>Si quieres dar un paso más allá y diseñar tu hogar o negocio con criterios profesionales de bienestar, en ByHilde te acompañamos en todo el proceso. Desde la consulta inicial gratuita hasta la entrega del proyecto terminado.</p>
+
+          <div class="blog-post__cta-box">
+            <p><strong>¿Quieres un hogar que cuide tu bienestar?</strong></p>
+            <p>Diseñamos espacios basados en neurointeriorismo y diseño biofílico. Primera consulta gratuita.</p>
+            <a href="/contacto" class="btn-primary">
+              Solicitar consulta gratuita
+              <ArrowIcon />
+            </a>
+          </div>
+
+          <div class="blog-post__related">
+            <h2>Artículos relacionados</h2>
+            <ul>
+              <li><a href="/blog/interiorismo-centrado-personas">Interiorismo centrado en las personas: cómo diseñar espacios que mejoran tu vida</a></li>
+              <li><a href="/blog/tendencias-decoracion-2026">Tendencias de decoración 2026 que transformarán tu hogar</a></li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <CTAFinal />
+</BaseLayout>
+
+<style>
+  .breadcrumb { padding: 16px 0; font-size: 13px; color: var(--muted); }
+  .breadcrumb a { color: var(--muted); transition: color .2s; }
+  .breadcrumb a:hover { color: var(--ink); }
+  .breadcrumb span { margin: 0 6px; }
+
+  .blog-post__header { text-align: center; padding-bottom: 32px; }
+  .blog-post__meta { display: flex; align-items: center; justify-content: center; gap: 12px; font-size: 13px; color: var(--muted); margin-bottom: 20px; }
+  .blog-post__cat { background: var(--accent); color: var(--ink); padding: 4px 14px; border-radius: 999px; font-size: 11.5px; font-weight: 600; text-transform: uppercase; letter-spacing: .04em; }
+  .blog-post__header h1 { max-width: 780px; margin: 0 auto 20px; font-size: clamp(28px, 4vw, 46px); }
+  .blog-post__intro { max-width: 620px; margin: 0 auto; color: var(--muted); font-size: 17px; line-height: 1.7; }
+
+  .blog-post__hero { max-width: 960px; margin: 0 auto; padding: 0 20px; }
+  .blog-post__hero img { width: 100%; height: auto; border-radius: var(--radius-lg); aspect-ratio: 16/9; object-fit: cover; }
+
+  .blog-post__content { max-width: 720px; margin: 0 auto; }
+  .blog-post__content p, .blog-post__content li { color: var(--muted); font-size: 16px; line-height: 1.8; margin-bottom: 18px; }
+  .blog-post__content strong { color: var(--ink); }
+  .blog-post__content a { color: var(--accent-dark); text-decoration: underline; text-underline-offset: 2px; }
+  .blog-post__content a:hover { color: var(--ink); }
+  .blog-post__content h2 { font-family: var(--sans); font-size: 24px; font-weight: 700; margin: 40px 0 16px; color: var(--ink); }
+  .blog-post__content h3 { font-family: var(--sans); font-size: 18px; font-weight: 600; margin: 28px 0 10px; color: var(--ink); }
+  .blog-post__content ul, .blog-post__content ol { padding-left: 20px; margin-bottom: 20px; }
+  .blog-post__content li { margin-bottom: 8px; }
+
+  .blog-post__figure { margin: 36px -40px; }
+  .blog-post__figure img { width: 100%; height: auto; border-radius: var(--radius-lg); aspect-ratio: 3/2; object-fit: cover; }
+  .blog-post__figure figcaption { font-size: 13px; color: var(--muted); text-align: center; margin-top: 10px; font-style: italic; }
+
+  .blog-post__cta-box { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 32px; margin: 40px 0; text-align: center; }
+  .blog-post__cta-box p { margin-bottom: 12px; }
+  .blog-post__cta-box .btn-primary { margin-top: 8px; }
+
+  .blog-post__related { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border); }
+  .blog-post__related h2 { font-size: 20px; margin-bottom: 16px; }
+  .blog-post__related ul { list-style: none; padding: 0; }
+  .blog-post__related li { margin-bottom: 12px; font-size: 15px; }
+  .blog-post__related a { color: var(--accent-dark); text-decoration: underline; }
+</style>
