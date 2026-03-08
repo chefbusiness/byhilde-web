@@ -1,22 +1,26 @@
 ---
+import isabelImg from '../../assets/images/testimonials/isabel-m.webp';
+import alejandroImg from '../../assets/images/testimonials/alejandro-marquez.png';
+import anaImg from '../../assets/images/testimonials/ana-r.webp';
+
 const testimonials = [
   {
     text: '"Hilde transformó nuestra casa en algo que ni siquiera habíamos imaginado posible. Cada detalle tiene un porqué, cada rincón tiene alma."',
     name: 'Isabel M.',
     role: 'Propietaria, Ático Retiro · Madrid',
-    gradient: 'linear-gradient(135deg,#C0AA90,#9A8570)',
+    image: isabelImg.src,
   },
   {
     text: '"Para el interiorismo de Stillroom necesitábamos a alguien que entendiera la experiencia gastronómica desde adentro. Hilde lo entendió perfectamente."',
-    name: 'Carlos V.',
+    name: 'Alejandro Márquez',
     role: 'Fundador, Stillroom · Madrid',
-    gradient: 'linear-gradient(135deg,#8B8178,#5A5350)',
+    image: alejandroImg.src,
   },
   {
     text: '"Gestión impecable de principio a fin. La reforma de nuestra clínica quedó exactamente como lo soñamos — funcional, elegante y completamente nosotros."',
     name: 'Dra. Ana R.',
     role: 'Directora, Clínica Velázquez · Madrid',
-    gradient: 'linear-gradient(135deg,#D4C4B0,#B8A99A)',
+    image: anaImg.src,
   },
 ];
 
@@ -39,7 +43,9 @@ const stars = Array(5).fill('★');
           </div>
           <p class="testimonial-text">{t.text}</p>
           <div class="testimonial-author">
-            <div class="author-avatar" style={`background:${t.gradient};`}></div>
+            <div class="author-avatar">
+              <img src={t.image} alt={t.name} width="40" height="40" loading="lazy" />
+            </div>
             <div>
               <div class="author-name">{t.name}</div>
               <div class="author-role">{t.role}</div>
@@ -97,6 +103,11 @@ const stars = Array(5).fill('★');
     border-radius: 50%;
     overflow: hidden;
     flex-shrink: 0;
+  }
+  .author-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
   .author-name {
     font-family: var(--sans);
