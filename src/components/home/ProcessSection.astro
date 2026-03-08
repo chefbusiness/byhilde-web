@@ -110,7 +110,9 @@ const steps = [
   }
 
   @media (max-width: 768px) {
-    .process-layout { grid-template-columns: 1fr; }
-    .process-step { grid-template-columns: 60px 1fr; }
+    .process-layout { grid-template-columns: 1fr; gap: 32px; }
+    .process-intro { padding: 28px 22px; }
+    .process-step { grid-template-columns: 44px 1fr; gap: 20px; padding: 20px 0; }
+    .step-num { font-size: 32px; }
   }
 </style>

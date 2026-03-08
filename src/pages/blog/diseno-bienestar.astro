@@ -323,4 +323,12 @@ const breadcrumbLd = {
   .blog-post__related ul { list-style: none; padding: 0; }
   .blog-post__related li { margin-bottom: 12px; font-size: 15px; }
   .blog-post__related a { color: var(--accent-dark); text-decoration: underline; }
+
+  @media (max-width: 768px) {
+    .blog-post__hero { height: 50vh; min-height: 280px; }
+    .blog-post__content { padding: 32px 20px; }
+    .blog-post__figure { margin: 24px 0; }
+    .blog-post__figure img { border-radius: var(--radius-md); }
+    .blog-post__cta-box { padding: 24px 18px; }
+  }
 </style>
