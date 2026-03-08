@@ -9,7 +9,7 @@ interface Props {
   description: string;
   ogImage?: string;
   canonicalUrl?: string;
-  jsonLd?: Record<string, unknown>;
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
 }
 
 const {
@@ -19,6 +19,8 @@ const {
   canonicalUrl,
   jsonLd,
 } = Astro.props;
+
+const jsonLdItems = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
 
 const fullTitle = title === 'Home'
   ? `ByHilde · ${siteConfig.tagline}`
@@ -62,9 +64,9 @@ const currentPath = Astro.url.pathname;
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400;1,500&family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
 
   <!-- JSON-LD -->
-  {jsonLd && (
-    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
-  )}
+  {jsonLdItems.map((ld) => (
+    <script type="application/ld+json" set:html={JSON.stringify(ld)} />
+  ))}
 </head>
 <body>
   <Header currentPath={currentPath} />

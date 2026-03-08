@@ -1,0 +1,77 @@
+---
+interface FAQItem {
+  question: string;
+  answer: string;
+}
+
+interface Props {
+  title?: string;
+  items: FAQItem[];
+}
+
+const { title = 'Preguntas frecuentes', items } = Astro.props;
+---
+
+<section class="faq section">
+  <div class="container">
+    <h2 class="editorial-headline faq__title">{title}</h2>
+    <div class="faq__list">
+      {items.map((item, i) => (
+        <details class="faq__item">
+          <summary>
+            <span>{item.question}</span>
+            <svg class="faq__chevron" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="faq__answer">
+            <p>{item.answer}</p>
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq__title {
+    text-align: center;
+    margin-bottom: 48px;
+    font-size: clamp(26px, 3.5vw, 42px);
+  }
+  .faq__list {
+    max-width: 780px;
+    margin: 0 auto;
+  }
+  .faq__item {
+    border-bottom: 1px solid var(--border);
+  }
+  .faq__item summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 24px 0;
+    cursor: pointer;
+    font-family: var(--sans);
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 1.4;
+    list-style: none;
+  }
+  .faq__item summary::-webkit-details-marker { display: none; }
+  .faq__chevron {
+    flex-shrink: 0;
+    transition: transform .3s;
+  }
+  .faq__item[open] .faq__chevron {
+    transform: rotate(180deg);
+  }
+  .faq__answer {
+    padding: 0 0 24px;
+  }
+  .faq__answer p {
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.7;
+    white-space: pre-line;
+  }
+</style>

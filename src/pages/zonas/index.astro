@@ -1,0 +1,151 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArrowIcon from '../../components/ArrowIcon.astro';
+import CTAFinal from '../../components/CTAFinal.astro';
+import { siteConfig } from '../../config/site.config';
+import { zones, getZonesByArea } from '../../data/zones';
+
+const madridCapital = getZonesByArea('madrid-capital');
+const noroeste = getZonesByArea('noroeste');
+const norte = getZonesByArea('norte');
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Zonas de servicio — ByHilde Interiorismo en Madrid',
+  description: 'Zonas donde realizamos proyectos de interiorismo, decoración y reformas integrales en la Comunidad de Madrid.',
+  itemListElement: zones.map((z, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name: z.name,
+    url: `${siteConfig.url}/zonas/${z.slug}`,
+  })),
+};
+---
+
+<BaseLayout
+  title="Zonas de Servicio · Interiorismo en Madrid"
+  description="Interiorismo, decoración y reformas integrales en Madrid Capital, zona noroeste y zona norte. Descubre nuestras zonas de actuación."
+  jsonLd={jsonLd}
+>
+  <section class="zones-hero section">
+    <div class="container">
+      <h1 class="editorial-headline">Zonas de <em>servicio</em></h1>
+      <p class="zones-hero__desc">Realizamos proyectos de interiorismo, decoración y reformas integrales en toda la Comunidad de Madrid. Estas son las zonas donde trabajamos.</p>
+    </div>
+  </section>
+
+  <section class="zones-list section-sm">
+    <div class="container">
+      <!-- Madrid Capital -->
+      <div class="zone-group">
+        <h2>Madrid Capital</h2>
+        <div class="zone-group__grid">
+          {madridCapital.map((z) => (
+            <a href={`/zonas/${z.slug}`} class="zone-link-card">
+              <span class="zone-link-card__name">{z.name}</span>
+              <span class="zone-link-card__type">Distrito</span>
+              <ArrowIcon />
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <!-- Zona Noroeste -->
+      <div class="zone-group">
+        <h2>Zona Noroeste</h2>
+        <div class="zone-group__grid">
+          {noroeste.map((z) => (
+            <a href={`/zonas/${z.slug}`} class="zone-link-card">
+              <span class="zone-link-card__name">{z.name}</span>
+              <span class="zone-link-card__type">Municipio</span>
+              <ArrowIcon />
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <!-- Zona Norte -->
+      <div class="zone-group">
+        <h2>Zona Norte</h2>
+        <div class="zone-group__grid">
+          {norte.map((z) => (
+            <a href={`/zonas/${z.slug}`} class="zone-link-card">
+              <span class="zone-link-card__name">{z.name}</span>
+              <span class="zone-link-card__type">Municipio</span>
+              <ArrowIcon />
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTAFinal />
+</BaseLayout>
+
+<style>
+  .zones-hero { text-align: center; padding-bottom: 32px; }
+  .zones-hero h1 { margin-bottom: 16px; }
+  .zones-hero__desc {
+    color: var(--muted);
+    font-size: 17px;
+    line-height: 1.7;
+    max-width: 560px;
+    margin: 0 auto;
+  }
+
+  .zone-group { margin-bottom: 56px; }
+  .zone-group:last-child { margin-bottom: 0; }
+  .zone-group h2 {
+    font-family: var(--sans);
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 24px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  .zone-group__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .zone-link-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 20px 24px;
+    background: var(--surface);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border);
+    transition: transform .2s, border-color .2s;
+  }
+  .zone-link-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent);
+  }
+  .zone-link-card__name {
+    font-family: var(--sans);
+    font-size: 15px;
+    font-weight: 600;
+    flex: 1;
+  }
+  .zone-link-card__type {
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .zone-link-card :global(svg) {
+    width: 14px;
+    height: 14px;
+    color: var(--muted);
+    transition: transform .2s;
+  }
+  .zone-link-card:hover :global(svg) { transform: translateX(3px); }
+
+  @media (max-width: 768px) {
+    .zone-group__grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 480px) {
+    .zone-group__grid { grid-template-columns: 1fr; }
+  }
+</style>

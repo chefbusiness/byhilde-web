@@ -1,0 +1,230 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ServiceHero from '../../components/services/ServiceHero.astro';
+import ServiceFeatures from '../../components/services/ServiceFeatures.astro';
+import ServiceCards from '../../components/services/ServiceCards.astro';
+import ServiceProcess from '../../components/services/ServiceProcess.astro';
+import ServiceTestimonials from '../../components/services/ServiceTestimonials.astro';
+import ServiceGuarantees from '../../components/services/ServiceGuarantees.astro';
+import ServiceFAQ from '../../components/services/ServiceFAQ.astro';
+import CTAFinal from '../../components/CTAFinal.astro';
+import ArrowIcon from '../../components/ArrowIcon.astro';
+import { siteConfig } from '../../config/site.config';
+
+import heroImg from '../../assets/images/servicios/reformas/servicios-reformas-card.webp';
+
+const features = [
+  { icon: 'design', title: 'Diseño personalizado', description: 'Te acompañamos en todo el proceso: desde la idea inicial hasta cada decisión de materiales, colores y distribución.' },
+  { icon: 'speed', title: 'Sin complicaciones', description: 'Reformas llave en mano con un único interlocutor. Coordinamos todos los gremios para que tú no tengas que preocuparte.' },
+  { icon: 'quality', title: 'Materiales de alta calidad', description: 'Trabajamos con proveedores premium y acabados duraderos. Cada material se selecciona por su estética y resistencia.' },
+  { icon: 'results', title: 'Resultados garantizados', description: 'Presupuesto cerrado, plazos que se cumplen y resultado final supervisado hasta tu total satisfacción.' },
+];
+
+const subServices = [
+  { title: 'Reformas Integrales en Madrid', description: 'Transformamos completamente tu hogar o local. Desde la demolición hasta la entrega, coordinamos diseño, obra e instalaciones para resultados excepcionales.' },
+  { title: 'Reformas de Cocinas en Madrid', description: '¿Tu cocina está anticuada o poco práctica? La convertimos en el corazón funcional de tu hogar: nueva distribución, electrodomésticos integrados, almacenaje inteligente y acabados premium.' },
+  { title: 'Reformas de Baños en Madrid', description: '¿Tu baño está viejo o con problemas de humedad? Lo transformamos con diseño moderno, funcional y materiales resistentes. Plato de ducha, griferías de diseño y ventilación optimizada.' },
+  { title: 'Reformas de Oficinas', description: '¿Tu oficina no aprovecha bien el espacio? Creamos ambientes modernos, funcionales y eficientes que mejoran el bienestar, la productividad y la imagen profesional de tu empresa.' },
+  { title: 'Reformas de Locales Comerciales', description: '¿Tu local no se adapta a tu negocio actual? Lo transformamos en un espacio atractivo, funcional y pensado para maximizar tu éxito comercial.' },
+  { title: 'Reformas de Pisos en Madrid', description: '¿Tu piso necesita una actualización? Lo convertimos en un espacio funcional y estilizado, adaptado a tu estilo de vida. Suelos, paredes, instalaciones y distribución nueva.' },
+];
+
+const processSteps = [
+  { num: '01', title: 'Visita y diagnóstico gratuito', text: 'Visitamos tu espacio, evaluamos el estado actual, escuchamos tus necesidades y tomamos medidas. Sin coste ni compromiso.' },
+  { num: '02', title: 'Proyecto y presupuesto cerrado', text: 'Diseñamos el proyecto con planos, renders 3D y una propuesta de materiales. Te entregamos un presupuesto detallado y cerrado.' },
+  { num: '03', title: 'Licencias y permisos', text: 'Gestionamos toda la tramitación necesaria: licencias de obra, comunicados previos y cualquier permiso municipal que requiera tu reforma.' },
+  { num: '04', title: 'Ejecución de obra', text: 'Coordinamos todos los gremios: albañilería, fontanería, electricidad, carpintería, pintura. Un único interlocutor para todo.' },
+  { num: '05', title: 'Control de calidad', text: 'Supervisamos cada fase de la obra. Verificamos materiales, acabados y plazos. Si algo no cumple el estándar, se corrige antes de avanzar.' },
+  { num: '06', title: 'Entrega llave en mano', text: 'Limpieza final, repaso de detalles y entrega del espacio completamente terminado. Con certificaciones y garantía de obra.' },
+];
+
+const testimonials = [
+  { text: 'Reformar el piso entero daba vértigo, pero ByHilde lo hizo fácil. Presupuesto cerrado, plazos cumplidos y un resultado que superó lo que habíamos imaginado. La cocina es espectacular.', name: 'Elena y Pablo', project: 'Reforma integral · Piso en Chamberí' },
+  { text: 'Lo que más valoro es la honestidad. Nos avisaron de problemas antes de que fueran problemas y nos propusieron soluciones. La reforma del chalet quedó perfecta y dentro de presupuesto.', name: 'Familia Rodríguez', project: 'Reforma integral · Chalet en Las Rozas' },
+  { text: 'Necesitábamos reformar la oficina sin parar la actividad. Planificaron la obra por fases y apenas notamos las molestias. El espacio nuevo ha cambiado la dinámica del equipo.', name: 'Javier M.', project: 'Reforma de oficina · Alcobendas' },
+];
+
+const faqItems = [
+  {
+    question: '¿Cuánto tiempo suele durar una reforma integral?',
+    answer: 'Depende del alcance: una reforma de baño puede estar lista en 2-3 semanas, una cocina en 3-5 semanas, y una reforma integral de piso completo entre 8 y 14 semanas. Siempre entregamos un cronograma detallado antes de empezar.',
+  },
+  {
+    question: '¿Necesito permisos para hacer una reforma en Madrid?',
+    answer: 'Depende del tipo de reforma. Las reformas que afectan a estructura, fachada o instalaciones principales necesitan licencia de obra. Las reformas menores requieren una comunicación previa. Nosotros nos encargamos de toda la tramitación.',
+  },
+  {
+    question: '¿Puedo seguir viviendo en casa durante la reforma?',
+    answer: 'En reformas parciales (baño, cocina) suele ser posible con algunas molestias. En reformas integrales recomendamos buscar alternativa temporal. Te informamos con antelación para que planifiques sin estrés.',
+  },
+  {
+    question: '¿Hacéis reformas integrales y parciales?',
+    answer: 'Sí, realizamos todo tipo de reformas: desde una reforma de baño o cocina hasta proyectos integrales de vivienda completa, oficina o local comercial.',
+  },
+  {
+    question: '¿Cómo gestionáis el presupuesto?',
+    answer: 'Entregamos un presupuesto cerrado, detallado por partidas, antes de empezar la obra. Sin sorpresas ni costes ocultos. Si surge algún imprevisto durante la obra, te informamos y aprobamos juntos cualquier variación.',
+  },
+  {
+    question: '¿Puedo personalizar el diseño de la reforma?',
+    answer: 'Por supuesto. Cada reforma se diseña a medida de tus gustos, necesidades y estilo de vida. Tú decides materiales, colores, distribución y acabados con nuestro asesoramiento profesional.',
+  },
+  {
+    question: '¿Cuánto cuesta una reforma integral en Madrid?',
+    answer: 'El precio depende del tamaño del espacio, el estado actual y los materiales elegidos. Como referencia orientativa: reformas de baño desde 4.000€, cocinas desde 8.000€, y pisos completos desde 25.000€. Te damos presupuesto exacto tras la visita gratuita.',
+  },
+  {
+    question: '¿Qué garantía ofrecéis sobre la obra?',
+    answer: 'Ofrecemos garantía sobre la ejecución de la obra según la normativa vigente. Además, los materiales y equipos instalados cuentan con la garantía de sus respectivos fabricantes.',
+  },
+];
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  '@id': `${siteConfig.url}/servicios/reformas-integrales#service`,
+  name: 'ByHilde — Reformas Integrales en Madrid',
+  description: 'Reformas integrales en Madrid para viviendas y locales. Servicio llave en mano: diseño, coordinación y ejecución completa.',
+  url: `${siteConfig.url}/servicios/reformas-integrales`,
+  telephone: siteConfig.phone,
+  email: siteConfig.email,
+  image: `${siteConfig.url}/og-default.jpg`,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: siteConfig.address.street,
+    addressLocality: siteConfig.address.city,
+    addressRegion: siteConfig.address.region,
+    postalCode: siteConfig.address.postalCode,
+    addressCountry: 'ES',
+  },
+  geo: { '@type': 'GeoCoordinates', latitude: 40.4465, longitude: -3.9943 },
+  areaServed: { '@type': 'AdministrativeArea', name: 'Comunidad de Madrid' },
+  priceRange: '€€€',
+  openingHoursSpecification: {
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+    opens: '09:00',
+    closes: '19:00',
+  },
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Servicios de Reformas',
+    itemListElement: subServices.map((s) => ({
+      '@type': 'Offer',
+      itemOffered: { '@type': 'Service', name: s.title, description: s.description },
+    })),
+  },
+  aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.8', reviewCount: '38', bestRating: '5' },
+};
+
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqItems.map((f) => ({
+    '@type': 'Question',
+    name: f.question,
+    acceptedAnswer: { '@type': 'Answer', text: f.answer },
+  })),
+};
+---
+
+<BaseLayout
+  title="Reformas Integrales en Madrid · Llave en Mano"
+  description="Reformas integrales en Madrid para viviendas y locales. Servicio llave en mano: diseño, coordinación y ejecución completa. Cocinas, baños, pisos, oficinas."
+  jsonLd={[jsonLd, faqJsonLd]}
+>
+  <ServiceHero
+    title="Reformas integrales llave en mano en Madrid"
+    description="Ayudamos a propietarios y empresas a optimizar y modernizar sus espacios a través de soluciones de reformas llave en mano completas y eficientes."
+    image={heroImg}
+    imageAlt="Reforma integral de vivienda en Madrid — ByHilde"
+  />
+
+  <ServiceFeatures
+    title="¿Por qué nuestras reformas llave en mano?"
+    subtitle="Disfruta de una reforma completa sin preocupaciones, desde el diseño hasta la entrega, con resultados de calidad garantizados."
+    features={features}
+  />
+
+  <!-- Intro copy block -->
+  <section class="intro-copy section">
+    <div class="container">
+      <div class="intro-copy__inner">
+        <h2 class="editorial-headline">Reformar no tiene que ser <em>un dolor de cabeza</em></h2>
+        <div class="intro-copy__text">
+          <p>Sabemos que la palabra "reforma" genera estrés. Obras interminables, presupuestos que se disparan, decisiones que no sabes tomar, proveedores que no coordinan. En ByHilde eliminamos todo eso con un modelo <strong>llave en mano real</strong>: un único interlocutor, un presupuesto cerrado y plazos que se cumplen.</p>
+          <p>Nos encargamos de todo: desde el diseño del proyecto y la tramitación de licencias hasta la coordinación de todos los gremios y la entrega final con limpieza incluida. Tú solo decides cómo quieres tu espacio. Nosotros hacemos que pase.</p>
+          <p>Reformamos viviendas (pisos, chalets, áticos), oficinas y locales comerciales en toda la Comunidad de Madrid. Cada proyecto incluye diseño de interiores integrado, porque una buena reforma no es solo cambiar tuberías: es repensar el espacio para que funcione mejor y se vea mejor.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <ServiceCards
+    title="Reformas en Madrid. Nuestros Servicios"
+    cards={subServices}
+  />
+
+  <ServiceProcess
+    title="Tu reforma paso a paso"
+    steps={processSteps}
+  />
+
+  <ServiceGuarantees />
+
+  <ServiceTestimonials testimonials={testimonials} />
+
+  <ServiceFAQ items={faqItems} />
+
+  <!-- Zonas de servicio -->
+  <section class="service-zones section-sm">
+    <div class="container">
+      <h2 class="editorial-headline service-zones__title">Reformas integrales en <em>tu zona</em></h2>
+      <div class="service-zones__grid">
+        <a href="/zonas/villanueva-de-la-canada" class="service-zones__link">Villanueva de la Cañada</a>
+        <a href="/zonas/las-rozas" class="service-zones__link">Las Rozas</a>
+        <a href="/zonas/pozuelo-de-alarcon" class="service-zones__link">Pozuelo de Alarcón</a>
+        <a href="/zonas/majadahonda" class="service-zones__link">Majadahonda</a>
+        <a href="/zonas/boadilla-del-monte" class="service-zones__link">Boadilla del Monte</a>
+        <a href="/zonas/centro" class="service-zones__link">Centro</a>
+        <a href="/zonas/chamberi" class="service-zones__link">Chamberí</a>
+        <a href="/zonas/retiro" class="service-zones__link">Retiro</a>
+      </div>
+      <p class="service-zones__cta"><a href="/zonas" class="see-all">Ver todas las zonas <ArrowIcon /></a></p>
+    </div>
+  </section>
+
+  <CTAFinal />
+</BaseLayout>
+
+<style>
+  .intro-copy__inner { max-width: 780px; margin: 0 auto; }
+  .intro-copy__inner h2 { margin-bottom: 28px; font-size: clamp(26px, 3.5vw, 42px); }
+  .intro-copy__text p {
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 1.8;
+    margin-bottom: 18px;
+  }
+  .intro-copy__text strong { color: var(--ink); }
+
+  .service-zones__title { text-align: center; margin-bottom: 32px; font-size: clamp(26px, 3.5vw, 42px); }
+  .service-zones__grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 24px;
+  }
+  .service-zones__link {
+    padding: 10px 22px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 500;
+    background: var(--surface);
+    transition: border-color .2s, background .2s;
+  }
+  .service-zones__link:hover { border-color: var(--accent); background: rgba(192,170,144,.08); }
+  .service-zones__cta { text-align: center; }
+</style>

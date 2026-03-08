@@ -1,0 +1,269 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArrowIcon from '../../components/ArrowIcon.astro';
+import CTAFinal from '../../components/CTAFinal.astro';
+import { siteConfig } from '../../config/site.config';
+
+import decoracionImg from '../../assets/images/servicios/decoracion/servicios-decoracion-card.webp';
+import comercialImg from '../../assets/images/servicios/comercial/servicios-comercial-card.webp';
+import reformasImg from '../../assets/images/servicios/reformas/servicios-reformas-card.webp';
+
+const services = [
+  {
+    image: decoracionImg,
+    title: 'Decoración de Interiores',
+    description: 'Decoramos tu casa pensando en ti: espacios cómodos, con estilo y personalidad. Porque entendemos que un buen ambiente cambia el día a día, y eso es algo para tomar con seriedad… pero sin perder la calidez.',
+    href: '/servicios/decoracion-interiores',
+  },
+  {
+    image: comercialImg,
+    title: 'Interiorismo Comercial y Diseño Retail',
+    description: '¿Quieres que tu local sea el lugar que todos quieran visitar? Transformamos tu espacio con proyectos pensados para que destaque, funcione perfecto y refleje la personalidad única de tu negocio.',
+    href: '/servicios/interiorismo-comercial',
+  },
+  {
+    image: reformasImg,
+    title: 'Reformas Integrales. Llave en Mano',
+    description: 'Renovar tu vivienda es una gran decisión, y estamos aquí para acompañarte en cada paso. Hacemos reformas que combinan funcionalidad y estilo, cuidando cada detalle para que tu casa sea el lugar perfecto.',
+    href: '/servicios/reformas-integrales',
+  },
+];
+
+const processSteps = [
+  { num: '01', title: 'Consulta inicial gratuita', text: 'Hablamos para conocer tu proyecto, tus necesidades, gustos y presupuesto. Escucho tus ideas para entender qué buscas y qué problemas quieres solucionar.' },
+  { num: '02', title: 'Propuesta de diseño y presupuesto', text: 'Analizo la información y te presento una propuesta ajustada a tus requerimientos, con un plan de trabajo y presupuesto detallado.' },
+  { num: '03', title: 'Diseño y planificación', text: 'Desarrollo el proyecto de diseño: planos, moodboards, selección de materiales, mobiliario y paleta de colores. Todo pensado para crear un espacio funcional y con estilo.' },
+  { num: '04', title: 'Revisión y ajustes', text: 'Revisamos juntos el proyecto para hacer los cambios necesarios y asegurarnos de que refleja exactamente lo que quieres.' },
+  { num: '05', title: 'Ejecución y seguimiento', text: 'Si lo deseas, coordino la ejecución con los proveedores y superviso la obra para que todo salga según lo planificado, cuidando los detalles.' },
+  { num: '06', title: 'Entrega y satisfacción final', text: 'Una vez finalizado, entrego el espacio listo para disfrutar. Me aseguro de que estés completamente satisfecho/a con el resultado.' },
+];
+
+const whyUs = [
+  'Entendemos lo que necesitas, incluso cuando no sabes cómo decirlo.',
+  'Resolvemos espacios que no funcionan, ambientes que no inspiran y locales que no venden.',
+  'Te ayudamos a ordenar el caos, aprovechar cada rincón y hacer que todo tenga sentido.',
+  'Transformamos "no sé qué hacer con esto" en "no puedo creer cómo quedó".',
+  'Estás buscando soluciones, no complicaciones — y eso es exactamente lo que ofrecemos.',
+];
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Servicios de Interiorismo en Madrid — ByHilde',
+  description: 'Decoración de interiores, interiorismo comercial y reformas integrales en Madrid. Servicio llave en mano.',
+  itemListElement: services.map((s, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name: s.title,
+    url: `${siteConfig.url}${s.href}`,
+  })),
+};
+---
+
+<BaseLayout
+  title="Servicios de Interiorismo en Madrid"
+  description="Decoración de interiores, interiorismo comercial y reformas integrales en Madrid. Servicio llave en mano con Hildemara Carrero."
+  jsonLd={jsonLd}
+>
+  <!-- Hero -->
+  <section class="services-hero section">
+    <div class="container">
+      <h1 class="editorial-headline">Servicios</h1>
+    </div>
+  </section>
+
+  <!-- Service Cards -->
+  <section class="services-grid section-sm">
+    <div class="container">
+      <div class="services-grid__list">
+        {services.map((s) => (
+          <a href={s.href} class="service-card">
+            <div class="service-card__img">
+              <img src={s.image.src} alt={s.title} width="600" height="400" loading="lazy">
+            </div>
+            <div class="service-card__body">
+              <h2>{s.title}</h2>
+              <p>{s.description}</p>
+              <span class="btn-primary">
+                Saber más del Servicio
+                <ArrowIcon />
+              </span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Us -->
+  <section class="why-us section">
+    <div class="container">
+      <div class="why-us__inner">
+        <h2 class="editorial-headline">¿Por qué <em>elegirnos</em>?</h2>
+        <ul class="why-us__list">
+          {whyUs.map((item) => (
+            <li>{item}</li>
+          ))}
+        </ul>
+        <p class="why-us__closing">Diseñamos para que respires tranquilo y tu espacio hable por ti.</p>
+        <a href="/contacto" class="btn-primary">
+          Agendar una consultoría gratis
+          <ArrowIcon />
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section class="process section">
+    <div class="container">
+      <h2 class="editorial-headline process__title">Proceso de <em>trabajo</em></h2>
+      <div class="process__grid">
+        {processSteps.map((step) => (
+          <div class="process-step">
+            <span class="process-step__num">{step.num}</span>
+            <h3>{step.title}</h3>
+            <p>{step.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTAFinal />
+</BaseLayout>
+
+<style>
+  .services-hero { text-align: center; padding-bottom: 32px; }
+  .services-hero h1 { font-size: clamp(42px, 5vw, 72px); }
+
+  /* Service Cards */
+  .services-grid__list {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+  .service-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+    background: var(--surface);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    border: 1px solid var(--border);
+    transition: transform .3s, box-shadow .3s;
+  }
+  .service-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 48px rgba(0,0,0,.06);
+  }
+  .service-card__img img {
+    height: 100%;
+    min-height: 320px;
+    object-fit: cover;
+  }
+  .service-card__body {
+    padding: 40px 40px 40px 0;
+  }
+  .service-card__body h2 {
+    font-family: var(--sans);
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 14px;
+  }
+  .service-card__body p {
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.7;
+    margin-bottom: 28px;
+  }
+
+  /* Why Us */
+  .why-us__inner {
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .why-us__inner h2 { margin-bottom: 36px; }
+  .why-us__list {
+    list-style: none;
+    text-align: left;
+    margin-bottom: 28px;
+  }
+  .why-us__list li {
+    position: relative;
+    padding: 14px 0 14px 28px;
+    color: var(--muted);
+    font-size: 15.5px;
+    line-height: 1.65;
+    border-bottom: 1px solid var(--border);
+  }
+  .why-us__list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 22px;
+    width: 8px;
+    height: 8px;
+    background: var(--accent);
+    border-radius: 50%;
+  }
+  .why-us__closing {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-style: italic;
+    color: var(--ink);
+    margin-bottom: 32px;
+    line-height: 1.5;
+  }
+
+  /* Process */
+  .process__title {
+    text-align: center;
+    margin-bottom: 56px;
+  }
+  .process__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+  .process-step {
+    padding: 32px 24px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    background: var(--surface);
+  }
+  .process-step__num {
+    font-family: var(--sans);
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 12px;
+  }
+  .process-step h3 {
+    font-family: var(--sans);
+    font-size: 17px;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  .process-step p {
+    color: var(--muted);
+    font-size: 14.5px;
+    line-height: 1.65;
+  }
+
+  @media (max-width: 960px) {
+    .process__grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 768px) {
+    .service-card { grid-template-columns: 1fr; gap: 0; }
+    .service-card__body { padding: 28px; }
+    .service-card__img img { min-height: 240px; }
+  }
+  @media (max-width: 560px) {
+    .process__grid { grid-template-columns: 1fr; }
+  }
+</style>

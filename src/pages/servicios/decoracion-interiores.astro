@@ -1,0 +1,228 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ServiceHero from '../../components/services/ServiceHero.astro';
+import ServiceFeatures from '../../components/services/ServiceFeatures.astro';
+import ServiceCards from '../../components/services/ServiceCards.astro';
+import ServiceProcess from '../../components/services/ServiceProcess.astro';
+import ServiceTestimonials from '../../components/services/ServiceTestimonials.astro';
+import ServiceGuarantees from '../../components/services/ServiceGuarantees.astro';
+import ServiceFAQ from '../../components/services/ServiceFAQ.astro';
+import CTAFinal from '../../components/CTAFinal.astro';
+import ArrowIcon from '../../components/ArrowIcon.astro';
+import { siteConfig } from '../../config/site.config';
+
+import heroImg from '../../assets/images/servicios/decoracion/servicios-decoracion-card.webp';
+
+const features = [
+  { icon: 'design', title: 'Diseño personalizado', description: 'Cada proyecto se adapta a tu estilo, necesidades y personalidad. Tu vivienda será única, reflejando tu identidad y comodidad.' },
+  { icon: 'speed', title: 'Diseños listos sin complicaciones', description: 'Gestionamos todo el proceso para que tú solo disfrutes del resultado. Sin estrés ni decisiones agobiantes.' },
+  { icon: 'quality', title: 'Materiales de alta calidad', description: 'Seleccionamos acabados premium y materiales duraderos que garantizan elegancia y resistencia en el tiempo.' },
+  { icon: 'results', title: 'Resultados garantizados', description: 'Visualiza tu proyecto en 3D antes de ejecutarlo. Transformamos espacios que impactan y mejoran tu calidad de vida.' },
+];
+
+const subServices = [
+  { title: 'Decoración Interior de Casas', description: 'Transformamos tu casa en un hogar único, combinando funcionalidad y estética personalizada. Cada detalle pensado para que tu espacio cuente tu historia.' },
+  { title: 'Decoración Chalet', description: 'Diseño integral para chalés que combina elegancia, confort y aprovechamiento de cada espacio. Jardín, terraza y todas las estancias coordinadas en un proyecto coherente.' },
+  { title: 'Decoración Áticos y Dúplex', description: 'Interiorismo para áticos y dúplex que maximiza la doble altura, la luz natural y las vistas, creando espacios únicos y exclusivos.' },
+  { title: 'Decoración Sostenible', description: 'Diseños eco-friendly con materiales reciclados, pinturas naturales y mobiliario de producción responsable. Cuidan el planeta sin renunciar al estilo.' },
+  { title: 'Decoración Online', description: 'Asesoría de diseño de interiores 100% online. Recibe moodboards, planos de distribución, lista de compras y guía de montaje dondequiera que estés.' },
+  { title: 'Home Staging', description: 'Prepara tu vivienda para la venta con técnicas de home staging que resaltan su potencial y atraen compradores rápidamente. Vendemos más rápido y a mejor precio.' },
+  { title: 'Paisajismo', description: 'Diseño de jardines, terrazas y espacios exteriores que complementan la identidad de tu hogar y amplían tu zona de disfrute.' },
+];
+
+const processSteps = [
+  { num: '01', title: 'Consulta inicial gratuita', text: 'Nos reunimos (presencial u online) para conocer tu proyecto, tus gustos, tu estilo de vida y tu presupuesto. Escuchamos primero, proponemos después.' },
+  { num: '02', title: 'Propuesta de diseño y presupuesto', text: 'Analizamos la información y te presentamos una propuesta creativa con moodboards, paleta de colores y presupuesto detallado. Sin sorpresas.' },
+  { num: '03', title: 'Diseño y planificación', text: 'Desarrollamos planos de distribución, renders 3D, selección de materiales, mobiliario e iluminación. Verás tu espacio antes de tocar nada.' },
+  { num: '04', title: 'Revisión y ajustes', text: 'Revisamos juntos cada detalle del proyecto. Hacemos los ajustes necesarios hasta que refleje exactamente lo que imaginas.' },
+  { num: '05', title: 'Ejecución y coordinación', text: 'Coordinamos proveedores, artesanos y montadores. Supervisamos cada fase para garantizar calidad y plazos.' },
+  { num: '06', title: 'Entrega y disfrute', text: 'Entregamos tu espacio listo para vivir. Hacemos un recorrido final contigo para asegurar que cada rincón sea perfecto.' },
+];
+
+const testimonials = [
+  { text: 'Hildemara transformó nuestro piso en el hogar que siempre soñamos. Cada detalle pensado, sin agobios y en el plazo que nos prometió. Volveríamos a confiar en ella sin dudarlo.', name: 'María G.', project: 'Piso en Majadahonda' },
+  { text: 'Lo mejor fue la escucha. Entendió nuestro estilo desde la primera reunión. El resultado superó nuestras expectativas y el proceso fue mucho más fácil de lo que imaginábamos.', name: 'Carlos y Ana', project: 'Chalet en Las Rozas' },
+  { text: 'Contraté el servicio online desde Barcelona y fue impecable. Los moodboards, la lista de compras, todo perfectamente organizado. Mi salón parece otro.', name: 'Laura P.', project: 'Decoración Online' },
+];
+
+const faqItems = [
+  {
+    question: '¿Cuál es la diferencia entre decoración y diseño de interiores?',
+    answer: 'La decoración se enfoca en embellecer espacios ya construidos con muebles, colores, iluminación y textiles. El diseño de interiores puede implicar cambios estructurales, redistribución y coordinación con arquitectos. En nuestro servicio de decoración, trabajamos con lo que ya existe y lo transformamos para reflejar tu estilo, sin obras mayores.',
+  },
+  {
+    question: '¿Qué incluye el servicio de decoración de interiores?',
+    answer: 'Incluye: evaluación del espacio y diagnóstico de estilo, propuesta de paleta de colores y concepto decorativo, selección de mobiliario, luminarias, cortinas y textiles, diseño de distribución y ambientación, renders 3D para que visualices el resultado, recomendaciones de compra con proveedores, y montaje final con estilismo del espacio.',
+  },
+  {
+    question: '¿Ofrecen asesorías virtuales o solo presenciales?',
+    answer: 'Ofrecemos ambas. Las asesorías virtuales son ideales para quienes viven fuera de Madrid o prefieren un enfoque flexible. Incluyen videollamada, moodboards, planos y lista de compras. Las presenciales incluyen visitas al espacio y montaje final.',
+  },
+  {
+    question: '¿Cuánto tiempo tarda un proyecto de decoración?',
+    answer: 'Depende del alcance: asesorías simples de 5 a 10 días hábiles, decoración de una habitación entre 2 y 4 semanas, y decoración de espacios completos entre 4 y 8 semanas. Siempre trabajamos con un cronograma claro.',
+  },
+  {
+    question: '¿Cuánto cuesta decorar un piso en Madrid?',
+    answer: 'El presupuesto varía según el tamaño del espacio, los materiales elegidos y el nivel de intervención. Ofrecemos una consulta inicial gratuita donde evaluamos tus necesidades y te presentamos una propuesta con presupuesto cerrado, sin costes ocultos.',
+  },
+  {
+    question: '¿Trabajáis en toda la Comunidad de Madrid?',
+    answer: 'Sí, nuestro estudio está en Villanueva de la Cañada y trabajamos en toda la Comunidad de Madrid: capital, zona noroeste (Las Rozas, Pozuelo, Majadahonda, Boadilla), zona norte (Alcobendas, San Sebastián de los Reyes) y alrededores.',
+  },
+  {
+    question: '¿Puedo combinar decoración con una reforma parcial?',
+    answer: 'Por supuesto. Muchos clientes combinan nuestro servicio de decoración con reformas parciales (pintura, suelos, baño o cocina). Coordinamos todo para que el resultado sea coherente y el proceso fluido.',
+  },
+];
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  '@id': `${siteConfig.url}/servicios/decoracion-interiores#service`,
+  name: 'ByHilde — Decoración de Interiores en Madrid',
+  description: 'Servicio de decoración de interiores en Madrid a medida. Transformamos tu hogar con diseño personalizado, materiales premium y resultados garantizados.',
+  url: `${siteConfig.url}/servicios/decoracion-interiores`,
+  telephone: siteConfig.phone,
+  email: siteConfig.email,
+  image: `${siteConfig.url}/og-default.jpg`,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: siteConfig.address.street,
+    addressLocality: siteConfig.address.city,
+    addressRegion: siteConfig.address.region,
+    postalCode: siteConfig.address.postalCode,
+    addressCountry: 'ES',
+  },
+  geo: { '@type': 'GeoCoordinates', latitude: 40.4465, longitude: -3.9943 },
+  areaServed: { '@type': 'AdministrativeArea', name: 'Comunidad de Madrid' },
+  priceRange: '€€€',
+  openingHoursSpecification: {
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+    opens: '09:00',
+    closes: '19:00',
+  },
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Servicios de Decoración',
+    itemListElement: subServices.map((s) => ({
+      '@type': 'Offer',
+      itemOffered: { '@type': 'Service', name: s.title, description: s.description },
+    })),
+  },
+  aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.9', reviewCount: '47', bestRating: '5' },
+};
+
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqItems.map((f) => ({
+    '@type': 'Question',
+    name: f.question,
+    acceptedAnswer: { '@type': 'Answer', text: f.answer },
+  })),
+};
+---
+
+<BaseLayout
+  title="Decoración de Interiores en Madrid"
+  description="Servicio de decoración de interiores en Madrid a medida. Transformamos tu hogar con diseño personalizado, materiales premium y resultados garantizados."
+  jsonLd={[jsonLd, faqJsonLd]}
+>
+  <ServiceHero
+    label="DISEÑO DE INTERIORES · VIVIENDAS"
+    title="Diseño de interiores integral: de la idea al espacio perfecto."
+    description="Ayudo a personas que desean renovar su hogar para que vivan en espacios más funcionales y armoniosos, a través de un diseño de interiores integral y personalizado."
+    image={heroImg}
+    imageAlt="Proyecto de decoración de interiores en Madrid — ByHilde"
+  />
+
+  <ServiceFeatures
+    title="¿Por qué elegirnos para decorar tu vivienda?"
+    subtitle="Haz realidad el hogar que siempre imaginaste, sin complicaciones y con resultados garantizados."
+    features={features}
+  />
+
+  <!-- Intro copy block -->
+  <section class="intro-copy section">
+    <div class="container">
+      <div class="intro-copy__inner">
+        <h2 class="editorial-headline">Tu hogar merece contar <em>tu historia</em></h2>
+        <div class="intro-copy__text">
+          <p>Un buen diseño de interiores no es solo elegir muebles bonitos. Es entender cómo vives, qué necesitas y crear un espacio que funcione para ti cada día. En ByHilde nos tomamos el tiempo de escucharte antes de proponer nada.</p>
+          <p>Trabajamos con una filosofía clara: <strong>cada vivienda es única porque cada persona es única</strong>. Por eso rechazamos las soluciones genéricas y los catálogos prefabricados. Seleccionamos pieza a pieza, material a material, para que tu hogar refleje exactamente quién eres.</p>
+          <p>Desde nuestro estudio en Villanueva de la Cañada atendemos toda la Comunidad de Madrid: pisos en el centro, chalets en la zona noroeste, áticos en Salamanca y viviendas en toda la región. Cada proyecto recibe la misma dedicación y atención al detalle.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <ServiceCards
+    title="Servicios de Decoración de Interiores a Tu Medida"
+    cards={subServices}
+  />
+
+  <ServiceProcess
+    title="Así trabajamos contigo"
+    steps={processSteps}
+  />
+
+  <ServiceGuarantees />
+
+  <ServiceTestimonials testimonials={testimonials} />
+
+  <ServiceFAQ items={faqItems} />
+
+  <!-- Zonas de servicio -->
+  <section class="service-zones section-sm">
+    <div class="container">
+      <h2 class="editorial-headline service-zones__title">Decoración de interiores en <em>tu zona</em></h2>
+      <div class="service-zones__grid">
+        <a href="/zonas/pozuelo-de-alarcon" class="service-zones__link">Pozuelo de Alarcón</a>
+        <a href="/zonas/las-rozas" class="service-zones__link">Las Rozas</a>
+        <a href="/zonas/majadahonda" class="service-zones__link">Majadahonda</a>
+        <a href="/zonas/boadilla-del-monte" class="service-zones__link">Boadilla del Monte</a>
+        <a href="/zonas/salamanca" class="service-zones__link">Salamanca</a>
+        <a href="/zonas/chamartin" class="service-zones__link">Chamartín</a>
+        <a href="/zonas/retiro" class="service-zones__link">Retiro</a>
+        <a href="/zonas/centro" class="service-zones__link">Centro</a>
+      </div>
+      <p class="service-zones__cta"><a href="/zonas" class="see-all">Ver todas las zonas <ArrowIcon /></a></p>
+    </div>
+  </section>
+
+  <CTAFinal />
+</BaseLayout>
+
+<style>
+  .intro-copy__inner { max-width: 780px; margin: 0 auto; }
+  .intro-copy__inner h2 { margin-bottom: 28px; font-size: clamp(26px, 3.5vw, 42px); }
+  .intro-copy__text p {
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 1.8;
+    margin-bottom: 18px;
+  }
+  .intro-copy__text strong { color: var(--ink); }
+
+  .service-zones__title { text-align: center; margin-bottom: 32px; font-size: clamp(26px, 3.5vw, 42px); }
+  .service-zones__grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 24px;
+  }
+  .service-zones__link {
+    padding: 10px 22px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 500;
+    background: var(--surface);
+    transition: border-color .2s, background .2s;
+  }
+  .service-zones__link:hover { border-color: var(--accent); background: rgba(192,170,144,.08); }
+  .service-zones__cta { text-align: center; }
+</style>

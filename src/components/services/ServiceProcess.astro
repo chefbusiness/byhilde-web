@@ -1,0 +1,78 @@
+---
+interface Step {
+  num: string;
+  title: string;
+  text: string;
+}
+
+interface Props {
+  title?: string;
+  steps: Step[];
+}
+
+const { title = 'Cómo trabajamos', steps } = Astro.props;
+---
+
+<section class="process section">
+  <div class="container">
+    <h2 class="editorial-headline process__title">{title}</h2>
+    <div class="process__timeline">
+      {steps.map((step) => (
+        <div class="process__step">
+          <div class="process__num">{step.num}</div>
+          <div class="process__body">
+            <h3>{step.title}</h3>
+            <p>{step.text}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .process__title {
+    text-align: center;
+    margin-bottom: 56px;
+    font-size: clamp(26px, 3.5vw, 42px);
+  }
+  .process__timeline {
+    max-width: 720px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .process__step {
+    display: flex;
+    gap: 28px;
+    padding: 28px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .process__step:last-child { border-bottom: none; }
+  .process__num {
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--ink);
+    color: var(--bg);
+    border-radius: 50%;
+    font-family: var(--sans);
+    font-size: 16px;
+    font-weight: 700;
+  }
+  .process__body h3 {
+    font-family: var(--sans);
+    font-size: 17px;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .process__body p {
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.65;
+  }
+</style>

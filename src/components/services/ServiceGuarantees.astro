@@ -1,0 +1,97 @@
+---
+interface Props {
+  title?: string;
+  subtitle?: string;
+}
+
+const {
+  title = 'Nuestra garantía',
+  subtitle = 'Trabajamos con total transparencia para que tu experiencia sea impecable de principio a fin.',
+} = Astro.props;
+
+const guarantees = [
+  {
+    icon: '<svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>',
+    title: 'Consulta inicial gratuita',
+    text: 'Evaluamos tu proyecto sin coste ni compromiso. Escuchamos tus ideas y te asesoramos antes de empezar.',
+  },
+  {
+    icon: '<svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>',
+    title: 'Presupuesto detallado y cerrado',
+    text: 'Te entregamos un presupuesto transparente antes de empezar. Sin sorpresas ni costes ocultos.',
+  },
+  {
+    icon: '<svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>',
+    title: 'Plazos que se cumplen',
+    text: 'Trabajamos con cronogramas realistas y nos comprometemos a respetar los tiempos acordados.',
+  },
+  {
+    icon: '<svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>',
+    title: 'Satisfacción garantizada',
+    text: 'No entregamos hasta que estés completamente satisfecho/a. Tu aprobación es nuestra prioridad.',
+  },
+];
+---
+
+<section class="guarantees section">
+  <div class="container">
+    <div class="guarantees__header">
+      <h2 class="editorial-headline">{title}</h2>
+      <p>{subtitle}</p>
+    </div>
+    <div class="guarantees__grid">
+      {guarantees.map((g) => (
+        <div class="guarantee-card">
+          <div class="guarantee-card__icon" set:html={g.icon} />
+          <h3>{g.title}</h3>
+          <p>{g.text}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .guarantees { background: var(--ink); border-radius: var(--radius-xl); margin: 0 20px; }
+  .guarantees__header {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 48px;
+  }
+  .guarantees__header h2 { color: var(--bg); margin-bottom: 14px; font-size: clamp(26px, 3.5vw, 42px); }
+  .guarantees__header p { color: rgba(245,243,239,.6); font-size: 16px; line-height: 1.7; }
+  .guarantees__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+  .guarantee-card {
+    padding: 28px 20px;
+    border: 1px solid rgba(245,243,239,.10);
+    border-radius: var(--radius-lg);
+    text-align: center;
+  }
+  .guarantee-card__icon {
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+  .guarantee-card h3 {
+    font-family: var(--sans);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--bg);
+    margin-bottom: 8px;
+  }
+  .guarantee-card p {
+    color: rgba(245,243,239,.55);
+    font-size: 13.5px;
+    line-height: 1.6;
+  }
+  @media (max-width: 960px) {
+    .guarantees__grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 560px) {
+    .guarantees { margin: 0 12px; }
+    .guarantees__grid { grid-template-columns: 1fr; }
+  }
+</style>

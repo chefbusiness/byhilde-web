@@ -1,0 +1,84 @@
+---
+import ArrowIcon from '../ArrowIcon.astro';
+
+interface Props {
+  label?: string;
+  title: string;
+  description: string;
+  ctaText?: string;
+  ctaHref?: string;
+  image: ImageMetadata;
+  imageAlt: string;
+}
+
+const {
+  label,
+  title,
+  description,
+  ctaText = 'Asesoria Gratuita',
+  ctaHref = '/contacto',
+  image,
+  imageAlt,
+} = Astro.props;
+---
+
+<section class="service-hero">
+  <div class="service-hero__bg">
+    <img src={image.src} alt={imageAlt} width="1600" height="900" loading="eager">
+  </div>
+  <div class="service-hero__content">
+    {label && <span class="section-label">{label}</span>}
+    <h1 class="editorial-headline">{title}</h1>
+    <p>{description}</p>
+    <a href={ctaHref} class="btn-primary">
+      {ctaText}
+      <ArrowIcon />
+    </a>
+  </div>
+</section>
+
+<style>
+  .service-hero {
+    position: relative;
+    margin: 20px 20px 0;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    min-height: 520px;
+    display: flex;
+    align-items: flex-end;
+  }
+  .service-hero__bg {
+    position: absolute;
+    inset: 0;
+    background: var(--ink);
+  }
+  .service-hero__bg img {
+    height: 100%;
+    object-fit: cover;
+    opacity: .45;
+  }
+  .service-hero__content {
+    position: relative;
+    z-index: 1;
+    padding: 64px 48px;
+    max-width: 680px;
+  }
+  .service-hero__content :global(.section-label) {
+    color: var(--accent);
+  }
+  .service-hero__content h1 {
+    color: var(--bg);
+    margin-bottom: 20px;
+  }
+  .service-hero__content p {
+    color: rgba(245,243,239,.75);
+    font-size: 17px;
+    line-height: 1.7;
+    margin-bottom: 32px;
+    max-width: 520px;
+  }
+  @media (max-width: 768px) {
+    .service-hero { margin: 12px 12px 0; min-height: 440px; }
+    .service-hero__content { padding: 40px 24px; }
+  }
+</style>

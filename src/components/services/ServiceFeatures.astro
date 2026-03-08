@@ -1,0 +1,107 @@
+---
+import ArrowIcon from '../ArrowIcon.astro';
+
+interface Feature {
+  icon: string;
+  title: string;
+  description: string;
+}
+
+interface Props {
+  title: string;
+  subtitle: string;
+  features: Feature[];
+  ctaText?: string;
+  ctaHref?: string;
+}
+
+const {
+  title,
+  subtitle,
+  features,
+  ctaText = 'Asesoria Gratuita',
+  ctaHref = '/contacto',
+} = Astro.props;
+
+const icons: Record<string, string> = {
+  design: '<svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>',
+  speed: '<svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>',
+  quality: '<svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>',
+  results: '<svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>',
+};
+---
+
+<section class="features section">
+  <div class="container">
+    <div class="features__header">
+      <h2 class="editorial-headline">{title}</h2>
+      <p class="features__subtitle">{subtitle}</p>
+      <a href={ctaHref} class="btn-primary">
+        {ctaText}
+        <ArrowIcon />
+      </a>
+    </div>
+    <div class="features__grid">
+      {features.map((f) => (
+        <div class="feature-card">
+          <div class="feature-card__icon" set:html={icons[f.icon] || icons.design} />
+          <h3>{f.title}</h3>
+          <p>{f.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .features__header {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 64px;
+  }
+  .features__header h2 { margin-bottom: 16px; }
+  .features__subtitle {
+    color: var(--muted);
+    font-size: 17px;
+    line-height: 1.7;
+    margin-bottom: 32px;
+  }
+  .features__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+  }
+  .feature-card {
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    padding: 36px 28px;
+    border: 1px solid var(--border);
+    transition: transform .3s, box-shadow .3s;
+  }
+  .feature-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0,0,0,.06);
+  }
+  .feature-card__icon {
+    color: var(--accent-dark);
+    margin-bottom: 20px;
+  }
+  .feature-card h3 {
+    font-family: var(--sans);
+    font-size: 17px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
+  .feature-card p {
+    color: var(--muted);
+    font-size: 14.5px;
+    line-height: 1.65;
+  }
+  @media (max-width: 960px) {
+    .features__grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 560px) {
+    .features__grid { grid-template-columns: 1fr; }
+  }
+</style>

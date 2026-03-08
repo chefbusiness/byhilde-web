@@ -1,0 +1,232 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ServiceHero from '../../components/services/ServiceHero.astro';
+import ServiceFeatures from '../../components/services/ServiceFeatures.astro';
+import ServiceCards from '../../components/services/ServiceCards.astro';
+import ServiceProcess from '../../components/services/ServiceProcess.astro';
+import ServiceTestimonials from '../../components/services/ServiceTestimonials.astro';
+import ServiceGuarantees from '../../components/services/ServiceGuarantees.astro';
+import ServiceFAQ from '../../components/services/ServiceFAQ.astro';
+import CTAFinal from '../../components/CTAFinal.astro';
+import ArrowIcon from '../../components/ArrowIcon.astro';
+import { siteConfig } from '../../config/site.config';
+
+import heroImg from '../../assets/images/servicios/comercial/servicios-comercial-card.webp';
+
+const features = [
+  { icon: 'design', title: 'Diseño estratégico', description: 'Creamos espacios que potencian la experiencia del cliente, refuerzan tu marca y aumentan la productividad de tu equipo.' },
+  { icon: 'speed', title: 'Ejecución rápida y eficiente', description: 'Implementamos proyectos sin interrumpir tu actividad comercial. Cumplimos plazos porque tu negocio no puede parar.' },
+  { icon: 'quality', title: 'Materiales y acabados premium', description: 'Acabados duraderos de alta calidad que proyectan profesionalismo, resisten el uso intensivo y generan confianza.' },
+  { icon: 'results', title: 'Resultados medibles', description: 'Espacios que no solo se ven bien: aumentan ventas, mejoran satisfacción del cliente y elevan la productividad.' },
+];
+
+const subServices = [
+  { title: 'Diseño de Restaurantes', description: 'Interiorismo para restaurantes que mejora la experiencia gastronómica, optimiza el flujo de servicio y crea ambientes memorables que fidelizan. Desde la barra hasta el reservado.' },
+  { title: 'Diseño de Oficinas', description: 'Proyectos de diseño interior de oficinas que fomentan la creatividad, el bienestar y la productividad. Espacios de trabajo que atraen y retienen talento.' },
+  { title: 'Interiorismo Hotelero', description: 'Interiorismo hotelero que combina funcionalidad operativa con experiencia sensorial. Habitaciones, lobbies y zonas comunes que cautivan a los huéspedes desde el primer momento.' },
+  { title: 'Diseño de Interiores para Peluquerías', description: 'Proyectos personalizados que reflejan la identidad de tu marca, atraen más clientes y crean una experiencia premium en cada visita. Del lavacabezas a la zona de espera.' },
+  { title: 'Diseño de Interiores Retail', description: 'Diseño de espacios de venta que potencian la experiencia de compra, maximizan la exposición de producto y refuerzan tu identidad de marca. Visual merchandising integrado.' },
+  { title: 'Interiorismo para Clínicas y Centros Médicos', description: 'Diseño para clínicas que combina funcionalidad sanitaria con confort. Espacios que transmiten confianza, profesionalidad y bienestar al paciente.' },
+  { title: 'Diseño de Cafeterías y Panaderías', description: 'Interiorismo para cafeterías y panaderías que crea ambientes acogedores, optimiza el flujo de clientes y convierte cada visita en una experiencia sensorial.' },
+  { title: 'Interiorismo para Gimnasios', description: 'Diseño de espacios deportivos funcionales, motivadores y seguros que mejoran la experiencia del usuario y reflejan la energía de tu marca fitness.' },
+];
+
+const processSteps = [
+  { num: '01', title: 'Análisis del negocio', text: 'Estudiamos tu marca, tu cliente objetivo, tu competencia y el flujo operativo de tu negocio. El diseño empieza por entender tu estrategia.' },
+  { num: '02', title: 'Concepto y propuesta', text: 'Desarrollamos un concepto de diseño alineado con tu marca. Moodboards, paleta, materiales y presupuesto cerrado.' },
+  { num: '03', title: 'Proyecto ejecutivo', text: 'Planos técnicos, renders 3D, especificaciones de materiales y mobiliario. Todo detallado para que no haya sorpresas en obra.' },
+  { num: '04', title: 'Ejecución coordinada', text: 'Coordinamos gremios, proveedores y plazos. Supervisamos la obra para minimizar interrupciones en tu actividad.' },
+  { num: '05', title: 'Entrega y puesta en marcha', text: 'Entregamos el espacio listo para operar. Acompañamos la apertura o reapertura para que todo funcione desde el día uno.' },
+];
+
+const testimonials = [
+  { text: 'Hildemara entendió la esencia de Stillroom desde la primera reunión. Cada rincón del bar tiene personalidad propia y nuestros clientes lo notan. Las reservas aumentaron un 40% tras la reforma.', name: 'Daniel R.', project: 'Stillroom · Gastro Bar · Madrid' },
+  { text: 'Reformar la clínica sin parar la actividad parecía imposible. ByHilde lo planificó por fases y apenas notamos las obras. El resultado es un espacio que transmite la confianza que nuestros pacientes necesitan.', name: 'Dra. Martínez', project: 'Clínica Estética · Salamanca' },
+  { text: 'Nuestra peluquería parecía otra después del proyecto. La inversión se recuperó en meses porque los clientes valoran la experiencia y recomiendan. El mejor dinero que hemos invertido.', name: 'Sofía L.', project: 'Salón de belleza · Pozuelo' },
+];
+
+const faqItems = [
+  {
+    question: '¿Por qué es importante el diseño de interiores para un negocio?',
+    answer: 'Un buen diseño interior comercial atrae más clientes, mejora la imagen de marca, optimiza el uso del espacio y aumenta la productividad en oficinas o las ventas en tiendas. Es una inversión con retorno medible.',
+  },
+  {
+    question: '¿Cuánto cuesta un proyecto de interiorismo comercial?',
+    answer: 'El coste varía según el tamaño, la complejidad y los materiales. Ofrecemos presupuestos personalizados con precio cerrado. La consulta inicial es gratuita y sin compromiso.',
+  },
+  {
+    question: '¿Cuánto tiempo tarda un proyecto de interiorismo comercial?',
+    answer: 'Generalmente entre 6 y 16 semanas, incluyendo diseño, aprobación y ejecución. Proyectos más pequeños pueden completarse en 4 semanas. Siempre trabajamos con cronograma detallado.',
+  },
+  {
+    question: '¿Trabajan con locales ya existentes o también diseñan desde cero?',
+    answer: 'Ambos. Reformamos y rediseñamos espacios comerciales existentes y también proyectamos locales nuevos desde cero, incluyendo concepto de marca y mobiliario a medida.',
+  },
+  {
+    question: '¿Qué tipos de negocios pueden beneficiarse del interiorismo comercial?',
+    answer: 'Tiendas, restaurantes, bares, cafeterías, oficinas, peluquerías, clínicas, hoteles, gimnasios y cualquier espacio comercial que busque mejorar su imagen y resultados.',
+  },
+  {
+    question: '¿Pueden adaptar el diseño a la identidad de mi marca?',
+    answer: 'Absolutamente. Cada proyecto se diseña a partir de tu identidad de marca, valores y público objetivo. El espacio se convierte en una extensión física de tu branding.',
+  },
+  {
+    question: '¿Se puede reformar un local sin cerrar el negocio?',
+    answer: 'En muchos casos sí. Planificamos las obras por fases para minimizar el impacto en tu actividad. En reformas integrales, optimizamos el calendario para que el cierre sea el mínimo posible.',
+  },
+  {
+    question: '¿Ofrecen asesoramiento para elegir mobiliario y materiales?',
+    answer: 'Sí, asesoramos en la selección completa: mobiliario, iluminación, colores, materiales y equipamiento específico para tu sector. Trabajamos con proveedores premium y también con opciones de mobiliario a medida.',
+  },
+];
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  '@id': `${siteConfig.url}/servicios/interiorismo-comercial#service`,
+  name: 'ByHilde — Interiorismo Comercial en Madrid',
+  description: 'Diseño de interiores para locales comerciales, restaurantes, oficinas, hoteles y clínicas en Madrid. Interiorismo estratégico que aumenta ventas y mejora imagen de marca.',
+  url: `${siteConfig.url}/servicios/interiorismo-comercial`,
+  telephone: siteConfig.phone,
+  email: siteConfig.email,
+  image: `${siteConfig.url}/og-default.jpg`,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: siteConfig.address.street,
+    addressLocality: siteConfig.address.city,
+    addressRegion: siteConfig.address.region,
+    postalCode: siteConfig.address.postalCode,
+    addressCountry: 'ES',
+  },
+  geo: { '@type': 'GeoCoordinates', latitude: 40.4465, longitude: -3.9943 },
+  areaServed: { '@type': 'AdministrativeArea', name: 'Comunidad de Madrid' },
+  priceRange: '€€€',
+  openingHoursSpecification: {
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+    opens: '09:00',
+    closes: '19:00',
+  },
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Servicios de Interiorismo Comercial',
+    itemListElement: subServices.map((s) => ({
+      '@type': 'Offer',
+      itemOffered: { '@type': 'Service', name: s.title, description: s.description },
+    })),
+  },
+  aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.9', reviewCount: '32', bestRating: '5' },
+};
+
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqItems.map((f) => ({
+    '@type': 'Question',
+    name: f.question,
+    acceptedAnswer: { '@type': 'Answer', text: f.answer },
+  })),
+};
+---
+
+<BaseLayout
+  title="Interiorismo Comercial en Madrid · Diseño para Negocios"
+  description="Diseño de interiores para locales comerciales, restaurantes, oficinas, hoteles y clínicas en Madrid. Interiorismo estratégico que aumenta ventas y mejora imagen de marca."
+  jsonLd={[jsonLd, faqJsonLd]}
+>
+  <ServiceHero
+    label="INTERIORISMO COMERCIAL PARA PROFESIONALES"
+    title="Diseño de interiores integral: de la idea al espacio perfecto."
+    description="Ayudamos a empresas y emprendedores a potenciar la productividad y la imagen de su negocio a través de interiorismo profesional y estratégico."
+    image={heroImg}
+    imageAlt="Proyecto de interiorismo comercial en Madrid — ByHilde"
+  />
+
+  <ServiceFeatures
+    title="¿Por qué elegir nuestro interiorismo comercial?"
+    subtitle="Ayudamos a tu negocio a atraer clientes y maximizar su impacto a través de diseños funcionales, estratégicos y memorables."
+    features={features}
+  />
+
+  <!-- Intro copy block -->
+  <section class="intro-copy section">
+    <div class="container">
+      <div class="intro-copy__inner">
+        <h2 class="editorial-headline">Tu negocio habla antes de que digas <em>una palabra</em></h2>
+        <div class="intro-copy__text">
+          <p>El diseño de tu local, oficina o restaurante es lo primero que percibe tu cliente. Antes de leer el menú, antes de ver tus productos, antes de hablar con tu equipo. <strong>El espacio comunica.</strong> Y nosotros te ayudamos a que comunique exactamente lo que necesitas.</p>
+          <p>En ByHilde no diseñamos locales bonitos por diseñar. Diseñamos espacios comerciales que funcionan: que atraen al público correcto, que generan la experiencia adecuada y que se traducen en más ventas, más fidelización y mejor imagen de marca.</p>
+          <p>Analizamos tu negocio, tu competencia y tu cliente objetivo antes de trazar una sola línea. Porque un restaurante no es una oficina, y una clínica no es una peluquería. Cada sector tiene sus reglas y nosotros las dominamos.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <ServiceCards
+    title="Nuestros Proyectos Comerciales"
+    cards={subServices}
+  />
+
+  <ServiceProcess
+    title="Nuestro proceso para tu negocio"
+    steps={processSteps}
+  />
+
+  <ServiceGuarantees />
+
+  <ServiceTestimonials testimonials={testimonials} />
+
+  <ServiceFAQ items={faqItems} />
+
+  <!-- Zonas de servicio -->
+  <section class="service-zones section-sm">
+    <div class="container">
+      <h2 class="editorial-headline service-zones__title">Interiorismo comercial en <em>tu zona</em></h2>
+      <div class="service-zones__grid">
+        <a href="/zonas/centro" class="service-zones__link">Centro</a>
+        <a href="/zonas/salamanca" class="service-zones__link">Salamanca</a>
+        <a href="/zonas/chamberi" class="service-zones__link">Chamberí</a>
+        <a href="/zonas/chamartin" class="service-zones__link">Chamartín</a>
+        <a href="/zonas/las-rozas" class="service-zones__link">Las Rozas</a>
+        <a href="/zonas/pozuelo-de-alarcon" class="service-zones__link">Pozuelo de Alarcón</a>
+        <a href="/zonas/alcobendas" class="service-zones__link">Alcobendas</a>
+        <a href="/zonas/majadahonda" class="service-zones__link">Majadahonda</a>
+      </div>
+      <p class="service-zones__cta"><a href="/zonas" class="see-all">Ver todas las zonas <ArrowIcon /></a></p>
+    </div>
+  </section>
+
+  <CTAFinal />
+</BaseLayout>
+
+<style>
+  .intro-copy__inner { max-width: 780px; margin: 0 auto; }
+  .intro-copy__inner h2 { margin-bottom: 28px; font-size: clamp(26px, 3.5vw, 42px); }
+  .intro-copy__text p {
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 1.8;
+    margin-bottom: 18px;
+  }
+  .intro-copy__text strong { color: var(--ink); }
+
+  .service-zones__title { text-align: center; margin-bottom: 32px; font-size: clamp(26px, 3.5vw, 42px); }
+  .service-zones__grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 24px;
+  }
+  .service-zones__link {
+    padding: 10px 22px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 500;
+    background: var(--surface);
+    transition: border-color .2s, background .2s;
+  }
+  .service-zones__link:hover { border-color: var(--accent); background: rgba(192,170,144,.08); }
+  .service-zones__cta { text-align: center; }
+</style>
