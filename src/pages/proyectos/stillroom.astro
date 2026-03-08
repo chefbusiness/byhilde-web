@@ -6,46 +6,126 @@ import { siteConfig } from '../../config/site.config';
 
 import coverImg from '../../assets/images/proyectos/stillroom/stillroom-cover.webp';
 
+// Renders
+import renderEntrada from '../../assets/images/proyectos/stillroom/stillroom-render-salon-entrada.jpeg';
+import renderBarra from '../../assets/images/proyectos/stillroom/stillroom-render-barra.jpeg';
+import renderOlivo from '../../assets/images/proyectos/stillroom/stillroom-render-olivo-lampara.jpeg';
+import renderSalonCompleto from '../../assets/images/proyectos/stillroom/stillroom-render-salon-completo.jpeg';
+import renderBarraDetalle from '../../assets/images/proyectos/stillroom/stillroom-render-barra-detalle.jpeg';
+import renderCocina from '../../assets/images/proyectos/stillroom/stillroom-render-cocina.jpeg';
+import renderCocinaDetalle from '../../assets/images/proyectos/stillroom/stillroom-render-cocina-detalle.jpeg';
+
+// Planos
+import planoPlanta1 from '../../assets/images/proyectos/stillroom/stillroom-plano-planta-principal-1.jpg';
+import planoPlanta2 from '../../assets/images/proyectos/stillroom/stillroom-plano-planta-principal-2.jpg';
+import planoPlanta3 from '../../assets/images/proyectos/stillroom/stillroom-plano-planta-principal-3.jpg';
+import planoSotanoSecciones from '../../assets/images/proyectos/stillroom/stillroom-plano-sotano-secciones.jpg';
+import planoSotanoDistribucion from '../../assets/images/proyectos/stillroom/stillroom-plano-sotano-distribucion.jpg';
+
+// Obra
+import obraLamparas from '../../assets/images/proyectos/stillroom/stillroom-obra-lamparas.jpeg';
+import obraBarraEstructura from '../../assets/images/proyectos/stillroom/stillroom-obra-barra-estructura.jpeg';
+import obraBarraProgreso from '../../assets/images/proyectos/stillroom/stillroom-obra-barra-progreso.jpeg';
+import obraBarraMedidas from '../../assets/images/proyectos/stillroom/stillroom-obra-barra-medidas.jpeg';
+
+// Materiales
+import materialesBarra from '../../assets/images/proyectos/stillroom/stillroom-materiales-barra.jpeg';
+
 const details = [
   { label: 'Cliente', value: 'Alejandro Márquez' },
-  { label: 'Ubicación', value: 'Madrid' },
+  { label: 'Ubicación', value: 'Calle de Moreto, 9 · Barrio de los Jerónimos, Madrid' },
   { label: 'Año', value: '2026' },
   { label: 'Superficie', value: '160 m²' },
-  { label: 'Tipología', value: 'Interiorismo comercial' },
-  { label: 'Servicios', value: 'Diseño de interiores + dirección de obra' },
+  { label: 'Tipología', value: 'Interiorismo comercial · Hostelería' },
+  { label: 'Servicios', value: 'Diseño de interiores + dirección de obra + diseño de mobiliario' },
+  { label: 'Estado', value: 'Inauguración marzo 2026' },
 ];
 
-const jsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'CreativeWork',
-  name: 'Stillroom — Gastro Cocktail Bar | Proyecto ByHilde',
-  description: 'Diseño de interiores para Stillroom, gastro cocktail bar en Madrid. Materiales nobles, iluminación escénica y atmósfera sofisticada.',
-  url: `${siteConfig.url}/proyectos/stillroom`,
-  creator: { '@type': 'Organization', name: siteConfig.name, url: siteConfig.url },
-  locationCreated: { '@type': 'Place', name: 'Madrid' },
-};
+const renders = [
+  { src: renderOlivo, alt: 'Render del salón de Stillroom con olivo central y lámpara circular LED' },
+  { src: renderBarra, alt: 'Render de la barra de Stillroom con estantería retroiluminada de botellas' },
+  { src: renderEntrada, alt: 'Render de la entrada al salón de Stillroom con sillones color crema' },
+  { src: renderSalonCompleto, alt: 'Render panorámico del salón de Stillroom con arte de cócteles en pared' },
+  { src: renderBarraDetalle, alt: 'Detalle de la barra de piedra con copa de cóctel en Stillroom' },
+  { src: renderCocina, alt: 'Render de la cocina profesional en el sótano de Stillroom' },
+  { src: renderCocinaDetalle, alt: 'Detalle de la zona de trabajo de la cocina de Stillroom' },
+];
+
+const planos = [
+  { src: planoPlanta1, alt: 'Plano de planta principal de Stillroom - distribución con mesa redonda central' },
+  { src: planoPlanta2, alt: 'Plano de planta principal de Stillroom - variante con mesa rectangular' },
+  { src: planoPlanta3, alt: 'Plano de planta principal de Stillroom - variante con sofá y mesa ovalada' },
+  { src: planoSotanoSecciones, alt: 'Plano de secciones del sótano de Stillroom - alzados de cocina profesional' },
+  { src: planoSotanoDistribucion, alt: 'Plano de distribución del sótano de Stillroom - cocina profesional' },
+];
+
+const obra = [
+  { src: obraLamparas, alt: 'Instalación de lámparas colgantes de latón en Stillroom' },
+  { src: obraBarraEstructura, alt: 'Estructura de perfilería para estantería trasera de la barra de Stillroom' },
+  { src: obraBarraProgreso, alt: 'Progreso de la construcción de la pared trasera de la barra de Stillroom' },
+  { src: obraBarraMedidas, alt: 'Mediciones de espaciado de estanterías en la barra de Stillroom' },
+];
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'CreativeWork',
+    name: 'Stillroom — Diseño de Interiores Gastro Cocktail Bar | ByHilde',
+    description: 'Proyecto de interiorismo comercial para Stillroom, gastro cocktail bar en el Barrio de los Jerónimos de Madrid. 160 m² de diseño con materiales nobles, olivo central, barra de piedra y cocina profesional en sótano.',
+    url: `${siteConfig.url}/proyectos/stillroom`,
+    creator: { '@type': 'Organization', name: siteConfig.name, url: siteConfig.url },
+    locationCreated: { '@type': 'Place', name: 'Barrio de los Jerónimos, Madrid', address: 'Calle de Moreto, 9, 28014 Madrid' },
+    dateCreated: '2026',
+    genre: 'Interiorismo comercial',
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: '¿Qué es Stillroom Madrid?',
+        acceptedAnswer: { '@type': 'Answer', text: 'Stillroom es un gastro cocktail bar situado en la Calle de Moreto, 9, en el Barrio de los Jerónimos de Madrid. Su concepto, "El Arte de lo Invisible", fusiona coctelería de autor con gastronomía de bocados en un espacio de 160 m² diseñado por ByHilde.' },
+      },
+      {
+        '@type': 'Question',
+        name: '¿Quién diseñó el interiorismo de Stillroom?',
+        acceptedAnswer: { '@type': 'Answer', text: 'El diseño de interiores de Stillroom fue realizado por ByHilde (Hildemara Carrero), interiorista en Madrid especializada en hostelería y espacios comerciales. El proyecto incluyó diseño de interiores, dirección de obra y diseño de mobiliario a medida.' },
+      },
+      {
+        '@type': 'Question',
+        name: '¿Cuánto mide el local de Stillroom?',
+        acceptedAnswer: { '@type': 'Answer', text: 'Stillroom cuenta con 160 m² distribuidos en dos plantas: planta principal con barra, salón y zona de mesas altas, y un sótano con cocina profesional de acero inoxidable.' },
+      },
+    ],
+  },
+];
 ---
 
 <BaseLayout
   title="Stillroom — Diseño de Interiores Gastro Cocktail Bar Madrid | ByHilde"
-  description="Diseño de interiores para Stillroom, gastro cocktail bar en Madrid. Materiales nobles, iluminación escénica y atmósfera sofisticada."
+  description="Proyecto de interiorismo para Stillroom, gastro cocktail bar en el Barrio de los Jerónimos de Madrid. Renders, planos y proceso de obra de este espacio de 160 m²."
   jsonLd={jsonLd}
 >
+  <!-- Hero -->
   <section class="project-hero">
     <img src={coverImg.src} alt="Stillroom — gastro cocktail bar diseñado por ByHilde en Madrid" width="1400" height="800" loading="eager" />
     <div class="project-hero__overlay">
-      <span class="project-hero__label">Interiorismo comercial · 2026</span>
+      <span class="project-hero__label">Interiorismo comercial · Barrio de los Jerónimos · 2026</span>
       <h1>Stillroom</h1>
+      <p class="project-hero__tagline">El Arte de lo Invisible</p>
     </div>
   </section>
 
+  <!-- Detalles del proyecto -->
   <section class="project-details section">
     <div class="container">
       <div class="project-details__grid">
         <div class="project-details__intro">
-          <h2>Donde la coctelería se convierte en experiencia</h2>
-          <p>Stillroom nació de la visión de Alejandro Márquez: crear un espacio gastronómico en Madrid donde la coctelería de autor y la gastronomía se fundieran en una experiencia sensorial completa. Necesitaba un interiorismo que entendiera la experiencia gastronómica desde adentro.</p>
-          <p>Diseñamos un espacio de 160 m² que combina materiales nobles — madera oscura, latón envejecido, cuero natural — con una iluminación escénica que transforma el local a lo largo de la jornada: luminoso y acogedor en las horas del vermut, íntimo y sofisticado por la noche.</p>
+          <h2>Donde la coctelería se convierte en experiencia sensorial</h2>
+          <p>Stillroom nació de una idea poderosa: crear en el corazón de Madrid un espacio donde la coctelería de autor y la gastronomía se fundieran en algo que va más allá de lo tangible. Su filosofía, <strong>"El Arte de lo Invisible"</strong>, busca que cada detalle — desde la luz hasta la textura de un asiento — contribuya a una experiencia que se siente pero no se explica.</p>
+          <p>Alejandro Márquez, su fundador, necesitaba un interiorismo que entendiera la hostelería desde adentro: los flujos de trabajo, la experiencia del comensal, la transformación del espacio entre el día y la noche. En ByHilde asumimos ese reto con un proyecto integral de <strong>160 m² en dos plantas</strong> en la Calle de Moreto, en pleno Barrio de los Jerónimos.</p>
+          <p>El resultado es un local que funciona como <strong>laboratorio diurno y santuario nocturno</strong>: luminoso y acogedor para el vermut, íntimo y sofisticado cuando cae la noche. Un espacio donde cada cóctel de autor se disfruta en un entorno diseñado con la misma precisión con la que se elabora.</p>
         </div>
         <div class="project-details__meta">
           {details.map((d) => (
@@ -59,20 +139,128 @@ const jsonLd = {
     </div>
   </section>
 
+  <!-- Galería de renders -->
+  <section class="project-gallery section" id="renders">
+    <div class="container">
+      <span class="gallery-label">Renders del proyecto</span>
+      <h2>Visualización del diseño</h2>
+      <p class="gallery-intro">Cada render refleja decisiones tomadas junto al cliente: materiales, distribución, iluminación y mobiliario. Del concepto al espacio final.</p>
+      <div class="gallery-grid gallery-grid--renders">
+        {renders.map((img, i) => (
+          <figure class={`gallery-item ${i === 0 ? 'gallery-item--featured' : ''}`}>
+            <img src={img.src.src} alt={img.alt} width="800" height="500" loading="lazy" />
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Concepto de diseño -->
+  <section class="project-concept section">
+    <div class="container">
+      <div class="project-concept__grid">
+        <div class="project-concept__text">
+          <h2>La atmósfera como ingrediente</h2>
+          <p>Cada decisión de diseño se tomó pensando en la experiencia del cliente. La paleta cromática parte de los <strong>verdes profundos</strong> que evocan los stillrooms británicos originales — esas habitaciones dedicadas a la destilación artesanal — combinados con <strong>cremas cálidos</strong> en tapicerías y <strong>tonos dorados</strong> en latón e iluminación.</p>
+          <p>El <strong>olivo centenario</strong> preside el salón como pieza escultural viva bajo una lámpara circular LED que lo envuelve en un halo de luz cálida. La barra, revestida en <strong>piedra natural y panel acanalado verde salvia</strong>, funciona como escenario donde los bartenders de Stillroom ejecutan sus rituales de coctelería.</p>
+          <p>La <strong>estantería retroiluminada</strong> tras la barra muestra la colección de destilados como una galería de arte líquido. En las paredes, ilustraciones de cócteles clásicos refuerzan la identidad del espacio sin saturar.</p>
+        </div>
+        <div class="project-concept__sidebar">
+          <figure class="material-showcase">
+            <img src={materialesBarra.src} alt="Selección de materiales para la barra de Stillroom: piedra natural, panel acanalado verde y piedra gris" width="600" height="400" loading="lazy" />
+            <figcaption>Selección de acabados para la barra: piedra natural, panel acanalado verde salvia y piedra gris</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección de acústica y dos plantas -->
   <section class="project-process section">
     <div class="container">
       <div class="project-process__inner">
-        <h2>La atmósfera como ingrediente</h2>
-        <p>Cada decisión de diseño se tomó pensando en la experiencia del cliente: la <strong>barra de mármol verde Guatemala</strong> como pieza central, los <strong>reservados tapizados en terciopelo</strong> para conversaciones íntimas, y una <strong>bodega acristalada</strong> que funciona como elemento decorativo y práctico.</p>
-        <p>La acústica fue un factor clave. Diseñamos un sistema de paneles absorbentes ocultos tras los revestimientos de madera para que el nivel de ruido permitiera conversar cómodamente incluso con el local lleno.</p>
+        <h2>Dos plantas, una experiencia</h2>
+        <p>El proyecto resolvió un reto técnico importante: distribuir <strong>160 m² en dos niveles</strong> manteniendo una experiencia fluida. La planta principal acoge la barra, el salón con banquetas, mesas altas para el afterwork y la zona íntima alrededor del olivo. Exploramos tres configuraciones de distribución diferentes hasta encontrar la que maximizaba la capacidad sin sacrificar la amplitud.</p>
+        <p>En el <strong>sótano</strong>, una cocina profesional de acero inoxidable completamente equipada soporta la propuesta gastronómica de bocados que acompaña a la coctelería. El diseño garantiza flujos de trabajo eficientes con estaciones de preparación, zona de emplatado y paso de servicio.</p>
+        <p>La <strong>acústica</strong> fue un factor clave. Diseñamos un sistema de paneles absorbentes ocultos tras los revestimientos de madera para que el nivel de ruido permitiera conversar cómodamente incluso con el local lleno — algo esencial en un espacio pensado para disfrutar y compartir.</p>
         <blockquote>
           "Para el interiorismo de Stillroom necesitábamos a alguien que entendiera la experiencia gastronómica desde adentro. Hilde lo entendió perfectamente."
-          <cite>— Alejandro Márquez, fundador</cite>
+          <cite>— Alejandro Márquez, fundador de Stillroom</cite>
         </blockquote>
       </div>
     </div>
   </section>
 
+  <!-- Galería de planos -->
+  <section class="project-gallery section section--alt" id="planos">
+    <div class="container">
+      <span class="gallery-label">Planos arquitectónicos</span>
+      <h2>Del concepto al milímetro</h2>
+      <p class="gallery-intro">Tres variantes de distribución de la planta principal y los planos de secciones y distribución de la cocina en sótano. Firmados por Arq. Hildemara Carrero (diseño) y Arq. Lisbeth Villar (delineación).</p>
+      <div class="gallery-grid gallery-grid--plans">
+        {planos.map((img) => (
+          <figure class="gallery-item">
+            <img src={img.src.src} alt={img.alt} width="800" height="600" loading="lazy" />
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Galería de obra -->
+  <section class="project-gallery section" id="obra">
+    <div class="container">
+      <span class="gallery-label">Proceso de obra</span>
+      <h2>Del plano a la realidad</h2>
+      <p class="gallery-intro">La dirección de obra garantiza que cada detalle del diseño se ejecute con precisión. Desde la instalación de las lámparas de latón hasta la construcción milimétrica de la estantería trasera de la barra.</p>
+      <div class="gallery-grid gallery-grid--obra">
+        {obra.map((img) => (
+          <figure class="gallery-item">
+            <img src={img.src.src} alt={img.alt} width="800" height="600" loading="lazy" />
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Datos del local -->
+  <section class="project-venue section section--alt">
+    <div class="container">
+      <div class="venue-grid">
+        <div class="venue-info">
+          <span class="gallery-label">El local</span>
+          <h2>Stillroom Madrid</h2>
+          <p>Un gastro cocktail bar que abrirá sus puertas en <strong>marzo de 2026</strong> en uno de los barrios más emblemáticos de Madrid. Coctelería de autor firmada por Chef Enzo, bocados de cocina creativa y experiencias como masterclasses, catas a ciegas y maridajes líquidos.</p>
+          <ul class="venue-details">
+            <li><strong>Dirección:</strong> Calle de Moreto, 9 · Barrio de los Jerónimos, Madrid</li>
+            <li><strong>Horario:</strong> Miércoles a jueves 18:00–02:00 · Viernes y sábado 18:00–03:00</li>
+            <li><strong>Concepto:</strong> "El Arte de lo Invisible" — experiencias donde lo invisible se hace memorable</li>
+            <li><strong>Web:</strong> <a href="https://www.stillroom.co" target="_blank" rel="noopener">stillroom.co</a></li>
+          </ul>
+        </div>
+        <div class="venue-highlights">
+          <div class="highlight-card">
+            <span class="highlight-number">160</span>
+            <span class="highlight-unit">m² de diseño</span>
+          </div>
+          <div class="highlight-card">
+            <span class="highlight-number">2</span>
+            <span class="highlight-unit">plantas diseñadas</span>
+          </div>
+          <div class="highlight-card">
+            <span class="highlight-number">3</span>
+            <span class="highlight-unit">distribuciones estudiadas</span>
+          </div>
+          <div class="highlight-card">
+            <span class="highlight-number">5</span>
+            <span class="highlight-unit">meses de proyecto</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Navegación entre proyectos -->
   <section class="project-nav section-sm">
     <div class="container">
       <div class="project-nav__inner">
@@ -88,6 +276,7 @@ const jsonLd = {
 </BaseLayout>
 
 <style>
+  /* Hero */
   .project-hero {
     position: relative;
     margin: 20px 20px 0;
@@ -100,24 +289,99 @@ const jsonLd = {
   .project-hero__overlay {
     position: absolute; bottom: 0; left: 0; right: 0;
     padding: 48px 40px;
-    background: linear-gradient(transparent, rgba(0,0,0,.55));
+    background: linear-gradient(transparent, rgba(0,0,0,.6));
     color: white;
   }
   .project-hero__label {
     font-size: 11px; font-weight: 500; letter-spacing: .10em;
     text-transform: uppercase; opacity: .85; display: block; margin-bottom: 8px;
   }
-  .project-hero h1 { font-family: var(--sans); font-size: clamp(32px, 5vw, 56px); font-weight: 800; }
+  .project-hero h1 { font-family: var(--sans); font-size: clamp(32px, 5vw, 56px); font-weight: 800; margin-bottom: 4px; }
+  .project-hero__tagline {
+    font-family: var(--serif); font-size: clamp(16px, 2.5vw, 22px);
+    font-style: italic; opacity: .9; margin: 0;
+  }
 
+  /* Details */
   .project-details__grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 64px; align-items: start; }
   .project-details__intro h2 { font-family: var(--sans); font-size: 28px; font-weight: 700; margin-bottom: 20px; }
   .project-details__intro p { color: var(--muted); font-size: 16px; line-height: 1.8; margin-bottom: 16px; }
-  .project-details__meta { background: var(--surface); border-radius: var(--radius-lg); padding: 32px; border: 1px solid var(--border); }
-  .detail-row { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid var(--border); font-size: 14px; }
+  .project-details__intro strong { color: var(--ink); }
+  .project-details__meta { background: var(--surface); border-radius: var(--radius-lg); padding: 32px; border: 1px solid var(--border); position: sticky; top: 100px; }
+  .detail-row { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid var(--border); font-size: 14px; gap: 16px; }
   .detail-row:last-child { border-bottom: none; }
-  .detail-label { color: var(--muted); }
+  .detail-label { color: var(--muted); white-space: nowrap; }
   .detail-value { font-weight: 600; text-align: right; }
 
+  /* Gallery shared */
+  .gallery-label {
+    font-size: 11px; font-weight: 600; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--accent-dark); display: block; margin-bottom: 8px;
+  }
+  .project-gallery h2,
+  .venue-info h2 { font-family: var(--sans); font-size: 28px; font-weight: 700; margin-bottom: 12px; }
+  .gallery-intro { color: var(--muted); font-size: 16px; line-height: 1.7; max-width: 640px; margin-bottom: 32px; }
+
+  .gallery-grid { display: grid; gap: 12px; }
+
+  /* Renders: featured first, rest in 3-col */
+  .gallery-grid--renders {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .gallery-item--featured {
+    grid-column: 1 / -1;
+  }
+  .gallery-item--featured img {
+    aspect-ratio: 21 / 9;
+  }
+
+  /* Plans: 3-col top row, 2-col bottom */
+  .gallery-grid--plans {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .gallery-grid--plans .gallery-item:nth-child(4),
+  .gallery-grid--plans .gallery-item:nth-child(5) {
+    grid-column: span 1;
+  }
+  .gallery-grid--plans .gallery-item:nth-child(4) {
+    grid-column: 1 / 2;
+  }
+
+  /* Obra: 2x2 */
+  .gallery-grid--obra {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .gallery-item {
+    margin: 0; overflow: hidden; border-radius: var(--radius-md);
+    background: var(--surface); border: 1px solid var(--border);
+  }
+  .gallery-item img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+    transition: transform .4s ease;
+    aspect-ratio: 4 / 3;
+  }
+  .gallery-item:hover img { transform: scale(1.03); }
+
+  .section--alt { background: var(--bg); }
+
+  /* Concept grid */
+  .project-concept__grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 48px; align-items: start; }
+  .project-concept__text h2 { font-family: var(--sans); font-size: 24px; font-weight: 700; margin-bottom: 20px; }
+  .project-concept__text p { color: var(--muted); font-size: 16px; line-height: 1.8; margin-bottom: 16px; }
+  .project-concept__text strong { color: var(--ink); }
+
+  .material-showcase {
+    margin: 0; border-radius: var(--radius-lg); overflow: hidden;
+    border: 1px solid var(--border); position: sticky; top: 100px;
+  }
+  .material-showcase img { width: 100%; display: block; }
+  .material-showcase figcaption {
+    padding: 16px 20px; font-size: 13px; color: var(--muted);
+    background: var(--surface); line-height: 1.5;
+  }
+
+  /* Process */
   .project-process__inner { max-width: 720px; margin: 0 auto; }
   .project-process__inner h2 { font-family: var(--sans); font-size: 24px; font-weight: 700; margin-bottom: 20px; }
   .project-process__inner p { color: var(--muted); font-size: 16px; line-height: 1.8; margin-bottom: 16px; }
@@ -131,15 +395,46 @@ const jsonLd = {
   }
   blockquote cite { display: block; font-family: var(--body); font-size: 13px; font-style: normal; color: var(--muted); margin-top: 12px; }
 
+  /* Venue section */
+  .venue-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 48px; align-items: start; }
+  .venue-info p { color: var(--muted); font-size: 16px; line-height: 1.8; margin-bottom: 20px; }
+  .venue-info strong { color: var(--ink); }
+  .venue-details { list-style: none; padding: 0; margin: 0; }
+  .venue-details li { padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 14px; color: var(--muted); line-height: 1.6; }
+  .venue-details li:last-child { border-bottom: none; }
+  .venue-details a { color: var(--accent-dark); text-decoration: underline; text-underline-offset: 2px; }
+  .venue-details a:hover { color: var(--ink); }
+
+  .venue-highlights { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .highlight-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius-lg); padding: 28px 24px; text-align: center;
+  }
+  .highlight-number {
+    display: block; font-family: var(--sans); font-size: 36px; font-weight: 800; color: var(--ink);
+  }
+  .highlight-unit {
+    display: block; font-size: 13px; color: var(--muted); margin-top: 4px;
+  }
+
+  /* Nav */
   .project-nav__inner { display: flex; justify-content: flex-end; padding-top: 32px; border-top: 1px solid var(--border); }
   .project-nav__link { text-align: right; }
   .project-nav__link span { font-size: 12px; color: var(--muted); display: block; margin-bottom: 4px; }
   .project-nav__link strong { font-family: var(--sans); font-size: 18px; font-weight: 600; display: inline-flex; align-items: center; gap: 8px; transition: gap .2s; }
   .project-nav__link:hover strong { gap: 14px; }
 
+  /* Responsive */
   @media (max-width: 768px) {
     .project-hero { margin: 12px; height: 50vh; min-height: 320px; }
     .project-hero__overlay { padding: 28px 20px; }
     .project-details__grid { grid-template-columns: 1fr; gap: 32px; }
+    .project-concept__grid { grid-template-columns: 1fr; gap: 32px; }
+    .gallery-grid--renders { grid-template-columns: 1fr; }
+    .gallery-grid--plans { grid-template-columns: 1fr; }
+    .gallery-grid--obra { grid-template-columns: 1fr; }
+    .venue-grid { grid-template-columns: 1fr; gap: 32px; }
+    .venue-highlights { grid-template-columns: 1fr 1fr; }
+    .gallery-item--featured img { aspect-ratio: 16 / 9; }
   }
 </style>
