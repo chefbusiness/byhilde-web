@@ -1,0 +1,291 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CTAFinal from '../../components/CTAFinal.astro';
+import ArrowIcon from '../../components/ArrowIcon.astro';
+import { siteConfig } from '../../config/site.config';
+
+import coverImg from '../../assets/images/proyectos/atico-retiro/atico-retiro-cover.webp';
+import salonImg from '../../assets/images/proyectos/atico-retiro/atico-retiro-salon.webp';
+import cocinaImg from '../../assets/images/proyectos/atico-retiro/atico-retiro-cocina.webp';
+
+const details = [
+  { label: 'Cliente', value: 'Particular' },
+  { label: 'Ubicación', value: 'Barrio del Retiro, Madrid' },
+  { label: 'Año', value: '2024' },
+  { label: 'Superficie', value: '185 m²' },
+  { label: 'Tipología', value: 'Residencial de lujo' },
+  { label: 'Servicios', value: 'Interiorismo integral + reforma' },
+];
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'CreativeWork',
+  name: 'Ático Retiro — Proyecto de Interiorismo ByHilde',
+  description: 'Reforma integral y diseño de interiores de un ático de lujo de 185 m² en el Barrio del Retiro, Madrid. Materiales nobles, luz natural y vistas al parque.',
+  url: `${siteConfig.url}/proyectos/atico-retiro`,
+  creator: { '@type': 'Organization', name: siteConfig.name, url: siteConfig.url },
+  locationCreated: { '@type': 'Place', name: 'Barrio del Retiro, Madrid' },
+};
+---
+
+<BaseLayout
+  title="Ático Retiro — Interiorismo Residencial de Lujo en Madrid | ByHilde"
+  description="Reforma integral y diseño de interiores de un ático de 185 m² en el Barrio del Retiro, Madrid. Materiales nobles, vistas al parque y luz natural."
+  jsonLd={jsonLd}
+>
+  <!-- Hero -->
+  <section class="project-hero">
+    <img src={coverImg.src} alt="Ático Retiro — vista panorámica del salón con vistas al Parque del Retiro" width="1400" height="800" loading="eager" />
+    <div class="project-hero__overlay">
+      <span class="project-hero__label">Proyecto residencial · 2024</span>
+      <h1>Ático Retiro</h1>
+    </div>
+  </section>
+
+  <!-- Detalles -->
+  <section class="project-details section">
+    <div class="container">
+      <div class="project-details__grid">
+        <div class="project-details__intro">
+          <h2>Un refugio de luz sobre el Retiro</h2>
+          <p>Este ático de 185 m² en una de las fincas más señoriales del Barrio del Retiro llegó a nosotros con una distribución fragmentada que no aprovechaba su mayor activo: las vistas al parque y una orientación sur que inunda el espacio de luz durante todo el día.</p>
+          <p>El reto era transformarlo en una vivienda contemporánea sin perder el carácter del edificio original. Derribamos tabiques, redistribuimos zonas y creamos un espacio abierto donde el salón, el comedor y la cocina dialogan entre sí, con el verde del Retiro como telón de fondo permanente.</p>
+        </div>
+        <div class="project-details__meta">
+          {details.map((d) => (
+            <div class="detail-row">
+              <span class="detail-label">{d.label}</span>
+              <span class="detail-value">{d.value}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Galería -->
+  <section class="project-gallery">
+    <div class="container">
+      <figure>
+        <img src={salonImg.src} alt="Salón del Ático Retiro con sofá crema, suelo de roble y vistas al parque" width="1200" height="800" loading="lazy" />
+        <figcaption>El salón principal con vista directa al Parque del Retiro. Sofá en lino crudo, mesa de travertino y butaca bouclé.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- Proceso -->
+  <section class="project-process section">
+    <div class="container">
+      <div class="project-process__inner">
+        <h2>Materiales y decisiones</h2>
+        <p>Seleccionamos una paleta de materiales nobles que envejecen con gracia: <strong>roble natural</strong> para los suelos, <strong>travertino romano</strong> en baños y la mesa central, <strong>latón envejecido</strong> en herrajes y detalles de iluminación, y <strong>lino crudo</strong> en todo el textil.</p>
+        <p>La cocina se integró completamente en el espacio social con una isla de mármol Calacatta que funciona como punto de reunión familiar. Los armarios en roble con tirador embutido mantienen la línea limpia que buscábamos.</p>
+        <p>En el dormitorio principal apostamos por una cabecera tapizada en bouclé hasta el techo, creando una sensación envolvente. El vestidor se organizó a medida con sistema abierto que permite ver y disfrutar cada pieza.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Segunda imagen -->
+  <section class="project-gallery">
+    <div class="container">
+      <figure>
+        <img src={cocinaImg.src} alt="Cocina abierta del Ático Retiro con isla de mármol y armarios de roble" width="1200" height="800" loading="lazy" />
+        <figcaption>Cocina integrada con isla de Calacatta, armarios de roble y conexión visual con el salón-comedor.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- Resultado -->
+  <section class="project-result section">
+    <div class="container">
+      <div class="project-result__inner">
+        <h2>El resultado</h2>
+        <p>El ático pasó de ser un espacio compartimentado de los años 80 a una vivienda luminosa, fluida y atemporal. Los propietarios destacan cómo la luz cambia a lo largo del día y cómo cada rincón tiene un propósito claro.</p>
+        <blockquote>
+          "Hilde transformó nuestra casa en algo que ni siquiera habíamos imaginado posible. Cada detalle tiene un porqué, cada rincón tiene alma."
+          <cite>— Isabel M., propietaria</cite>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- Navegación proyectos -->
+  <section class="project-nav section-sm">
+    <div class="container">
+      <div class="project-nav__inner">
+        <a href="/proyectos/penthouse-brickell" class="project-nav__link">
+          <span>Siguiente proyecto</span>
+          <strong>Penthouse Brickell <ArrowIcon size={14} /></strong>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <CTAFinal />
+</BaseLayout>
+
+<style>
+  .project-hero {
+    position: relative;
+    margin: 20px 20px 0;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    height: 70vh;
+    min-height: 480px;
+  }
+  .project-hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .project-hero__overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 48px 40px;
+    background: linear-gradient(transparent, rgba(0,0,0,.55));
+    color: white;
+  }
+  .project-hero__label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: .10em;
+    text-transform: uppercase;
+    opacity: .85;
+    display: block;
+    margin-bottom: 8px;
+  }
+  .project-hero h1 {
+    font-family: var(--sans);
+    font-size: clamp(32px, 5vw, 56px);
+    font-weight: 800;
+  }
+
+  .project-details__grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+  .project-details__intro h2 {
+    font-family: var(--sans);
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+  .project-details__intro p {
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 1.8;
+    margin-bottom: 16px;
+  }
+  .project-details__meta {
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    padding: 32px;
+    border: 1px solid var(--border);
+  }
+  .detail-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+  }
+  .detail-row:last-child { border-bottom: none; }
+  .detail-label { color: var(--muted); }
+  .detail-value { font-weight: 600; text-align: right; }
+
+  .project-gallery { padding: 0 0 48px; }
+  .project-gallery figure {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+  .project-gallery img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3/2;
+    object-fit: cover;
+  }
+  .project-gallery figcaption {
+    font-size: 13px;
+    color: var(--muted);
+    text-align: center;
+    margin-top: 12px;
+    font-style: italic;
+  }
+
+  .project-process__inner,
+  .project-result__inner { max-width: 720px; margin: 0 auto; }
+  .project-process__inner h2,
+  .project-result__inner h2 {
+    font-family: var(--sans);
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+  .project-process__inner p,
+  .project-result__inner p {
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 1.8;
+    margin-bottom: 16px;
+  }
+  .project-process__inner strong,
+  .project-result__inner strong { color: var(--ink); }
+
+  blockquote {
+    margin: 28px 0 0;
+    padding: 24px 28px;
+    border-left: 3px solid var(--accent);
+    background: var(--surface);
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    font-family: var(--serif);
+    font-size: 18px;
+    font-style: italic;
+    line-height: 1.7;
+    color: var(--ink);
+  }
+  blockquote cite {
+    display: block;
+    font-family: var(--body);
+    font-size: 13px;
+    font-style: normal;
+    color: var(--muted);
+    margin-top: 12px;
+  }
+
+  .project-nav__inner {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+  }
+  .project-nav__link {
+    text-align: right;
+  }
+  .project-nav__link span {
+    font-size: 12px;
+    color: var(--muted);
+    display: block;
+    margin-bottom: 4px;
+  }
+  .project-nav__link strong {
+    font-family: var(--sans);
+    font-size: 18px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: gap .2s;
+  }
+  .project-nav__link:hover strong { gap: 14px; }
+
+  @media (max-width: 768px) {
+    .project-hero { margin: 12px; height: 50vh; min-height: 320px; }
+    .project-hero__overlay { padding: 28px 20px; }
+    .project-details__grid { grid-template-columns: 1fr; gap: 32px; }
+    .project-gallery { padding: 0 0 32px; }
+  }
+</style>

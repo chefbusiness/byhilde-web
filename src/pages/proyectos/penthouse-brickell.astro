@@ -1,0 +1,183 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CTAFinal from '../../components/CTAFinal.astro';
+import ArrowIcon from '../../components/ArrowIcon.astro';
+import { siteConfig } from '../../config/site.config';
+
+import coverImg from '../../assets/images/proyectos/penthouse-brickell/penthouse-brickell-cover.webp';
+import salonImg from '../../assets/images/proyectos/penthouse-brickell/penthouse-brickell-salon.webp';
+import dormitorioImg from '../../assets/images/proyectos/penthouse-brickell/penthouse-brickell-dormitorio.webp';
+
+const details = [
+  { label: 'Cliente', value: 'Particular' },
+  { label: 'Ubicación', value: 'Brickell, Miami, Florida' },
+  { label: 'Año', value: '2023' },
+  { label: 'Superficie', value: '240 m²' },
+  { label: 'Tipología', value: 'Residencial de lujo' },
+  { label: 'Servicios', value: 'Diseño de interiores completo' },
+];
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'CreativeWork',
+  name: 'Penthouse Brickell — Proyecto de Interiorismo ByHilde',
+  description: 'Diseño de interiores de un penthouse de 240 m² en Brickell, Miami. Lujo contemporáneo tropical con vistas panorámicas al océano y al skyline.',
+  url: `${siteConfig.url}/proyectos/penthouse-brickell`,
+  creator: { '@type': 'Organization', name: siteConfig.name, url: siteConfig.url },
+  locationCreated: { '@type': 'Place', name: 'Brickell, Miami, Florida' },
+};
+---
+
+<BaseLayout
+  title="Penthouse Brickell — Interiorismo de Lujo en Miami | ByHilde"
+  description="Diseño de interiores de un penthouse de 240 m² en Brickell, Miami. Lujo contemporáneo tropical con vistas panorámicas al océano."
+  jsonLd={jsonLd}
+>
+  <section class="project-hero">
+    <img src={coverImg.src} alt="Penthouse Brickell — vista panorámica del salón con vistas al océano en Miami" width="1400" height="800" loading="eager" />
+    <div class="project-hero__overlay">
+      <span class="project-hero__label">Proyecto internacional · 2023</span>
+      <h1>Penthouse Brickell</h1>
+    </div>
+  </section>
+
+  <section class="project-details section">
+    <div class="container">
+      <div class="project-details__grid">
+        <div class="project-details__intro">
+          <h2>Lujo tropical con alma latina</h2>
+          <p>Este penthouse en la planta 42 de una de las torres más exclusivas de Brickell representa nuestra primera incursión en el mercado de Miami. El propietario, un empresario venezolano afincado en Florida, buscaba un interiorismo que reflejara su doble identidad: la sofisticación internacional y la calidez latina.</p>
+          <p>Con 240 m² y cristaleras de suelo a techo en tres orientaciones, el reto no era la luz — sino domesticarla. Diseñamos un sistema de cortinas motorizadas en lino que filtra la intensidad del sol de Miami sin perder las vistas panorámicas al océano y al skyline.</p>
+        </div>
+        <div class="project-details__meta">
+          {details.map((d) => (
+            <div class="detail-row">
+              <span class="detail-label">{d.label}</span>
+              <span class="detail-value">{d.value}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="project-gallery">
+    <div class="container">
+      <figure>
+        <img src={salonImg.src} alt="Salón del Penthouse Brickell con vistas al océano y mobiliario contemporáneo" width="1200" height="800" loading="lazy" />
+        <figcaption>Salón principal con vistas panorámicas. Seccional italiano en lino blanco, muro de piedra natural y vegetación tropical integrada.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="project-process section">
+    <div class="container">
+      <div class="project-process__inner">
+        <h2>Diseño y materiales</h2>
+        <p>Apostamos por una paleta neutra — blancos, arenas y piedra natural — que no compitiera con el espectáculo visual del exterior. Los materiales anclan el espacio: <strong>suelos de microcemento pulido</strong>, un <strong>muro de piedra coralina</strong> que recorre toda la zona social, y <strong>madera de teca</strong> en los espacios íntimos.</p>
+        <p>El mobiliario combina piezas italianas de línea pura con objetos artesanales latinoamericanos: cerámica colombiana, textiles mexicanos y obras de artistas venezolanos. El resultado es un espacio que se siente global pero personal.</p>
+        <p>La iluminación se diseñó en capas: indirecta perimetral para el día a día, puntual para las obras de arte, y escénica para las noches con vistas al skyline iluminado.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="project-gallery">
+    <div class="container">
+      <figure>
+        <img src={dormitorioImg.src} alt="Dormitorio principal del Penthouse Brickell con vista al mar" width="1200" height="800" loading="lazy" />
+        <figcaption>Suite principal con cama de plataforma, piedra natural y vista directa al Atlántico.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="project-result section">
+    <div class="container">
+      <div class="project-result__inner">
+        <h2>El resultado</h2>
+        <p>El penthouse se convirtió en un espacio que refleja la vida entre dos mundos. Los amigos del propietario lo describen como "el apartamento más bonito de Brickell", pero para nosotros lo más valioso fue escuchar que "por fin se siente como casa".</p>
+        <p>Este proyecto confirmó que nuestra forma de trabajar — escucha profunda, materiales nobles y diseño con alma — funciona más allá de las fronteras de Madrid.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="project-nav section-sm">
+    <div class="container">
+      <div class="project-nav__inner">
+        <a href="/proyectos/atico-retiro" class="project-nav__link project-nav__link--prev">
+          <span>Proyecto anterior</span>
+          <strong>Ático Retiro</strong>
+        </a>
+        <a href="/proyectos/casa-rural-tenerife" class="project-nav__link">
+          <span>Siguiente proyecto</span>
+          <strong>Casa Rural Tenerife <ArrowIcon size={14} /></strong>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <CTAFinal />
+</BaseLayout>
+
+<style>
+  .project-hero {
+    position: relative;
+    margin: 20px 20px 0;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    height: 70vh;
+    min-height: 480px;
+  }
+  .project-hero img { width: 100%; height: 100%; object-fit: cover; }
+  .project-hero__overlay {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 48px 40px;
+    background: linear-gradient(transparent, rgba(0,0,0,.55));
+    color: white;
+  }
+  .project-hero__label {
+    font-size: 11px; font-weight: 500; letter-spacing: .10em;
+    text-transform: uppercase; opacity: .85; display: block; margin-bottom: 8px;
+  }
+  .project-hero h1 { font-family: var(--sans); font-size: clamp(32px, 5vw, 56px); font-weight: 800; }
+
+  .project-details__grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 64px; align-items: start; }
+  .project-details__intro h2 { font-family: var(--sans); font-size: 28px; font-weight: 700; margin-bottom: 20px; }
+  .project-details__intro p { color: var(--muted); font-size: 16px; line-height: 1.8; margin-bottom: 16px; }
+  .project-details__meta { background: var(--surface); border-radius: var(--radius-lg); padding: 32px; border: 1px solid var(--border); }
+  .detail-row { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid var(--border); font-size: 14px; }
+  .detail-row:last-child { border-bottom: none; }
+  .detail-label { color: var(--muted); }
+  .detail-value { font-weight: 600; text-align: right; }
+
+  .project-gallery { padding: 0 0 48px; }
+  .project-gallery figure { border-radius: var(--radius-lg); overflow: hidden; }
+  .project-gallery img { width: 100%; height: auto; aspect-ratio: 3/2; object-fit: cover; }
+  .project-gallery figcaption { font-size: 13px; color: var(--muted); text-align: center; margin-top: 12px; font-style: italic; }
+
+  .project-process__inner, .project-result__inner { max-width: 720px; margin: 0 auto; }
+  .project-process__inner h2, .project-result__inner h2 { font-family: var(--sans); font-size: 24px; font-weight: 700; margin-bottom: 20px; }
+  .project-process__inner p, .project-result__inner p { color: var(--muted); font-size: 16px; line-height: 1.8; margin-bottom: 16px; }
+  .project-process__inner strong, .project-result__inner strong { color: var(--ink); }
+
+  blockquote {
+    margin: 28px 0 0; padding: 24px 28px;
+    border-left: 3px solid var(--accent); background: var(--surface);
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    font-family: var(--serif); font-size: 18px; font-style: italic; line-height: 1.7; color: var(--ink);
+  }
+  blockquote cite { display: block; font-family: var(--body); font-size: 13px; font-style: normal; color: var(--muted); margin-top: 12px; }
+
+  .project-nav__inner { display: flex; justify-content: space-between; padding-top: 32px; border-top: 1px solid var(--border); }
+  .project-nav__link { text-align: right; }
+  .project-nav__link--prev { text-align: left; }
+  .project-nav__link span { font-size: 12px; color: var(--muted); display: block; margin-bottom: 4px; }
+  .project-nav__link strong { font-family: var(--sans); font-size: 18px; font-weight: 600; display: inline-flex; align-items: center; gap: 8px; transition: gap .2s; }
+  .project-nav__link:hover strong { gap: 14px; }
+
+  @media (max-width: 768px) {
+    .project-hero { margin: 12px; height: 50vh; min-height: 320px; }
+    .project-hero__overlay { padding: 28px 20px; }
+    .project-details__grid { grid-template-columns: 1fr; gap: 32px; }
+    .project-gallery { padding: 0 0 32px; }
+  }
+</style>
